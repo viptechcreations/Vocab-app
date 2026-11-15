@@ -66,18 +66,76 @@
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50">
 
+  <!-- ================= STUDENT NAME ENTRY POPUP ================= -->
+  <div id="userEntryModal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 space-y-5 text-center">
+      <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white flex items-center justify-center mx-auto text-2xl shadow-lg shadow-indigo-200">
+        <i class="fa-solid fa-user-graduate"></i>
+      </div>
+      <div>
+        <h3 class="text-xl font-extrabold text-slate-900">Welcome to VocabMaster!</h3>
+        <p class="text-xs text-slate-500 mt-1">पढ़ाई और Mock Test शुरू करने के लिए अपना नाम दर्ज करें:</p>
+      </div>
+      <div class="space-y-3">
+        <input id="studentNameInput" type="text" placeholder="Enter your full name..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-indigo-600 focus:outline-none text-sm font-semibold text-center" />
+        <button onclick="saveStudentName()" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold text-sm shadow-md transition">
+          Start Learning <i class="fa-solid fa-arrow-right ml-1"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SECRET ADMIN PANEL MODAL (5 TAPS ON LOGO) ================= -->
+  <div id="adminModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden">
+      <div class="p-4 sm:p-5 bg-slate-900 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <i class="fa-solid fa-shield-halved text-amber-400 text-lg"></i>
+          <div>
+            <h3 class="text-base font-extrabold">Admin Visitor Tracker</h3>
+            <p class="text-[11px] text-slate-400">Dekhein kis-kis ne aapka app chalaya hai</p>
+          </div>
+        </div>
+        <button onclick="closeAdminModal()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-4 bg-slate-100 border-b border-slate-200 space-y-2">
+        <label class="text-[11px] font-bold uppercase text-slate-600 block">Firebase Realtime Database URL (For Global Sync):</label>
+        <div class="flex gap-2">
+          <input id="firebaseUrlInput" type="text" placeholder="https://your-project-default-rtdb.firebaseio.com" class="flex-1 px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono bg-white" />
+          <button onclick="saveFirebaseUrl()" class="px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold shrink-0">Save & Sync</button>
+        </div>
+        <p id="adminSyncStatus" class="text-[11px] text-slate-500">Tip: Firebase URL daalne par har phone/tab ke users yahan live dikhenge.</p>
+      </div>
+
+      <div class="p-4 flex-1 overflow-y-auto space-y-2.5" id="visitorLogsContainer">
+        <!-- Logs populated here -->
+      </div>
+
+      <div class="p-3 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
+        <span id="totalVisitorsBadge" class="text-xs font-bold text-slate-600">Total Visits: 0</span>
+        <button onclick="loadVisitorLogs()" class="px-3 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold">
+          <i class="fa-solid fa-rotate mr-1"></i> Refresh List
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Top Navigation Bar -->
   <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-      <div class="flex items-center gap-2.5 cursor-pointer" onclick="showMainPackBoxes()">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-sm">
+      <div class="flex items-center gap-2.5">
+        <!-- 5-Tap Secret Trigger on Logo -->
+        <div onclick="handleLogoSecretTap()" class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-sm cursor-pointer select-none">
           <i class="fa-solid fa-book-open-reader text-base"></i>
         </div>
-        <div>
+        <div class="cursor-pointer" onclick="showMainPackBoxes()">
           <h1 class="text-base sm:text-lg font-extrabold tracking-tight bg-gradient-to-r from-indigo-700 to-violet-600 bg-clip-text text-transparent">
             VocabMaster
           </h1>
-          <p class="text-[10px] text-slate-500 font-medium -mt-1">Auto JSON Box System</p>
+          <p id="welcomeUserSubtitle" class="text-[10px] text-slate-500 font-medium -mt-1">Auto JSON Box System</p>
         </div>
       </div>
 
@@ -103,7 +161,7 @@
       <div class="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-700 text-white p-5 shadow-md flex items-center justify-between">
         <div>
           <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20">
-            <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Auto-Detects Any JSON in /lessons/
+            <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Smart Exam Vocabulary Packs
           </span>
           <h2 class="text-lg sm:text-xl font-extrabold mt-1">Select Vocabulary Pack</h2>
           <p id="scanStatusText" class="text-xs text-indigo-100 mt-0.5">Scanning /lessons/ folder for JSON files...</p>
@@ -111,10 +169,7 @@
         <i class="fa-solid fa-boxes-stacked text-4xl text-white/20 hidden sm:block"></i>
       </div>
 
-      <!-- Dynamic Pack Boxes Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="mainPacksGrid">
-        <!-- Populated automatically from JSON files -->
-      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="mainPacksGrid"></div>
     </section>
 
     <!-- ================= STEP 2: COMPACT LESSON BOXES GRID ================= -->
@@ -134,7 +189,7 @@
       <div id="compactLessonsContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
     </section>
 
-    <!-- ================= STEP 3: LESSON WORKSPACE (CARDS / MOCK / LIST) ================= -->
+    <!-- ================= STEP 3: LESSON WORKSPACE ================= -->
     <section id="lessonView" class="hidden space-y-4">
       <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div class="flex items-center gap-2.5">
@@ -176,7 +231,6 @@
         <div class="perspective-1000 w-full h-[380px] sm:h-[410px] cursor-pointer select-none" onclick="flipCurrentCard()">
           <div id="flashcardInner" class="relative w-full h-full transform-style-3d">
 
-            <!-- FRONT -->
             <div class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-3xl border-2 border-slate-200 shadow-md p-6 flex flex-col justify-between">
               <div class="flex items-center justify-between">
                 <span id="fcPartSpeech" class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">Word</span>
@@ -196,7 +250,6 @@
               </div>
             </div>
 
-            <!-- BACK -->
             <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-3xl border-2 border-indigo-500/30 shadow-xl p-5 sm:p-6 flex flex-col justify-between overflow-y-auto">
               <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
                 <div>
@@ -251,7 +304,7 @@
         </div>
       </div>
 
-      <!-- SUBVIEW 2: COMPACT WORD LIST -->
+      <!-- SUBVIEW 2: WORD LIST -->
       <div id="listMode" class="hidden space-y-3">
         <div class="bg-white p-3 rounded-2xl border border-slate-200 flex gap-2">
           <input id="wordSearchInput" type="text" oninput="renderWordList()" placeholder="🔍 Search word or meaning..." class="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none" />
@@ -318,6 +371,163 @@
   </main>
 
   <script>
+    // ================= VISITOR TRACKING & ADMIN CONFIG =================
+    // Aap chahein to apna Firebase Realtime DB URL yahan paste kar sakte hain ya Admin Panel me daal sakte hain:
+    const DEFAULT_FIREBASE_DB_URL = ""; 
+    const ADMIN_PIN = "2005";
+
+    const USER_NAME_KEY = "vocabmaster_student_name";
+    const FIREBASE_URL_KEY = "vocabmaster_fb_db_url";
+    const LOCAL_VISITS_KEY = "vocabmaster_local_visits";
+
+    let logoTapCount = 0;
+    let logoTapTimer = null;
+
+    function getFirebaseDbUrl() {
+      const saved = localStorage.getItem(FIREBASE_URL_KEY) || DEFAULT_FIREBASE_DB_URL;
+      return saved ? saved.replace(/\/$/, "") : "";
+    }
+
+    function getDeviceSummary() {
+      const ua = navigator.userAgent;
+      if (/android/i.test(ua)) return "Android Device";
+      if (/iPad|iPhone|iPod/.test(ua)) return "iOS Device";
+      if (/Windows/i.test(ua)) return "Windows PC";
+      return "Web Browser";
+    }
+
+    function checkUserRegistration() {
+      const existingName = localStorage.getItem(USER_NAME_KEY);
+      if (!existingName) {
+        document.getElementById("userEntryModal").classList.remove("hidden");
+      } else {
+        document.getElementById("welcomeUserSubtitle").innerText = `Hi, ${existingName} 👋`;
+        logUserActivity("Opened App");
+      }
+    }
+
+    function saveStudentName() {
+      const input = document.getElementById("studentNameInput");
+      const name = (input.value || "").trim();
+      if (!name) {
+        alert("Please enter your name first!");
+        return;
+      }
+      localStorage.setItem(USER_NAME_KEY, name);
+      document.getElementById("userEntryModal").classList.add("hidden");
+      document.getElementById("welcomeUserSubtitle").innerText = `Hi, ${name} 👋`;
+      logUserActivity("Registered & Opened App");
+    }
+
+    async function logUserActivity(actionText) {
+      const studentName = localStorage.getItem(USER_NAME_KEY) || "Guest";
+      const entry = {
+        name: studentName,
+        action: actionText,
+        device: getDeviceSummary(),
+        time: new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" }),
+        timestamp: Date.now()
+      };
+
+      // Save locally as backup
+      try {
+        const localLogs = JSON.parse(localStorage.getItem(LOCAL_VISITS_KEY) || "[]");
+        localLogs.unshift(entry);
+        localStorage.setItem(LOCAL_VISITS_KEY, JSON.stringify(localLogs.slice(0, 100)));
+      } catch (e) {}
+
+      // Push to Firebase Realtime Database if URL is configured
+      const dbUrl = getFirebaseDbUrl();
+      if (dbUrl) {
+        try {
+          await fetch(`${dbUrl}/vocab_visitors.json`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(entry)
+          });
+        } catch (e) {}
+      }
+    }
+
+    function handleLogoSecretTap() {
+      logoTapCount++;
+      clearTimeout(logoTapTimer);
+      logoTapTimer = setTimeout(() => { logoTapCount = 0; }, 1800);
+
+      if (logoTapCount >= 5) {
+        logoTapCount = 0;
+        const pin = prompt("Enter Admin PIN:");
+        if (pin === ADMIN_PIN) {
+          openAdminModal();
+        } else if (pin !== null) {
+          alert("Incorrect PIN!");
+        }
+      }
+    }
+
+    function openAdminModal() {
+      document.getElementById("firebaseUrlInput").value = getFirebaseDbUrl();
+      document.getElementById("adminModal").classList.remove("hidden");
+      loadVisitorLogs();
+    }
+
+    function closeAdminModal() {
+      document.getElementById("adminModal").classList.add("hidden");
+    }
+
+    function saveFirebaseUrl() {
+      const val = (document.getElementById("firebaseUrlInput").value || "").trim();
+      localStorage.setItem(FIREBASE_URL_KEY, val);
+      document.getElementById("adminSyncStatus").innerText = "✅ Firebase URL Saved! Syncing logs...";
+      logUserActivity("Admin Connected Firebase");
+      setTimeout(loadVisitorLogs, 600);
+    }
+
+    async function loadVisitorLogs() {
+      const container = document.getElementById("visitorLogsContainer");
+      container.innerHTML = `<p class="text-xs text-slate-500 text-center py-4">Loading visitor history...</p>`;
+
+      let logs = [];
+      const dbUrl = getFirebaseDbUrl();
+
+      if (dbUrl) {
+        try {
+          const res = await fetch(`${dbUrl}/vocab_visitors.json`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data) {
+              logs = Object.values(data).sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+            }
+          }
+        } catch (e) {}
+      }
+
+      if (logs.length === 0) {
+        logs = JSON.parse(localStorage.getItem(LOCAL_VISITS_KEY) || "[]");
+      }
+
+      document.getElementById("totalVisitorsBadge").innerText = `Total Logged Actions: ${logs.length}`;
+
+      if (logs.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400 text-center py-6">No visitor logs yet.</p>`;
+        return;
+      }
+
+      container.innerHTML = logs.map(item => `
+        <div class="bg-white p-3 rounded-xl border border-slate-200 flex items-center justify-between gap-2 shadow-sm">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-xs sm:text-sm text-indigo-700">${item.name}</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">${item.device || 'Device'}</span>
+            </div>
+            <p class="text-xs text-slate-700 font-medium mt-0.5">${item.action}</p>
+          </div>
+          <span class="text-[10px] text-slate-400 font-semibold shrink-0">${item.time}</span>
+        </div>
+      `).join("");
+    }
+
+    // ================= VOCABULARY APP ENGINE =================
     let ALL_PACKS = [];
     let activePack = null;
     let currentLesson = null;
@@ -341,7 +551,6 @@
       { gradient: "from-amber-500 to-orange-600", icon: "fa-trophy" }
     ];
 
-    // Determines which Main Box (Pack) a JSON file belongs to
     function detectPackName(rawJson, filename) {
       if (rawJson.pack) return rawJson.pack;
       if (rawJson.category) return rawJson.category;
@@ -360,7 +569,6 @@
         return rawJson.level;
       }
 
-      // If user uploads e.g. "chsl_1.json" or "steno.json", auto-create a Box with that name!
       const prefix = fileClean.replace(/[-_ ]?\d+$/, "").replace(/[-_]/g, " ").trim();
       if (prefix && prefix.toLowerCase() !== "lesson") {
         return prefix.toUpperCase() + " Vocabulary";
@@ -395,7 +603,6 @@
       };
     }
 
-    // 1. Tries GitHub API to discover ANY .json file name inside /lessons/ folder automatically
     async function discoverJsonFilesViaGitHub() {
       try {
         const host = window.location.hostname;
@@ -418,7 +625,6 @@
       }
     }
 
-    // 2. Fallback scanner if running locally or offline
     async function fallbackSequentialScan() {
       const foundFiles = [];
       let misses = 0;
@@ -446,9 +652,11 @@
 
     async function initApp() {
       loadProgress();
-      const loadedLessons = [];
+      checkUserRegistration();
 
+      const loadedLessons = [];
       const githubFiles = await discoverJsonFilesViaGitHub();
+
       if (githubFiles && githubFiles.length > 0) {
         const promises = githubFiles.map(async (f, i) => {
           try {
@@ -470,10 +678,8 @@
         });
       }
 
-      // Sort lessons naturally by their number (Lesson 1, Lesson 2...)
       loadedLessons.sort((a, b) => a.sortOrder - b.sortOrder);
 
-      // Group lessons into Main Boxes by packName automatically
       const groupsMap = new Map();
       loadedLessons.forEach(lesson => {
         if (!groupsMap.has(lesson.packName)) {
@@ -502,7 +708,7 @@
       if (ALL_PACKS.length === 0) {
         statusEl.innerText = "No JSON files found in /lessons/ folder yet. Upload any .json file to /lessons/!";
       } else {
-        statusEl.innerText = `Auto-loaded ${ALL_PACKS.length} Vocabulary Box(es) & ${loadedLessons.length} Lessons from /lessons/ folder.`;
+        statusEl.innerText = `Auto-loaded ${ALL_PACKS.length} Vocabulary Box(es) & ${loadedLessons.length} Lessons.`;
       }
 
       updateGlobalStats();
@@ -547,10 +753,7 @@
 
         const box = document.createElement("div");
         box.className = "bg-white rounded-3xl border-2 border-slate-200 hover:border-indigo-500 p-5 shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col justify-between group";
-        box.onclick = () => {
-          // If a pack has only 1 JSON file, open it directly or show lesson grid
-          openPackBox(pack.id);
-        };
+        box.onclick = () => openPackBox(pack.id);
 
         box.innerHTML = `
           <div class="space-y-3">
@@ -666,6 +869,8 @@
       document.getElementById("activeLessonBadge").innerText = currentLesson.number;
       document.getElementById("activeLessonTitle").innerText = currentLesson.title;
       updateLessonHeaderProgress();
+
+      logUserActivity(`Started ${currentLesson.number} (${startMode === 'quiz' ? 'Mock' : 'Flashcards'})`);
       switchMode(startMode);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -877,6 +1082,7 @@
         document.getElementById("quizQuestionArea").classList.add("hidden");
         document.getElementById("quizResultArea").classList.remove("hidden");
         document.getElementById("quizFinalText").innerText = `You scored ${quizScore} out of ${quizQuestions.length}!`;
+        logUserActivity(`Completed Mock (${currentLesson.number}) - Score: ${quizScore}/${quizQuestions.length}`);
       }
     }
 
