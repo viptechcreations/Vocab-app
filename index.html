@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="VocabMaster" />
-  <title>VocabMaster - English Vocabulary Learning App</title>
+  <title>VocabMaster - Auto Pack Vocabulary App</title>
 
   <!-- App Icon & PWA Setup -->
   <script>
@@ -77,7 +77,7 @@
           <h1 class="text-base sm:text-lg font-extrabold tracking-tight bg-gradient-to-r from-indigo-700 to-violet-600 bg-clip-text text-transparent">
             VocabMaster
           </h1>
-          <p class="text-[10px] text-slate-500 font-medium -mt-1">Compact Box Edition</p>
+          <p class="text-[10px] text-slate-500 font-medium -mt-1">Auto JSON Box System</p>
         </div>
       </div>
 
@@ -98,20 +98,22 @@
   <!-- Main Content Area -->
   <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-5">
 
-    <!-- ================= STEP 1: MAIN CATEGORY BOXES (NO SCROLL NEEDED) ================= -->
+    <!-- ================= STEP 1: AUTO PACK BOXES ================= -->
     <section id="packSelectionView" class="space-y-5">
       <div class="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-700 text-white p-5 shadow-md flex items-center justify-between">
         <div>
-          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20">All-in-One Dashboard</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20">
+            <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Auto-Detects Any JSON in /lessons/
+          </span>
           <h2 class="text-lg sm:text-xl font-extrabold mt-1">Select Vocabulary Pack</h2>
-          <p class="text-xs text-indigo-100 mt-0.5">Kisi bhi Box par tap karein — andar saare lessons aur Mock Quiz milenge.</p>
+          <p id="scanStatusText" class="text-xs text-indigo-100 mt-0.5">Scanning /lessons/ folder for JSON files...</p>
         </div>
-        <i class="fa-solid fa-layer-group text-4xl text-white/20 hidden sm:block"></i>
+        <i class="fa-solid fa-boxes-stacked text-4xl text-white/20 hidden sm:block"></i>
       </div>
 
-      <!-- 2 Main Pack Boxes Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="mainPacksGrid">
-        <!-- Populated via JS -->
+      <!-- Dynamic Pack Boxes Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="mainPacksGrid">
+        <!-- Populated automatically from JSON files -->
       </div>
     </section>
 
@@ -124,18 +126,15 @@
           </button>
           <div>
             <h3 id="selectedPackTitle" class="text-base sm:text-lg font-extrabold text-slate-900">Pack Name</h3>
-            <p id="selectedPackSubtitle" class="text-xs text-slate-500">Tap any lesson box for Flashcards or Mock</p>
+            <p id="selectedPackSubtitle" class="text-xs text-slate-500">Tap Cards or Mock on any box</p>
           </div>
         </div>
       </div>
 
-      <!-- Compact Grid: 2 columns on mobile, 3-4 on tablet/desktop -->
-      <div id="compactLessonsContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        <!-- Compact Lesson Tiles populated via JS -->
-      </div>
+      <div id="compactLessonsContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
     </section>
 
-    <!-- ================= STEP 3: LESSON WORKSPACE (FLASHCARDS / LIST / MOCK) ================= -->
+    <!-- ================= STEP 3: LESSON WORKSPACE (CARDS / MOCK / LIST) ================= -->
     <section id="lessonView" class="hidden space-y-4">
       <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div class="flex items-center gap-2.5">
@@ -144,14 +143,13 @@
           </button>
           <div>
             <div class="flex items-center gap-2">
-              <span id="activeLessonBadge" class="text-[11px] font-bold uppercase px-2 py-0.5 rounded bg-indigo-100 text-indigo-700">Lesson 1</span>
+              <span id="activeLessonBadge" class="text-[11px] font-bold uppercase px-2 py-0.5 rounded bg-indigo-100 text-indigo-700">Lesson</span>
               <span id="activeLessonProgressText" class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">0/25</span>
             </div>
             <h2 id="activeLessonTitle" class="text-sm sm:text-base font-bold text-slate-900 mt-0.5 line-clamp-1">Lesson Title</h2>
           </div>
         </div>
 
-        <!-- Mode Switcher Buttons -->
         <div class="grid grid-cols-3 bg-slate-100 p-1 rounded-xl border border-slate-200">
           <button onclick="switchMode('flashcard')" id="tabFlashcard" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 bg-white text-indigo-600 shadow-sm">
             <i class="fa-solid fa-clone"></i> <span>Cards</span>
@@ -181,7 +179,7 @@
             <!-- FRONT -->
             <div class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-3xl border-2 border-slate-200 shadow-md p-6 flex flex-col justify-between">
               <div class="flex items-center justify-between">
-                <span id="fcPartSpeech" class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">Adjective</span>
+                <span id="fcPartSpeech" class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">Word</span>
                 <button onclick="speakCurrentWord(event)" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-600 flex items-center justify-center">
                   <i class="fa-solid fa-volume-high text-sm"></i>
                 </button>
@@ -204,7 +202,7 @@
                 <div>
                   <div class="flex items-center gap-2">
                     <h4 id="fcWordBack" class="text-xl font-extrabold text-white">Word</h4>
-                    <span id="fcPosBack" class="text-[11px] px-2 py-0.5 rounded bg-white/10 text-indigo-200">Adjective</span>
+                    <span id="fcPosBack" class="text-[11px] px-2 py-0.5 rounded bg-white/10 text-indigo-200">Word</span>
                   </div>
                   <p id="fcHindiBack" class="text-sm font-bold text-amber-300 mt-0.5">Meaning</p>
                 </div>
@@ -320,71 +318,6 @@
   </main>
 
   <script>
-    // ================= 1.PAHLA CORE VOCABULARY PACK (BUILT-IN 3 LESSONS) =================
-    const CORE_VOCAB_LESSONS = [
-      {
-        id: "core-1",
-        number: "Core Set 1",
-        title: "25 High-Frequency Core Words",
-        subtitle: "Candid to Astute",
-        words: [
-          { id: "c1-1", word: "Candid", pos: "Adjective", hindi: "स्पष्टवादी / खरा", meaning: "Truthful and straightforward; frank.", synonyms: ["Frank", "Outspoken", "Forthright", "Blunt"], antonyms: ["Deceitful", "Guarded", "Insincere"], example: "In a candid interview, the captain admitted his mistakes." },
-          { id: "c1-2", word: "Ephemeral", pos: "Adjective", hindi: "क्षणिक / अल्पकालिक", meaning: "Lasting for a very short time.", synonyms: ["Transient", "Fleeting", "Short-lived"], antonyms: ["Permanent", "Enduring", "Eternal"], example: "Fame on social media is often ephemeral." },
-          { id: "c1-3", word: "Ubiquitous", pos: "Adjective", hindi: "सर्वव्यापी", meaning: "Present, appearing, or found everywhere.", synonyms: ["Omnipresent", "Pervasive", "Universal"], antonyms: ["Rare", "Scarce", "Infrequent"], example: "Digital payments have become ubiquitous across India." },
-          { id: "c1-4", word: "Pragmatic", pos: "Adjective", hindi: "व्यावहारिक", meaning: "Dealing with things sensibly and realistically.", synonyms: ["Practical", "Realistic", "Sensible"], antonyms: ["Idealistic", "Impractical", "Quixotic"], example: "We need a pragmatic solution to reduce traffic." },
-          { id: "c1-5", word: "Mitigate", pos: "Verb", hindi: "कम करना / शांत करना", meaning: "Make something bad less severe or painful.", synonyms: ["Alleviate", "Lessen", "Diminish"], antonyms: ["Aggravate", "Exacerbate", "Intensify"], example: "Planting trees helps mitigate air pollution." },
-          { id: "c1-6", word: "Ambiguous", pos: "Adjective", hindi: "अस्पष्ट / द्व्यर्थक", meaning: "Open to more than one interpretation.", synonyms: ["Equivocal", "Vague", "Obscure"], antonyms: ["Explicit", "Clear", "Definite"], example: "The contract contained ambiguous clauses." },
-          { id: "c1-7", word: "Resilient", pos: "Adjective", hindi: "लचीला / जल्दी उबरने वाला", meaning: "Able to recover quickly from difficult conditions.", synonyms: ["Tough", "Adaptable", "Hardy"], antonyms: ["Fragile", "Vulnerable", "Weak"], example: "Athletes must remain mentally resilient under pressure." },
-          { id: "c1-8", word: "Meticulous", pos: "Adjective", hindi: "अति सावधान / बारीक", meaning: "Showing great attention to detail.", synonyms: ["Thorough", "Scrupulous", "Exact"], antonyms: ["Careless", "Sloppy", "Negligent"], example: "She kept meticulous records of every rupee spent." },
-          { id: "c1-9", word: "Eloquent", pos: "Adjective", hindi: "वाक्पटु / सुवक्ता", meaning: "Fluent or persuasive in speaking or writing.", synonyms: ["Articulate", "Expressive", "Persuasive"], antonyms: ["Inarticulate", "Hesitant", "Dull"], example: "His eloquent speech inspired the auditorium." },
-          { id: "c1-10", word: "Tenacious", pos: "Adjective", hindi: "दृढ़ / लगनशील", meaning: "Persistent in determination.", synonyms: ["Persistent", "Determined", "Resolute"], antonyms: ["Irresolute", "Yielding", "Fickle"], example: "Her tenacious preparation helped her crack the exam." },
-          { id: "c1-11", word: "Benevolent", pos: "Adjective", hindi: "परोपकारी / दयालु", meaning: "Well-meaning and kindly.", synonyms: ["Compassionate", "Generous", "Altruistic"], antonyms: ["Malevolent", "Cruel", "Selfish"], example: "A benevolent donor funded the village library." },
-          { id: "c1-12", word: "Obsolete", pos: "Adjective", hindi: "अप्रचलित / पुराना", meaning: "No longer produced or used; out of date.", synonyms: ["Outdated", "Archaic", "Defunct"], antonyms: ["Modern", "Current", "Contemporary"], example: "Pagers have become completely obsolete today." },
-          { id: "c1-13", word: "Lucid", pos: "Adjective", hindi: "सुस्पष्ट", meaning: "Expressed clearly; easy to understand.", synonyms: ["Clear", "Coherent", "Intelligible"], antonyms: ["Confusing", "Muddled", "Unclear"], example: "The teacher gave a lucid explanation." },
-          { id: "c1-14", word: "Audacious", pos: "Adjective", hindi: "साहसी / निडर", meaning: "Willing to take bold risks.", synonyms: ["Bold", "Daring", "Intrepid"], antonyms: ["Timid", "Cautious", "Cowardly"], example: "The startup made an audacious move." },
-          { id: "c1-15", word: "Lethargic", pos: "Adjective", hindi: "सुस्त / आलसी", meaning: "Sluggish and apathetic.", synonyms: ["Sluggish", "Torpid", "Inactive"], antonyms: ["Energetic", "Vigorous", "Active"], example: "Heavy meals often make people feel lethargic." },
-          { id: "c1-16", word: "Prolific", pos: "Adjective", hindi: "अत्यधिक उत्पादक", meaning: "Producing many works or results.", synonyms: ["Productive", "Creative", "Fruitful"], antonyms: ["Unproductive", "Barren", "Sterile"], example: "Tagore was a prolific writer of poems." },
-          { id: "c1-17", word: "Vindicate", pos: "Verb", hindi: "निर्दोष साबित करना", meaning: "Clear someone of blame or suspicion.", synonyms: ["Exonerate", "Acquit", "Justify"], antonyms: ["Convict", "Blame", "Condemn"], example: "New CCTV evidence helped vindicate the guard." },
-          { id: "c1-18", word: "Frugal", pos: "Adjective", hindi: "मितव्ययी / किफायती", meaning: "Sparing or economical with money.", synonyms: ["Thrifty", "Economical", "Prudent"], antonyms: ["Extravagant", "Lavish", "Wasteful"], example: "A frugal lifestyle helped him save money." },
-          { id: "c1-19", word: "Ostentatious", pos: "Adjective", hindi: "दिखावटी / आडंबरपूर्ण", meaning: "Designed to impress; showy.", synonyms: ["Showy", "Flamboyant", "Pretentious"], antonyms: ["Modest", "Plain", "Humble"], example: "He avoided ostentatious cars." },
-          { id: "c1-20", word: "Reluctant", pos: "Adjective", hindi: "अनिच्छुक", meaning: "Unwilling and hesitant.", synonyms: ["Hesitant", "Unwilling", "Averse"], antonyms: ["Eager", "Willing", "Ready"], example: "Investors were reluctant during market uncertainty." },
-          { id: "c1-21", word: "Magnanimous", pos: "Adjective", hindi: "उदार / बड़े दिल वाला", meaning: "Generous or forgiving toward a rival.", synonyms: ["Generous", "Forgiving", "Noble"], antonyms: ["Petty", "Vindictive", "Mean"], example: "The champion was magnanimous in victory." },
-          { id: "c1-22", word: "Implausible", pos: "Adjective", hindi: "अविश्वसनीय", meaning: "Not seeming reasonable or probable.", synonyms: ["Unlikely", "Improbable", "Doubtful"], antonyms: ["Plausible", "Believable", "Credible"], example: "His excuse sounded completely implausible." },
-          { id: "c1-23", word: "Diligent", pos: "Adjective", hindi: "मेहनती / परिश्रमी", meaning: "Showing care and conscientiousness in work.", synonyms: ["Industrious", "Assiduous", "Hardworking"], antonyms: ["Lazy", "Idle", "Indolent"], example: "Diligent students revise regularly." },
-          { id: "c1-24", word: "Inevitable", pos: "Adjective", hindi: "अपरिहार्य / अटल", meaning: "Certain to happen; unavoidable.", synonyms: ["Unavoidable", "Inescapable", "Certain"], antonyms: ["Avoidable", "Uncertain", "Preventable"], example: "Technological change was inevitable." },
-          { id: "c1-25", word: "Astute", pos: "Adjective", hindi: "चतुर / कुशाग्र बुद्धि", meaning: "Accurately assessing situations.", synonyms: ["Shrewd", "Sharp", "Perceptive"], antonyms: ["Naive", "Foolish", "Gullible"], example: "An astute learner spots patterns quickly." }
-        ]
-      },
-      {
-        id: "core-2",
-        number: "Core Set 2",
-        title: "Editorial & RC Vocabulary",
-        subtitle: "Exacerbate to Perilous",
-        words: [
-          { id: "c2-1", word: "Exacerbate", pos: "Verb", hindi: "बिगाड़ना", meaning: "Make a problem worse.", synonyms: ["Aggravate", "Worsen", "Compound"], antonyms: ["Alleviate", "Mitigate", "Improve"], example: "Rising fuel prices will exacerbate inflation." },
-          { id: "c2-2", word: "Consensus", pos: "Noun", hindi: "सर्वसम्मति", meaning: "A general agreement.", synonyms: ["Agreement", "Harmony", "Accord"], antonyms: ["Disagreement", "Discord", "Conflict"], example: "The committee reached a consensus." },
-          { id: "c2-3", word: "Stringent", pos: "Adjective", hindi: "सख्त / कठोर", meaning: "Strict, precise, and exacting.", synonyms: ["Strict", "Rigorous", "Firm"], antonyms: ["Lenient", "Flexible", "Lax"], example: "Stringent safety rules were introduced." },
-          { id: "c2-4", word: "Bolster", pos: "Verb", hindi: "मजबूत करना", meaning: "Support or strengthen.", synonyms: ["Strengthen", "Reinforce", "Boost"], antonyms: ["Undermine", "Weaken", "Hinder"], example: "Mock tests bolster your confidence." },
-          { id: "c2-5", word: "Perilous", pos: "Adjective", hindi: "खतरनाक", meaning: "Full of danger or risk.", synonyms: ["Dangerous", "Hazardous", "Risky"], antonyms: ["Safe", "Secure", "Harmless"], example: "Mountaineers faced a perilous climb." }
-        ]
-      },
-      {
-        id: "core-3",
-        number: "Core Set 3",
-        title: "Personality & Character Words",
-        subtitle: "Gregarious to Affable",
-        words: [
-          { id: "c3-1", word: "Gregarious", pos: "Adjective", hindi: "मिलनसार", meaning: "Fond of company; sociable.", synonyms: ["Sociable", "Outgoing", "Friendly"], antonyms: ["Introverted", "Reclusive", "Reserved"], example: "Rohan is gregarious by nature." },
-          { id: "c3-2", word: "Taciturn", pos: "Adjective", hindi: "अल्पभाषी", meaning: "Reserved or saying little.", synonyms: ["Reticent", "Quiet", "Reserved"], antonyms: ["Talkative", "Loquacious", "Garrulous"], example: "He remained taciturn in the meeting." },
-          { id: "c3-3", word: "Altruistic", pos: "Adjective", hindi: "निःस्वार्थ / परोपकारी", meaning: "Selfless concern for others.", synonyms: ["Selfless", "Philanthropic", "Charitable"], antonyms: ["Selfish", "Greedy", "Egocentric"], example: "Volunteers worked with altruistic motives." },
-          { id: "c3-4", word: "Obstinate", pos: "Adjective", hindi: "जिद्दी / हठी", meaning: "Stubbornly refusing to change.", synonyms: ["Stubborn", "Headstrong", "Adamant"], antonyms: ["Compliant", "Flexible", "Docile"], example: "His obstinate refusal delayed the deal." },
-          { id: "c3-5", word: "Affable", pos: "Adjective", hindi: "मित्रवत / सुशील", meaning: "Friendly and easy to talk to.", synonyms: ["Cordial", "Genial", "Amiable"], antonyms: ["Hostile", "Surly", "Unfriendly"], example: "The principal is an affable person." }
-        ]
-      }
-    ];
-
-    // ================= 2. PACKS STATE & AUTO-SCANNER FOR /lessons/ FOLDER =================
-    let PDF_275_LESSONS = [];
     let ALL_PACKS = [];
     let activePack = null;
     let currentLesson = null;
@@ -399,15 +332,58 @@
     const STORAGE_KEY = "vocabmaster_learned_words_v1";
     let learnedWords = new Set();
 
-    function normalizeLessonData(rawJson, num) {
+    const BOX_STYLES = [
+      { gradient: "from-indigo-600 to-violet-700", icon: "fa-bolt" },
+      { gradient: "from-rose-600 to-orange-600", icon: "fa-fire" },
+      { gradient: "from-emerald-600 to-teal-700", icon: "fa-graduation-cap" },
+      { gradient: "from-blue-600 to-cyan-600", icon: "fa-book-open" },
+      { gradient: "from-fuchsia-600 to-pink-600", icon: "fa-star" },
+      { gradient: "from-amber-500 to-orange-600", icon: "fa-trophy" }
+    ];
+
+    // Determines which Main Box (Pack) a JSON file belongs to
+    function detectPackName(rawJson, filename) {
+      if (rawJson.pack) return rawJson.pack;
+      if (rawJson.category) return rawJson.category;
+
+      const titleStr = (rawJson.title || "").toLowerCase();
+      const levelStr = (rawJson.level || "").toLowerCase();
+      const fileClean = filename.replace(/\.json$/i, "");
+
+      if (titleStr.includes("mts") || levelStr.includes("mts") || fileClean.toLowerCase().startsWith("mts")) {
+        return "SSC MTS 2026 Synonyms";
+      }
+      if (titleStr.includes("275") || levelStr.includes("exam favourite") || titleStr.includes("cgl")) {
+        return "Top 275 SSC CGL Synonyms";
+      }
+      if (rawJson.level && rawJson.level.trim() !== "") {
+        return rawJson.level;
+      }
+
+      // If user uploads e.g. "chsl_1.json" or "steno.json", auto-create a Box with that name!
+      const prefix = fileClean.replace(/[-_ ]?\d+$/, "").replace(/[-_]/g, " ").trim();
+      if (prefix && prefix.toLowerCase() !== "lesson") {
+        return prefix.toUpperCase() + " Vocabulary";
+      }
+      return rawJson.title || fileClean.toUpperCase();
+    }
+
+    function normalizeLesson(rawJson, filename, idx) {
+      const fileClean = filename.replace(/\.json$/i, "");
+      const numMatch = fileClean.match(/\d+/);
+      const num = numMatch ? parseInt(numMatch[0], 10) : idx + 1;
       const wordsArray = Array.isArray(rawJson) ? rawJson : (rawJson.words || []);
+      const packName = detectPackName(rawJson, filename);
+
       return {
-        id: rawJson.id || `pdf-lesson-${num}`,
+        packName,
+        sortOrder: num,
+        id: rawJson.id || `${fileClean}-${idx}`,
         number: rawJson.number || `Lesson ${num}`,
-        title: rawJson.title || `Words ${(num - 1) * 25 + 1} to ${num * 25}`,
+        title: rawJson.title || fileClean.replace(/[-_]/g, " "),
         subtitle: rawJson.subtitle || `${wordsArray.length} Words`,
-        words: wordsArray.map((w, idx) => ({
-          id: w.id || `pdf-l${num}-w${idx + 1}`,
+        words: wordsArray.map((w, wIdx) => ({
+          id: w.id || `${fileClean}-w${wIdx + 1}`,
           word: w.word || "Word",
           pos: w.pos || "Word",
           hindi: w.hindi || "",
@@ -419,53 +395,115 @@
       };
     }
 
-    async function initApp() {
-      loadProgress();
-      const loadedPdfLessons = [];
-      let misses = 0;
+    // 1. Tries GitHub API to discover ANY .json file name inside /lessons/ folder automatically
+    async function discoverJsonFilesViaGitHub() {
+      try {
+        const host = window.location.hostname;
+        if (!host.endsWith("github.io")) return null;
+        const owner = host.split(".")[0];
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        const repo = pathParts.length > 0 ? pathParts[0] : `${owner}.github.io`;
 
-      for (let i = 1; i <= 50; i++) {
-        let found = false;
-        for (const path of [`lessons/lesson${i}.json`, `lessons/lesson-${i}.json`]) {
+        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/lessons`;
+        const res = await fetch(apiUrl);
+        if (!res.ok) return null;
+        const items = await res.json();
+        if (!Array.isArray(items)) return null;
+
+        return items
+          .filter(item => item.type === "file" && item.name.toLowerCase().endsWith(".json"))
+          .map(item => ({ name: item.name, path: `lessons/${item.name}` }));
+      } catch (e) {
+        return null;
+      }
+    }
+
+    // 2. Fallback scanner if running locally or offline
+    async function fallbackSequentialScan() {
+      const foundFiles = [];
+      let misses = 0;
+      for (let i = 1; i <= 60; i++) {
+        let hit = false;
+        for (const name of [`lesson${i}.json`, `lesson-${i}.json`]) {
           try {
-            const res = await fetch(path, { cache: "no-store" });
+            const res = await fetch(`lessons/${name}`, { cache: "no-store" });
             if (res.ok) {
               const data = await res.json();
-              loadedPdfLessons.push(normalizeLessonData(data, i));
-              found = true;
+              foundFiles.push({ name, data });
+              hit = true;
               break;
             }
           } catch (e) {}
         }
-        if (found) misses = 0;
+        if (hit) misses = 0;
         else {
           misses++;
           if (misses >= 3) break;
         }
       }
+      return foundFiles;
+    }
 
-      PDF_275_LESSONS = loadedPdfLessons;
+    async function initApp() {
+      loadProgress();
+      const loadedLessons = [];
 
-      ALL_PACKS = [
-        {
-          id: "pack-pdf",
-          title: "Top 275 SSC Synonyms PDF",
-          badge: "Eduquity Favourite",
-          desc: "Rojgar With Ankit Digital Notes (Lesson-wise 25 Words + Mock)",
-          icon: "fa-file-pdf",
-          gradient: "from-indigo-600 to-violet-700",
-          lessons: PDF_275_LESSONS.length > 0 ? PDF_275_LESSONS : [CORE_VOCAB_LESSONS[0]]
-        },
-        {
-          id: "pack-core",
-          title: "Core High-Frequency Vocab",
-          badge: "Foundation Pack",
-          desc: "Pahle wale Core Exam Words, Editorial & Personality Sets",
-          icon: "fa-layer-group",
-          gradient: "from-emerald-600 to-teal-700",
-          lessons: CORE_VOCAB_LESSONS
+      const githubFiles = await discoverJsonFilesViaGitHub();
+      if (githubFiles && githubFiles.length > 0) {
+        const promises = githubFiles.map(async (f, i) => {
+          try {
+            const r = await fetch(f.path, { cache: "no-store" });
+            if (r.ok) {
+              const data = await r.json();
+              return normalizeLesson(data, f.name, i);
+            }
+          } catch (e) {}
+          return null;
+        });
+        const results = await Promise.all(promises);
+        results.forEach(item => { if (item && item.words.length > 0) loadedLessons.push(item); });
+      } else {
+        const seqFiles = await fallbackSequentialScan();
+        seqFiles.forEach((f, i) => {
+          const norm = normalizeLesson(f.data, f.name, i);
+          if (norm.words.length > 0) loadedLessons.push(norm);
+        });
+      }
+
+      // Sort lessons naturally by their number (Lesson 1, Lesson 2...)
+      loadedLessons.sort((a, b) => a.sortOrder - b.sortOrder);
+
+      // Group lessons into Main Boxes by packName automatically
+      const groupsMap = new Map();
+      loadedLessons.forEach(lesson => {
+        if (!groupsMap.has(lesson.packName)) {
+          groupsMap.set(lesson.packName, []);
         }
-      ];
+        groupsMap.get(lesson.packName).push(lesson);
+      });
+
+      ALL_PACKS = [];
+      let styleIdx = 0;
+      groupsMap.forEach((lessonsList, packTitle) => {
+        const style = BOX_STYLES[styleIdx % BOX_STYLES.length];
+        styleIdx++;
+        ALL_PACKS.push({
+          id: "pack-" + styleIdx,
+          title: packTitle,
+          badge: `${lessonsList.length} Lesson Set`,
+          desc: `Contains ${lessonsList.reduce((s, l) => s + l.words.length, 0)} Vocabulary Words with Flashcards & Mock`,
+          icon: style.icon,
+          gradient: style.gradient,
+          lessons: lessonsList
+        });
+      });
+
+      const statusEl = document.getElementById("scanStatusText");
+      if (ALL_PACKS.length === 0) {
+        statusEl.innerText = "No JSON files found in /lessons/ folder yet. Upload any .json file to /lessons/!";
+      } else {
+        statusEl.innerText = `Auto-loaded ${ALL_PACKS.length} Vocabulary Box(es) & ${loadedLessons.length} Lessons from /lessons/ folder.`;
+      }
 
       updateGlobalStats();
       renderMainPackBoxes();
@@ -497,7 +535,6 @@
       if (activePack) renderCompactLessonGrid(activePack);
     }
 
-    // ================= RENDER STEP 1: MAIN PACK BOXES =================
     function renderMainPackBoxes() {
       const grid = document.getElementById("mainPacksGrid");
       grid.innerHTML = "";
@@ -510,7 +547,10 @@
 
         const box = document.createElement("div");
         box.className = "bg-white rounded-3xl border-2 border-slate-200 hover:border-indigo-500 p-5 shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col justify-between group";
-        box.onclick = () => openPackBox(pack.id);
+        box.onclick = () => {
+          // If a pack has only 1 JSON file, open it directly or show lesson grid
+          openPackBox(pack.id);
+        };
 
         box.innerHTML = `
           <div class="space-y-3">
@@ -524,7 +564,7 @@
             </div>
             <div>
               <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-600">${pack.badge}</span>
-              <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 group-hover:text-indigo-600 transition">${pack.title}</h3>
+              <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition">${pack.title}</h3>
               <p class="text-xs text-slate-500 mt-1">${pack.desc}</p>
             </div>
           </div>
@@ -538,7 +578,7 @@
               <div class="h-full bg-indigo-600" style="width:${pct}%"></div>
             </div>
             <div class="pt-1 flex items-center justify-between text-xs font-extrabold text-indigo-600">
-              <span>Open Lesson Boxes</span>
+              <span>Open Box</span>
               <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition"></i>
             </div>
           </div>
@@ -554,7 +594,6 @@
       renderMainPackBoxes();
     }
 
-    // ================= RENDER STEP 2: COMPACT LESSON TILES (NO LONG SCROLL) =================
     function openPackBox(packId) {
       activePack = ALL_PACKS.find(p => p.id === packId);
       if (!activePack) return;
@@ -564,7 +603,7 @@
       document.getElementById("lessonGridView").classList.remove("hidden");
 
       document.getElementById("selectedPackTitle").innerText = activePack.title;
-      document.getElementById("selectedPackSubtitle").innerText = `${activePack.lessons.length} Compact Boxes — Click Flashcards or Mock directly`;
+      document.getElementById("selectedPackSubtitle").innerText = `${activePack.lessons.length} Lesson Boxes — Tap Cards or Mock`;
 
       renderCompactLessonGrid(activePack);
     }
@@ -587,7 +626,7 @@
               <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-indigo-50 text-indigo-700">${lesson.number}</span>
               <span class="text-[11px] font-bold text-slate-400">${done}/${total}</span>
             </div>
-            <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 line-clamp-1">${lesson.title.replace('Top 275 PDF: ', '')}</h4>
+            <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 line-clamp-1">${lesson.title}</h4>
             <p class="text-[11px] text-slate-500 line-clamp-1">${lesson.words[0]?.word || ''} ... ${lesson.words[lesson.words.length - 1]?.word || ''}</p>
             <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden mt-1">
               <div class="h-full bg-emerald-500" style="width:${pct}%"></div>
@@ -608,14 +647,10 @@
     }
 
     function backToLessonGrid() {
-      if (activePack) {
-        openPackBox(activePack.id);
-      } else {
-        showMainPackBoxes();
-      }
+      if (activePack) openPackBox(activePack.id);
+      else showMainPackBoxes();
     }
 
-    // ================= STEP 3: OPEN FLASHCARDS OR MOCK DIRECTLY =================
     function openLesson(lessonId, startMode = "flashcard") {
       if (!activePack) return;
       const found = activePack.lessons.find(l => l.id === lessonId);
@@ -755,7 +790,6 @@
       });
 
       filtered.forEach((item) => {
-        const isLearned = learnedWords.has(item.id);
         const card = document.createElement("div");
         card.className = "bg-white rounded-2xl border border-slate-200 p-4 shadow-sm space-y-2";
         card.innerHTML = `
