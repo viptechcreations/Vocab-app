@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="VocabMaster" />
   <title>VocabMaster - English Vocabulary Learning App</title>
 
-  <!-- Exact Book-Open-Reader App Icon & PWA Setup -->
+  <!-- App Icon & PWA Setup -->
   <script>
     const exactBookReaderSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4f46e5"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs><rect width="512" height="512" rx="115" fill="url(#bg)"/><circle cx="256" cy="152" r="44" fill="#ffffff"/><path d="M242 232 C205 212 150 208 116 218 C108 220 104 227 104 236 L104 358 C104 368 112 374 122 372 C156 364 205 368 242 390 Z" fill="#ffffff"/><path d="M270 232 C307 212 362 208 396 218 C404 220 408 227 408 236 L408 358 C408 368 400 374 390 372 C356 364 307 368 270 390 Z" fill="#ffffff"/></svg>`;
     const appIconDataUrl = "data:image/svg+xml;base64," + btoa(exactBookReaderSvg);
@@ -17,7 +17,6 @@
     const pwaManifest = {
       name: "VocabMaster - English-Hindi Vocabulary & Quiz",
       short_name: "VocabMaster",
-      description: "25+ High-Frequency Vocabulary Words per Lesson",
       start_url: "./index.html",
       display: "standalone",
       background_color: "#f8fafc",
@@ -39,35 +38,10 @@
     favIcon.rel = "icon";
     favIcon.href = appIconDataUrl;
     document.head.appendChild(favIcon);
-
-    const appleIcon = document.createElement("link");
-    appleIcon.rel = "apple-touch-icon";
-    appleIcon.href = appIconDataUrl;
-    document.head.appendChild(appleIcon);
-
-    // Helper function so user can download 512x512 PNG icon directly on tablet
-    function downloadAppIconPng() {
-      const canvas = document.createElement("canvas");
-      canvas.width = 512;
-      canvas.height = 512;
-      const ctx = canvas.getContext("2d");
-      const img = new Image();
-      img.onload = function () {
-        ctx.drawImage(img, 0, 0, 512, 512);
-        const a = document.createElement("a");
-        a.download = "vocabmaster-icon.png";
-        a.href = canvas.toDataURL("image/png");
-        a.click();
-      };
-      img.src = appIconDataUrl;
-    }
   </script>
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -80,7 +54,7 @@
     .perspective-1000 { perspective: 1200px; }
     .transform-style-3d {
       transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
     }
     .backface-hidden {
       backface-visibility: hidden;
@@ -93,323 +67,326 @@
 <body class="min-h-screen flex flex-col bg-slate-50">
 
   <!-- Top Navigation Bar -->
-  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3 cursor-pointer" onclick="showDashboard()">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-md shadow-indigo-200">
-          <i class="fa-solid fa-book-open-reader text-lg"></i>
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="showMainPackBoxes()">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-sm">
+          <i class="fa-solid fa-book-open-reader text-base"></i>
         </div>
         <div>
-          <h1 class="text-lg sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-700 to-violet-600 bg-clip-text text-transparent">
+          <h1 class="text-base sm:text-lg font-extrabold tracking-tight bg-gradient-to-r from-indigo-700 to-violet-600 bg-clip-text text-transparent">
             VocabMaster
           </h1>
-          <p class="text-[11px] text-slate-500 font-medium -mt-0.5">English-Hindi Vocabulary & Quiz</p>
+          <p class="text-[10px] text-slate-500 font-medium -mt-1">Compact Box Edition</p>
         </div>
       </div>
 
       <div class="flex items-center gap-2">
-        <!-- Download PNG Icon Button -->
-        <button onclick="downloadAppIconPng()" title="Download App Icon PNG" class="px-2.5 py-1.5 rounded-lg bg-violet-50 hover:bg-violet-100 text-violet-700 text-xs font-bold flex items-center gap-1.5 border border-violet-200 transition">
-          <i class="fa-solid fa-image"></i> <span class="hidden sm:inline">Icon PNG</span>
-        </button>
-
-        <div class="bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-full flex items-center gap-2">
-          <i class="fa-solid fa-circle-check text-indigo-600 text-sm"></i>
-          <span class="text-xs sm:text-sm font-semibold text-indigo-950">
+        <div class="bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-check text-indigo-600 text-xs"></i>
+          <span class="text-xs font-bold text-indigo-950">
             <span id="globalLearnedCount">0</span>/<span id="globalTotalCount">0</span>
           </span>
         </div>
-
-        <button onclick="resetAllProgress()" title="Reset Progress" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition">
-          <i class="fa-solid fa-rotate-right"></i>
+        <button onclick="resetAllProgress()" title="Reset Progress" class="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg transition">
+          <i class="fa-solid fa-rotate-right text-sm"></i>
         </button>
       </div>
     </div>
   </header>
 
   <!-- Main Content Area -->
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-5">
 
-    <!-- ================= DASHBOARD VIEW ================= -->
-    <section id="dashboardView" class="space-y-8">
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-700 text-white p-6 sm:p-8 shadow-xl">
-        <div class="relative z-10 max-w-2xl space-y-3">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm">
-            <i class="fa-solid fa-folder-open text-amber-300"></i> Auto-Loads from /lessons/ Folder
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
-            हर लेसन में सीखें 25+ High-Frequency Vocabulary Words
-          </h2>
-          <p class="text-indigo-100 text-sm sm:text-base leading-relaxed">
-            हिंदी अर्थ, English Definition, Synonyms, Antonyms, Audio उच्चारण और तुरंत प्रैक्टिस क्विज़ के साथ अपनी वोकैबुलरी मजबूत करें।
-          </p>
-        </div>
-        <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-          <i class="fa-solid fa-graduation-cap text-[180px]"></i>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <!-- ================= STEP 1: MAIN CATEGORY BOXES (NO SCROLL NEEDED) ================= -->
+    <section id="packSelectionView" class="space-y-5">
+      <div class="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-700 text-white p-5 shadow-md flex items-center justify-between">
         <div>
-          <h3 class="text-xl font-bold text-slate-800">Select a Vocabulary Lesson</h3>
-          <p id="loadingStatusText" class="text-sm text-slate-500">Scanning lessons folder...</p>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20">All-in-One Dashboard</span>
+          <h2 class="text-lg sm:text-xl font-extrabold mt-1">Select Vocabulary Pack</h2>
+          <p class="text-xs text-indigo-100 mt-0.5">Kisi bhi Box par tap karein — andar saare lessons aur Mock Quiz milenge.</p>
         </div>
+        <i class="fa-solid fa-layer-group text-4xl text-white/20 hidden sm:block"></i>
       </div>
 
-      <div id="lessonsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      <!-- 2 Main Pack Boxes Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="mainPacksGrid">
+        <!-- Populated via JS -->
+      </div>
     </section>
 
-    <!-- ================= LESSON WORKSPACE VIEW ================= -->
-    <section id="lessonView" class="hidden space-y-6">
-      <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <div class="flex items-start sm:items-center gap-3">
-          <button onclick="showDashboard()" class="w-10 h-10 rounded-xl border border-slate-200 hover:bg-slate-100 flex items-center justify-center text-slate-700 transition shrink-0">
-            <i class="fa-solid fa-arrow-left"></i>
+    <!-- ================= STEP 2: COMPACT LESSON BOXES GRID ================= -->
+    <section id="lessonGridView" class="hidden space-y-4">
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button onclick="showMainPackBoxes()" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 flex items-center justify-center transition">
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+          </button>
+          <div>
+            <h3 id="selectedPackTitle" class="text-base sm:text-lg font-extrabold text-slate-900">Pack Name</h3>
+            <p id="selectedPackSubtitle" class="text-xs text-slate-500">Tap any lesson box for Flashcards or Mock</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact Grid: 2 columns on mobile, 3-4 on tablet/desktop -->
+      <div id="compactLessonsContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <!-- Compact Lesson Tiles populated via JS -->
+      </div>
+    </section>
+
+    <!-- ================= STEP 3: LESSON WORKSPACE (FLASHCARDS / LIST / MOCK) ================= -->
+    <section id="lessonView" class="hidden space-y-4">
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <button onclick="backToLessonGrid()" class="w-9 h-9 rounded-xl border border-slate-200 hover:bg-slate-100 flex items-center justify-center text-slate-700 shrink-0">
+            <i class="fa-solid fa-arrow-left text-sm"></i>
           </button>
           <div>
             <div class="flex items-center gap-2">
-              <span id="activeLessonBadge" class="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-700">Lesson 1</span>
-              <span id="activeLessonProgressText" class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md">0/25 Learned</span>
+              <span id="activeLessonBadge" class="text-[11px] font-bold uppercase px-2 py-0.5 rounded bg-indigo-100 text-indigo-700">Lesson 1</span>
+              <span id="activeLessonProgressText" class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">0/25</span>
             </div>
-            <h2 id="activeLessonTitle" class="text-lg sm:text-xl font-bold text-slate-900 mt-1">Lesson Title</h2>
+            <h2 id="activeLessonTitle" class="text-sm sm:text-base font-bold text-slate-900 mt-0.5 line-clamp-1">Lesson Title</h2>
           </div>
         </div>
 
-        <div class="grid grid-cols-3 bg-slate-100 p-1 rounded-xl border border-slate-200/80 w-full lg:w-auto">
-          <button onclick="switchMode('flashcard')" id="tabFlashcard" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm">
-            <i class="fa-solid fa-clone"></i> <span>Flashcards</span>
+        <!-- Mode Switcher Buttons -->
+        <div class="grid grid-cols-3 bg-slate-100 p-1 rounded-xl border border-slate-200">
+          <button onclick="switchMode('flashcard')" id="tabFlashcard" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 bg-white text-indigo-600 shadow-sm">
+            <i class="fa-solid fa-clone"></i> <span>Cards</span>
           </button>
-          <button onclick="switchMode('list')" id="tabList" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900">
-            <i class="fa-solid fa-table-list"></i> <span>Word List</span>
+          <button onclick="switchMode('quiz')" id="tabQuiz" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 text-slate-600">
+            <i class="fa-solid fa-bolt"></i> <span>Mock</span>
           </button>
-          <button onclick="switchMode('quiz')" id="tabQuiz" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900">
-            <i class="fa-solid fa-circle-question"></i> <span>Practice Quiz</span>
+          <button onclick="switchMode('list')" id="tabList" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 text-slate-600">
+            <i class="fa-solid fa-list"></i> <span>List</span>
           </button>
         </div>
       </div>
 
       <!-- SUBVIEW 1: FLASHCARDS -->
-      <div id="flashcardMode" class="max-w-2xl mx-auto space-y-6">
-        <div class="flex items-center justify-between text-xs sm:text-sm font-medium text-slate-600 px-1">
+      <div id="flashcardMode" class="max-w-xl mx-auto space-y-4">
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-600 px-1">
           <span id="cardCounterText">Word 1 of 25</span>
-          <span class="text-xs text-slate-400">Tap card to flip</span>
+          <span class="text-slate-400">Tap card to flip</span>
         </div>
-        <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+        <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
           <div id="cardStepBar" class="h-full bg-indigo-600 transition-all duration-300" style="width: 4%"></div>
         </div>
 
-        <div class="perspective-1000 w-full h-[420px] sm:h-[440px] cursor-pointer select-none" onclick="flipCurrentCard()">
+        <div class="perspective-1000 w-full h-[380px] sm:h-[410px] cursor-pointer select-none" onclick="flipCurrentCard()">
           <div id="flashcardInner" class="relative w-full h-full transform-style-3d">
 
             <!-- FRONT -->
-            <div class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-3xl border-2 border-slate-200 shadow-lg p-6 sm:p-10 flex flex-col justify-between">
+            <div class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-3xl border-2 border-slate-200 shadow-md p-6 flex flex-col justify-between">
               <div class="flex items-center justify-between">
-                <span id="fcPartSpeech" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-200">Adjective</span>
-                <button onclick="speakCurrentWord(event)" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-600 flex items-center justify-center transition">
-                  <i class="fa-solid fa-volume-high"></i>
-                </button>
-              </div>
-
-              <div class="text-center my-auto space-y-4">
-                <h3 id="fcWordFront" class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Word</h3>
-                <p id="fcHindiFrontPreview" class="text-lg sm:text-xl font-semibold text-indigo-600">Meaning</p>
-              </div>
-
-              <div class="flex items-center justify-between border-t border-slate-100 pt-4 text-xs font-medium text-slate-400">
-                <span id="fcLearnedBadgeFront" class="inline-flex items-center gap-1.5 text-slate-400">
-                  <i class="fa-regular fa-circle"></i> Not Marked Learned
-                </span>
-                <span class="inline-flex items-center gap-1.5 text-indigo-600 font-semibold">
-                  <i class="fa-solid fa-rotate"></i> Tap for Synonyms & Antonyms
-                </span>
-              </div>
-            </div>
-
-            <!-- BACK -->
-            <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-3xl border-2 border-indigo-500/30 shadow-xl p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
-              <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                <div>
-                  <div class="flex items-center gap-2">
-                    <h4 id="fcWordBack" class="text-2xl font-extrabold text-white">Word</h4>
-                    <span id="fcPosBack" class="text-xs px-2 py-0.5 rounded bg-white/10 text-indigo-200">Adjective</span>
-                  </div>
-                  <p id="fcHindiBack" class="text-base font-bold text-amber-300 mt-0.5">Meaning</p>
-                </div>
-                <button onclick="speakCurrentWord(event)" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                <span id="fcPartSpeech" class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">Adjective</span>
+                <button onclick="speakCurrentWord(event)" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-600 flex items-center justify-center">
                   <i class="fa-solid fa-volume-high text-sm"></i>
                 </button>
               </div>
 
-              <div class="space-y-4 my-auto py-2 text-left">
-                <div>
-                  <p class="text-[11px] uppercase tracking-wider text-slate-400 font-bold">English Meaning</p>
-                  <p id="fcEngMeaning" class="text-sm sm:text-base text-slate-100 mt-0.5 leading-snug"></p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div class="bg-emerald-950/50 border border-emerald-500/30 rounded-xl p-3">
-                    <p class="text-[11px] uppercase tracking-wider text-emerald-300 font-bold mb-1.5">
-                      <i class="fa-solid fa-plus-circle mr-1"></i> Synonyms (समानार्थी)
-                    </p>
-                    <div id="fcSynonyms" class="flex flex-wrap gap-1.5"></div>
-                  </div>
-
-                  <div class="bg-rose-950/50 border border-rose-500/30 rounded-xl p-3">
-                    <p class="text-[11px] uppercase tracking-wider text-rose-300 font-bold mb-1.5">
-                      <i class="fa-solid fa-minus-circle mr-1"></i> Antonyms (विलोम)
-                    </p>
-                    <div id="fcAntonyms" class="flex flex-wrap gap-1.5"></div>
-                  </div>
-                </div>
-
-                <div class="bg-white/5 border border-white/10 rounded-xl p-3">
-                  <p class="text-[11px] uppercase tracking-wider text-indigo-300 font-bold mb-1">
-                    <i class="fa-solid fa-quote-left mr-1"></i> Example Sentence
-                  </p>
-                  <p id="fcExample" class="text-xs sm:text-sm text-slate-200 italic leading-relaxed"></p>
-                </div>
+              <div class="text-center my-auto space-y-3">
+                <h3 id="fcWordFront" class="text-3xl sm:text-4xl font-extrabold text-slate-900">Word</h3>
+                <p id="fcHindiFrontPreview" class="text-base sm:text-lg font-bold text-indigo-600">Meaning</p>
               </div>
 
-              <div class="text-right text-[11px] text-slate-400 pt-1">Tap anywhere to flip back</div>
+              <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-xs font-medium text-slate-400">
+                <span id="fcLearnedBadgeFront"><i class="fa-regular fa-circle"></i> Pending</span>
+                <span class="text-indigo-600 font-semibold"><i class="fa-solid fa-rotate"></i> Flip for Syn/Ant</span>
+              </div>
+            </div>
+
+            <!-- BACK -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-3xl border-2 border-indigo-500/30 shadow-xl p-5 sm:p-6 flex flex-col justify-between overflow-y-auto">
+              <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h4 id="fcWordBack" class="text-xl font-extrabold text-white">Word</h4>
+                    <span id="fcPosBack" class="text-[11px] px-2 py-0.5 rounded bg-white/10 text-indigo-200">Adjective</span>
+                  </div>
+                  <p id="fcHindiBack" class="text-sm font-bold text-amber-300 mt-0.5">Meaning</p>
+                </div>
+                <button onclick="speakCurrentWord(event)" class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center">
+                  <i class="fa-solid fa-volume-high text-xs"></i>
+                </button>
+              </div>
+
+              <div class="space-y-3 my-auto py-2 text-left">
+                <div>
+                  <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">English Meaning</p>
+                  <p id="fcEngMeaning" class="text-xs sm:text-sm text-slate-100 mt-0.5"></p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div class="bg-emerald-950/50 border border-emerald-500/30 rounded-xl p-2.5">
+                    <p class="text-[10px] uppercase text-emerald-300 font-bold mb-1">Synonyms (समानार्थी)</p>
+                    <div id="fcSynonyms" class="flex flex-wrap gap-1"></div>
+                  </div>
+                  <div class="bg-rose-950/50 border border-rose-500/30 rounded-xl p-2.5">
+                    <p class="text-[10px] uppercase text-rose-300 font-bold mb-1">Antonyms (विलोम)</p>
+                    <div id="fcAntonyms" class="flex flex-wrap gap-1"></div>
+                  </div>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-xl p-2.5">
+                  <p class="text-[10px] uppercase text-indigo-300 font-bold mb-0.5">Example</p>
+                  <p id="fcExample" class="text-xs text-slate-200 italic"></p>
+                </div>
+              </div>
             </div>
 
           </div>
         </div>
 
-        <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          <button id="prevCardBtn" onclick="prevCard()" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold text-sm flex items-center gap-2 transition disabled:opacity-40">
-            <i class="fa-solid fa-chevron-left"></i> Previous
+        <div class="flex items-center justify-between gap-2 bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
+          <button id="prevCardBtn" onclick="prevCard()" class="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 font-bold text-xs sm:text-sm disabled:opacity-40">
+            <i class="fa-solid fa-chevron-left"></i> Prev
           </button>
-
-          <button id="toggleLearnedBtn" onclick="toggleCurrentWordLearned()" class="px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 transition">
-            <i class="fa-solid fa-check"></i> <span>Mark as Learned</span>
+          <button id="toggleLearnedBtn" onclick="toggleCurrentWordLearned()" class="px-4 py-2 rounded-xl font-bold text-xs sm:text-sm">
+            Mark Learned
           </button>
-
-          <button id="nextCardBtn" onclick="nextCard()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm flex items-center gap-2 transition shadow-sm">
+          <button id="nextCardBtn" onclick="nextCard()" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs sm:text-sm">
             Next <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
       </div>
 
-      <!-- SUBVIEW 2: WORD LIST -->
-      <div id="listMode" class="hidden space-y-4">
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-          <div class="relative flex-1">
-            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-            <input id="wordSearchInput" type="text" oninput="renderWordList()" placeholder="Search word, Hindi meaning, synonym, or antonym..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-          </div>
-          <select id="wordFilterSelect" onchange="renderWordList()" class="px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 bg-white">
-            <option value="all">All Words</option>
-            <option value="learned">Learned Only</option>
-            <option value="unlearned">Pending Only</option>
+      <!-- SUBVIEW 2: COMPACT WORD LIST -->
+      <div id="listMode" class="hidden space-y-3">
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 flex gap-2">
+          <input id="wordSearchInput" type="text" oninput="renderWordList()" placeholder="🔍 Search word or meaning..." class="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none" />
+          <select id="wordFilterSelect" onchange="renderWordList()" class="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold bg-white">
+            <option value="all">All</option>
+            <option value="learned">Learned</option>
+            <option value="unlearned">Pending</option>
           </select>
         </div>
-        <div id="wordListContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        <div id="wordListContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
       </div>
 
-      <!-- SUBVIEW 3: QUIZ MODE -->
-      <div id="quizMode" class="hidden max-w-2xl mx-auto">
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 space-y-6">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+      <!-- SUBVIEW 3: MOCK QUIZ -->
+      <div id="quizMode" class="hidden max-w-xl mx-auto">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 space-y-5">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
             <div>
-              <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Interactive Test</span>
-              <h3 class="text-xl font-extrabold text-slate-900">Synonym, Antonym & Meaning Quiz</h3>
+              <span class="text-[11px] font-bold uppercase text-indigo-600">Mock Test</span>
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-900">Synonym, Antonym & Hindi Quiz</h3>
             </div>
-            <div class="text-right">
-              <span class="text-xs text-slate-400 block">Score</span>
-              <span id="quizScoreBadge" class="text-lg font-extrabold text-indigo-600">0 / 10</span>
-            </div>
+            <span id="quizScoreBadge" class="text-base font-extrabold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">0 / 10</span>
           </div>
 
-          <div id="quizQuestionArea" class="space-y-6">
-            <div class="flex items-center justify-between text-xs font-semibold text-slate-500">
-              <span id="quizQCounter">Question 1 of 10</span>
-              <span id="quizQTypeBadge" class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Find Synonym</span>
+          <div id="quizQuestionArea" class="space-y-4">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+              <span id="quizQCounter">Q 1/10</span>
+              <span id="quizQTypeBadge" class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Synonym</span>
             </div>
 
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <p id="quizPromptText" class="text-sm text-slate-500 font-medium">Choose the correct option:</p>
-              <h4 id="quizTargetWord" class="text-2xl sm:text-3xl font-extrabold text-slate-900">Word</h4>
-              <p id="quizTargetHint" class="text-xs text-indigo-600 font-medium"></p>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+              <p id="quizPromptText" class="text-xs text-slate-500 font-medium">Choose the correct option:</p>
+              <h4 id="quizTargetWord" class="text-2xl font-extrabold text-slate-900">Word</h4>
+              <p id="quizTargetHint" class="text-xs text-indigo-600 font-semibold"></p>
             </div>
 
-            <div id="quizOptionsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-            <div id="quizFeedbackBox" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+            <div id="quizOptionsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
 
-            <div class="flex justify-end pt-2">
-              <button id="nextQuizBtn" onclick="nextQuizQuestion()" class="hidden px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition">
+            <div class="flex justify-end pt-1">
+              <button id="nextQuizBtn" onclick="nextQuizQuestion()" class="hidden w-full sm:w-auto px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs sm:text-sm">
                 Next Question <i class="fa-solid fa-arrow-right ml-1"></i>
               </button>
             </div>
           </div>
 
-          <div id="quizResultArea" class="hidden text-center py-6 space-y-5">
-            <div class="w-16 h-16 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto text-3xl">
+          <div id="quizResultArea" class="hidden text-center py-5 space-y-4">
+            <div class="w-14 h-14 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto text-2xl">
               <i class="fa-solid fa-trophy"></i>
             </div>
-            <h4 class="text-2xl font-extrabold text-slate-900">Quiz Completed!</h4>
-            <p id="quizFinalText" class="text-slate-600 text-sm"></p>
-            <div class="flex justify-center gap-3">
-              <button onclick="startQuiz()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition">
-                <i class="fa-solid fa-rotate mr-1"></i> Play Again
+            <h4 class="text-xl font-extrabold text-slate-900">Mock Completed!</h4>
+            <p id="quizFinalText" class="text-slate-600 text-sm font-medium"></p>
+            <div class="flex justify-center gap-2.5">
+              <button onclick="startQuiz()" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs sm:text-sm">
+                Re-Attempt Mock
               </button>
-              <button onclick="switchMode('flashcard')" class="px-5 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold text-sm transition">
-                Back to Flashcards
+              <button onclick="backToLessonGrid()" class="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 font-bold text-xs sm:text-sm">
+                All Lessons
               </button>
             </div>
           </div>
         </div>
       </div>
+
     </section>
   </main>
 
-  <!-- Toast -->
-  <div id="toastBox" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2.5">
-    <i class="fa-solid fa-circle-check text-emerald-400"></i>
-    <span id="toastMessage">Saved!</span>
-  </div>
-
-  <!-- ================= DYNAMIC FOLDER LOADER & LOGIC ================= -->
   <script>
-    // Built-in default Lesson 1 (25 Words) so the app ALWAYS works even before creating the /lessons/ folder
-    const DEFAULT_LESSON_1 = {
-      id: "lesson-1",
-      number: "Lesson 1",
-      title: "25 High-Frequency Core Vocabulary",
-      subtitle: "Essential words for competitive exams (SSC, Banking, UPSC, Defence & Daily English)",
-      level: "Intermediate to Advanced",
-      words: [
-        { id: "l1-w1", word: "Candid", pos: "Adjective", hindi: "स्पष्टवादी / खरा", meaning: "Truthful and straightforward; frank and sincere.", synonyms: ["Frank", "Outspoken", "Forthright", "Blunt"], antonyms: ["Deceitful", "Guarded", "Insincere", "Secretive"], example: "In a candid interview, the captain admitted his mistakes." },
-        { id: "l1-w2", word: "Ephemeral", pos: "Adjective", hindi: "क्षणिक / अल्पकालिक", meaning: "Lasting for a very short time; transitory.", synonyms: ["Transient", "Fleeting", "Short-lived", "Momentary"], antonyms: ["Permanent", "Enduring", "Eternal", "Perpetual"], example: "Fame on social media is often ephemeral." },
-        { id: "l1-w3", word: "Ubiquitous", pos: "Adjective", hindi: "सर्वव्यापी / हर जगह मौजूद", meaning: "Present, appearing, or found everywhere.", synonyms: ["Omnipresent", "Pervasive", "Universal", "Everywhere"], antonyms: ["Rare", "Scarce", "Infrequent", "Seldom"], example: "Digital payments have become ubiquitous across India." },
-        { id: "l1-w4", word: "Pragmatic", pos: "Adjective", hindi: "व्यावहारिक / यथार्थवादी", meaning: "Dealing with things sensibly and realistically.", synonyms: ["Practical", "Realistic", "Sensible", "Rational"], antonyms: ["Idealistic", "Impractical", "Unrealistic", "Quixotic"], example: "We need a pragmatic solution to reduce city traffic." },
-        { id: "l1-w5", word: "Mitigate", pos: "Verb", hindi: "कम करना / शांत करना", meaning: "Make something bad less severe, serious, or painful.", synonyms: ["Alleviate", "Lessen", "Ease", "Diminish"], antonyms: ["Aggravate", "Exacerbate", "Intensify", "Worsen"], example: "Planting trees helps mitigate air pollution." },
-        { id: "l1-w6", word: "Ambiguous", pos: "Adjective", hindi: "अस्पष्ट / द्व्यर्थक", meaning: "Open to more than one interpretation; unclear.", synonyms: ["Equivocal", "Vague", "Obscure", "Cryptic"], antonyms: ["Explicit", "Clear", "Definite", "Unambiguous"], example: "The contract contained ambiguous clauses." },
-        { id: "l1-w7", word: "Resilient", pos: "Adjective", hindi: "लचीला / जल्दी उबरने वाला", meaning: "Able to withstand or recover quickly from difficult conditions.", synonyms: ["Tough", "Adaptable", "Hardy", "Buoyant"], antonyms: ["Fragile", "Vulnerable", "Weak", "Delicate"], example: "Athletes must remain mentally resilient under pressure." },
-        { id: "l1-w8", word: "Meticulous", pos: "Adjective", hindi: "अति सावधान / बारीक", meaning: "Showing great attention to detail; very careful and precise.", synonyms: ["Thorough", "Scrupulous", "Painstaking", "Exact"], antonyms: ["Careless", "Sloppy", "Negligent", "Hasty"], example: "She kept meticulous records of every rupee spent." },
-        { id: "l1-w9", word: "Eloquent", pos: "Adjective", hindi: "वाक्पटु / सुवक्ता", meaning: "Fluent or persuasive in speaking or writing.", synonyms: ["Articulate", "Expressive", "Persuasive", "Fluent"], antonyms: ["Inarticulate", "Hesitant", "Tongue-tied", "Dull"], example: "His eloquent speech inspired the entire auditorium." },
-        { id: "l1-w10", word: "Tenacious", pos: "Adjective", hindi: "दृढ़ / अडिग / लगनशील", meaning: "Persistent in maintaining or seeking something valued.", synonyms: ["Persistent", "Determined", "Resolute", "Steadfast"], antonyms: ["Irresolute", "Yielding", "Weak-willed", "Fickle"], example: "Her tenacious preparation helped her crack the exam." },
-        { id: "l1-w11", word: "Benevolent", pos: "Adjective", hindi: "परोपकारी / दयालु", meaning: "Well-meaning, kindly, and charitable toward others.", synonyms: ["Compassionate", "Generous", "Altruistic", "Kind"], antonyms: ["Malevolent", "Cruel", "Selfish", "Spiteful"], example: "A benevolent donor funded the village library." },
-        { id: "l1-w12", word: "Obsolete", pos: "Adjective", hindi: "अप्रचलित / पुराना", meaning: "No longer produced or used; out of date.", synonyms: ["Outdated", "Outmoded", "Archaic", "Defunct"], antonyms: ["Modern", "Current", "Contemporary", "New"], example: "Pagers have become completely obsolete today." },
-        { id: "l1-w13", word: "Lucid", pos: "Adjective", hindi: "सुस्पष्ट / समझने में आसान", meaning: "Expressed clearly; easy to understand.", synonyms: ["Clear", "Coherent", "Intelligible", "Plain"], antonyms: ["Confusing", "Muddled", "Murky", "Unclear"], example: "The teacher gave a lucid explanation of the topic." },
-        { id: "l1-w14", word: "Audacious", pos: "Adjective", hindi: "साहसी / निडर", meaning: "Showing a willingness to take surprisingly bold risks.", synonyms: ["Bold", "Daring", "Fearless", "Intrepid"], antonyms: ["Timid", "Cautious", "Cowardly", "Fearful"], example: "The startup made an audacious move to expand globally." },
-        { id: "l1-w15", word: "Lethargic", pos: "Adjective", hindi: "सुस्त / आलसी", meaning: "Sluggish and apathetic; lacking energy.", synonyms: ["Sluggish", "Torpid", "Listless", "Inactive"], antonyms: ["Energetic", "Vigorous", "Active", "Lively"], example: "Heavy afternoon meals often make people feel lethargic." },
-        { id: "l1-w16", word: "Prolific", pos: "Adjective", hindi: "अत्यधिक उत्पादक", meaning: "Producing many works, results, or offspring.", synonyms: ["Productive", "Creative", "Fruitful", "Abundant"], antonyms: ["Unproductive", "Barren", "Sterile", "Scarce"], example: "Tagore was a prolific writer of poems and stories." },
-        { id: "l1-w17", word: "Vindicate", pos: "Verb", hindi: "निर्दोष साबित करना", meaning: "Clear someone of blame or suspicion.", synonyms: ["Exonerate", "Acquit", "Justify", "Absolve"], antonyms: ["Convict", "Blame", "Incriminate", "Condemn"], example: "New CCTV evidence helped vindicate the guard." },
-        { id: "l1-w18", word: "Frugal", pos: "Adjective", hindi: "मितव्ययी / किफायती", meaning: "Sparing or economical with regard to money or food.", synonyms: ["Thrifty", "Economical", "Prudent", "Sparing"], antonyms: ["Extravagant", "Lavish", "Prodigal", "Wasteful"], example: "A frugal lifestyle helped him save for his house." },
-        { id: "l1-w19", word: "Ostentatious", pos: "Adjective", hindi: "दिखावटी / आडंबरपूर्ण", meaning: "Designed to impress or attract notice; showy.", synonyms: ["Showy", "Flamboyant", "Pretentious", "Gaudy"], antonyms: ["Modest", "Unpretentious", "Plain", "Humble"], example: "He avoided ostentatious cars and expensive watches." },
-        { id: "l1-w20", word: "Reluctant", pos: "Adjective", hindi: "अनिच्छुक / हिचकिचाने वाला", meaning: "Unwilling and hesitant; disinclined.", synonyms: ["Hesitant", "Unwilling", "Averse", "Loath"], antonyms: ["Eager", "Willing", "Enthusiastic", "Ready"], example: "Investors were reluctant during market uncertainty." },
-        { id: "l1-w21", word: "Magnanimous", pos: "Adjective", hindi: "उदार / बड़े दिल वाला", meaning: "Generous or forgiving, especially toward a rival.", synonyms: ["Generous", "Forgiving", "Charitable", "Noble"], antonyms: ["Petty", "Vindictive", "Mean", "Unforgiving"], example: "The champion was magnanimous in victory." },
-        { id: "l1-w22", word: "Implausible", pos: "Adjective", hindi: "अविश्वसनीय / असंभव-सा", meaning: "Not seeming reasonable or probable; failing to convince.", synonyms: ["Unlikely", "Improbable", "Far-fetched", "Doubtful"], antonyms: ["Plausible", "Believable", "Credible", "Likely"], example: "His excuse sounded completely implausible." },
-        { id: "l1-w23", word: "Diligent", pos: "Adjective", hindi: "मेहनती / परिश्रमी", meaning: "Having or showing care and conscientiousness in work.", synonyms: ["Industrious", "Assiduous", "Hardworking", "Careful"], antonyms: ["Lazy", "Idle", "Indolent", "Slack"], example: "Diligent students revise their lessons regularly." },
-        { id: "l1-w24", word: "Inevitable", pos: "Adjective", hindi: "अपरिहार्य / अटल", meaning: "Certain to happen; unavoidable.", synonyms: ["Unavoidable", "Inescapable", "Certain", "Sure"], antonyms: ["Avoidable", "Uncertain", "Preventable", "Doubtful"], example: "Technological change in banking was inevitable." },
-        { id: "l1-w25", word: "Astute", pos: "Adjective", hindi: "चतुर / कुशाग्र बुद्धि", meaning: "Having an ability to accurately assess situations.", synonyms: ["Shrewd", "Sharp", "Perceptive", "Clever"], antonyms: ["Naive", "Foolish", "Gullible", "Obtuse"], example: "An astute learner spots patterns quickly." }
-      ]
-    };
+    // ================= 1.PAHLA CORE VOCABULARY PACK (BUILT-IN 3 LESSONS) =================
+    const CORE_VOCAB_LESSONS = [
+      {
+        id: "core-1",
+        number: "Core Set 1",
+        title: "25 High-Frequency Core Words",
+        subtitle: "Candid to Astute",
+        words: [
+          { id: "c1-1", word: "Candid", pos: "Adjective", hindi: "स्पष्टवादी / खरा", meaning: "Truthful and straightforward; frank.", synonyms: ["Frank", "Outspoken", "Forthright", "Blunt"], antonyms: ["Deceitful", "Guarded", "Insincere"], example: "In a candid interview, the captain admitted his mistakes." },
+          { id: "c1-2", word: "Ephemeral", pos: "Adjective", hindi: "क्षणिक / अल्पकालिक", meaning: "Lasting for a very short time.", synonyms: ["Transient", "Fleeting", "Short-lived"], antonyms: ["Permanent", "Enduring", "Eternal"], example: "Fame on social media is often ephemeral." },
+          { id: "c1-3", word: "Ubiquitous", pos: "Adjective", hindi: "सर्वव्यापी", meaning: "Present, appearing, or found everywhere.", synonyms: ["Omnipresent", "Pervasive", "Universal"], antonyms: ["Rare", "Scarce", "Infrequent"], example: "Digital payments have become ubiquitous across India." },
+          { id: "c1-4", word: "Pragmatic", pos: "Adjective", hindi: "व्यावहारिक", meaning: "Dealing with things sensibly and realistically.", synonyms: ["Practical", "Realistic", "Sensible"], antonyms: ["Idealistic", "Impractical", "Quixotic"], example: "We need a pragmatic solution to reduce traffic." },
+          { id: "c1-5", word: "Mitigate", pos: "Verb", hindi: "कम करना / शांत करना", meaning: "Make something bad less severe or painful.", synonyms: ["Alleviate", "Lessen", "Diminish"], antonyms: ["Aggravate", "Exacerbate", "Intensify"], example: "Planting trees helps mitigate air pollution." },
+          { id: "c1-6", word: "Ambiguous", pos: "Adjective", hindi: "अस्पष्ट / द्व्यर्थक", meaning: "Open to more than one interpretation.", synonyms: ["Equivocal", "Vague", "Obscure"], antonyms: ["Explicit", "Clear", "Definite"], example: "The contract contained ambiguous clauses." },
+          { id: "c1-7", word: "Resilient", pos: "Adjective", hindi: "लचीला / जल्दी उबरने वाला", meaning: "Able to recover quickly from difficult conditions.", synonyms: ["Tough", "Adaptable", "Hardy"], antonyms: ["Fragile", "Vulnerable", "Weak"], example: "Athletes must remain mentally resilient under pressure." },
+          { id: "c1-8", word: "Meticulous", pos: "Adjective", hindi: "अति सावधान / बारीक", meaning: "Showing great attention to detail.", synonyms: ["Thorough", "Scrupulous", "Exact"], antonyms: ["Careless", "Sloppy", "Negligent"], example: "She kept meticulous records of every rupee spent." },
+          { id: "c1-9", word: "Eloquent", pos: "Adjective", hindi: "वाक्पटु / सुवक्ता", meaning: "Fluent or persuasive in speaking or writing.", synonyms: ["Articulate", "Expressive", "Persuasive"], antonyms: ["Inarticulate", "Hesitant", "Dull"], example: "His eloquent speech inspired the auditorium." },
+          { id: "c1-10", word: "Tenacious", pos: "Adjective", hindi: "दृढ़ / लगनशील", meaning: "Persistent in determination.", synonyms: ["Persistent", "Determined", "Resolute"], antonyms: ["Irresolute", "Yielding", "Fickle"], example: "Her tenacious preparation helped her crack the exam." },
+          { id: "c1-11", word: "Benevolent", pos: "Adjective", hindi: "परोपकारी / दयालु", meaning: "Well-meaning and kindly.", synonyms: ["Compassionate", "Generous", "Altruistic"], antonyms: ["Malevolent", "Cruel", "Selfish"], example: "A benevolent donor funded the village library." },
+          { id: "c1-12", word: "Obsolete", pos: "Adjective", hindi: "अप्रचलित / पुराना", meaning: "No longer produced or used; out of date.", synonyms: ["Outdated", "Archaic", "Defunct"], antonyms: ["Modern", "Current", "Contemporary"], example: "Pagers have become completely obsolete today." },
+          { id: "c1-13", word: "Lucid", pos: "Adjective", hindi: "सुस्पष्ट", meaning: "Expressed clearly; easy to understand.", synonyms: ["Clear", "Coherent", "Intelligible"], antonyms: ["Confusing", "Muddled", "Unclear"], example: "The teacher gave a lucid explanation." },
+          { id: "c1-14", word: "Audacious", pos: "Adjective", hindi: "साहसी / निडर", meaning: "Willing to take bold risks.", synonyms: ["Bold", "Daring", "Intrepid"], antonyms: ["Timid", "Cautious", "Cowardly"], example: "The startup made an audacious move." },
+          { id: "c1-15", word: "Lethargic", pos: "Adjective", hindi: "सुस्त / आलसी", meaning: "Sluggish and apathetic.", synonyms: ["Sluggish", "Torpid", "Inactive"], antonyms: ["Energetic", "Vigorous", "Active"], example: "Heavy meals often make people feel lethargic." },
+          { id: "c1-16", word: "Prolific", pos: "Adjective", hindi: "अत्यधिक उत्पादक", meaning: "Producing many works or results.", synonyms: ["Productive", "Creative", "Fruitful"], antonyms: ["Unproductive", "Barren", "Sterile"], example: "Tagore was a prolific writer of poems." },
+          { id: "c1-17", word: "Vindicate", pos: "Verb", hindi: "निर्दोष साबित करना", meaning: "Clear someone of blame or suspicion.", synonyms: ["Exonerate", "Acquit", "Justify"], antonyms: ["Convict", "Blame", "Condemn"], example: "New CCTV evidence helped vindicate the guard." },
+          { id: "c1-18", word: "Frugal", pos: "Adjective", hindi: "मितव्ययी / किफायती", meaning: "Sparing or economical with money.", synonyms: ["Thrifty", "Economical", "Prudent"], antonyms: ["Extravagant", "Lavish", "Wasteful"], example: "A frugal lifestyle helped him save money." },
+          { id: "c1-19", word: "Ostentatious", pos: "Adjective", hindi: "दिखावटी / आडंबरपूर्ण", meaning: "Designed to impress; showy.", synonyms: ["Showy", "Flamboyant", "Pretentious"], antonyms: ["Modest", "Plain", "Humble"], example: "He avoided ostentatious cars." },
+          { id: "c1-20", word: "Reluctant", pos: "Adjective", hindi: "अनिच्छुक", meaning: "Unwilling and hesitant.", synonyms: ["Hesitant", "Unwilling", "Averse"], antonyms: ["Eager", "Willing", "Ready"], example: "Investors were reluctant during market uncertainty." },
+          { id: "c1-21", word: "Magnanimous", pos: "Adjective", hindi: "उदार / बड़े दिल वाला", meaning: "Generous or forgiving toward a rival.", synonyms: ["Generous", "Forgiving", "Noble"], antonyms: ["Petty", "Vindictive", "Mean"], example: "The champion was magnanimous in victory." },
+          { id: "c1-22", word: "Implausible", pos: "Adjective", hindi: "अविश्वसनीय", meaning: "Not seeming reasonable or probable.", synonyms: ["Unlikely", "Improbable", "Doubtful"], antonyms: ["Plausible", "Believable", "Credible"], example: "His excuse sounded completely implausible." },
+          { id: "c1-23", word: "Diligent", pos: "Adjective", hindi: "मेहनती / परिश्रमी", meaning: "Showing care and conscientiousness in work.", synonyms: ["Industrious", "Assiduous", "Hardworking"], antonyms: ["Lazy", "Idle", "Indolent"], example: "Diligent students revise regularly." },
+          { id: "c1-24", word: "Inevitable", pos: "Adjective", hindi: "अपरिहार्य / अटल", meaning: "Certain to happen; unavoidable.", synonyms: ["Unavoidable", "Inescapable", "Certain"], antonyms: ["Avoidable", "Uncertain", "Preventable"], example: "Technological change was inevitable." },
+          { id: "c1-25", word: "Astute", pos: "Adjective", hindi: "चतुर / कुशाग्र बुद्धि", meaning: "Accurately assessing situations.", synonyms: ["Shrewd", "Sharp", "Perceptive"], antonyms: ["Naive", "Foolish", "Gullible"], example: "An astute learner spots patterns quickly." }
+        ]
+      },
+      {
+        id: "core-2",
+        number: "Core Set 2",
+        title: "Editorial & RC Vocabulary",
+        subtitle: "Exacerbate to Perilous",
+        words: [
+          { id: "c2-1", word: "Exacerbate", pos: "Verb", hindi: "बिगाड़ना", meaning: "Make a problem worse.", synonyms: ["Aggravate", "Worsen", "Compound"], antonyms: ["Alleviate", "Mitigate", "Improve"], example: "Rising fuel prices will exacerbate inflation." },
+          { id: "c2-2", word: "Consensus", pos: "Noun", hindi: "सर्वसम्मति", meaning: "A general agreement.", synonyms: ["Agreement", "Harmony", "Accord"], antonyms: ["Disagreement", "Discord", "Conflict"], example: "The committee reached a consensus." },
+          { id: "c2-3", word: "Stringent", pos: "Adjective", hindi: "सख्त / कठोर", meaning: "Strict, precise, and exacting.", synonyms: ["Strict", "Rigorous", "Firm"], antonyms: ["Lenient", "Flexible", "Lax"], example: "Stringent safety rules were introduced." },
+          { id: "c2-4", word: "Bolster", pos: "Verb", hindi: "मजबूत करना", meaning: "Support or strengthen.", synonyms: ["Strengthen", "Reinforce", "Boost"], antonyms: ["Undermine", "Weaken", "Hinder"], example: "Mock tests bolster your confidence." },
+          { id: "c2-5", word: "Perilous", pos: "Adjective", hindi: "खतरनाक", meaning: "Full of danger or risk.", synonyms: ["Dangerous", "Hazardous", "Risky"], antonyms: ["Safe", "Secure", "Harmless"], example: "Mountaineers faced a perilous climb." }
+        ]
+      },
+      {
+        id: "core-3",
+        number: "Core Set 3",
+        title: "Personality & Character Words",
+        subtitle: "Gregarious to Affable",
+        words: [
+          { id: "c3-1", word: "Gregarious", pos: "Adjective", hindi: "मिलनसार", meaning: "Fond of company; sociable.", synonyms: ["Sociable", "Outgoing", "Friendly"], antonyms: ["Introverted", "Reclusive", "Reserved"], example: "Rohan is gregarious by nature." },
+          { id: "c3-2", word: "Taciturn", pos: "Adjective", hindi: "अल्पभाषी", meaning: "Reserved or saying little.", synonyms: ["Reticent", "Quiet", "Reserved"], antonyms: ["Talkative", "Loquacious", "Garrulous"], example: "He remained taciturn in the meeting." },
+          { id: "c3-3", word: "Altruistic", pos: "Adjective", hindi: "निःस्वार्थ / परोपकारी", meaning: "Selfless concern for others.", synonyms: ["Selfless", "Philanthropic", "Charitable"], antonyms: ["Selfish", "Greedy", "Egocentric"], example: "Volunteers worked with altruistic motives." },
+          { id: "c3-4", word: "Obstinate", pos: "Adjective", hindi: "जिद्दी / हठी", meaning: "Stubbornly refusing to change.", synonyms: ["Stubborn", "Headstrong", "Adamant"], antonyms: ["Compliant", "Flexible", "Docile"], example: "His obstinate refusal delayed the deal." },
+          { id: "c3-5", word: "Affable", pos: "Adjective", hindi: "मित्रवत / सुशील", meaning: "Friendly and easy to talk to.", synonyms: ["Cordial", "Genial", "Amiable"], antonyms: ["Hostile", "Surly", "Unfriendly"], example: "The principal is an affable person." }
+        ]
+      }
+    ];
 
-    let LESSONS_DATA = [];
-    const STORAGE_KEY = "vocabmaster_learned_words_v1";
-    let learnedWords = new Set();
+    // ================= 2. PACKS STATE & AUTO-SCANNER FOR /lessons/ FOLDER =================
+    let PDF_275_LESSONS = [];
+    let ALL_PACKS = [];
+    let activePack = null;
     let currentLesson = null;
     let currentCardIndex = 0;
     let isCardFlipped = false;
@@ -419,195 +396,249 @@
     let quizScore = 0;
     let quizAnswered = false;
 
-    // Normalize any JSON format you drop into /lessons/lessonX.json
+    const STORAGE_KEY = "vocabmaster_learned_words_v1";
+    let learnedWords = new Set();
+
     function normalizeLessonData(rawJson, num) {
-      // Allows you to either put a full object OR just an array of words [...] inside lessonX.json!
       const wordsArray = Array.isArray(rawJson) ? rawJson : (rawJson.words || []);
       return {
-        id: rawJson.id || `lesson-${num}`,
+        id: rawJson.id || `pdf-lesson-${num}`,
         number: rawJson.number || `Lesson ${num}`,
-        title: rawJson.title || `Lesson ${num}: Vocabulary Set`,
-        subtitle: rawJson.subtitle || `Contains ${wordsArray.length} words with Synonyms, Antonyms & Quiz`,
-        level: rawJson.level || "Exam Vocabulary",
+        title: rawJson.title || `Words ${(num - 1) * 25 + 1} to ${num * 25}`,
+        subtitle: rawJson.subtitle || `${wordsArray.length} Words`,
         words: wordsArray.map((w, idx) => ({
-          id: w.id || `l${num}-w${idx + 1}`,
+          id: w.id || `pdf-l${num}-w${idx + 1}`,
           word: w.word || "Word",
-          pos: w.pos || w.part_of_speech || "Word",
-          hindi: w.hindi || w.meaning_hindi || "",
-          meaning: w.meaning || w.meaning_english || "",
-          synonyms: w.synonyms || w.syn || [],
-          antonyms: w.antonyms || w.ant || [],
-          example: w.example || w.ex || ""
+          pos: w.pos || "Word",
+          hindi: w.hindi || "",
+          meaning: w.meaning || "",
+          synonyms: w.synonyms || [],
+          antonyms: w.antonyms || [],
+          example: w.example || ""
         }))
       };
     }
 
-    // Automatically scans /lessons/lesson1.json, lesson2.json, lesson3.json ... up to 100!
-    async function autoScanLessonsFolder() {
-      const loaded = [];
-      let consecutiveMisses = 0;
+    async function initApp() {
+      loadProgress();
+      const loadedPdfLessons = [];
+      let misses = 0;
 
-      for (let i = 1; i <= 100; i++) {
-        // Supports both lessons/lesson1.json AND lessons/lesson-1.json
-        const candidatePaths = [`lessons/lesson${i}.json`, `lessons/lesson-${i}.json`];
-        let foundThisIndex = false;
-
-        for (const path of candidatePaths) {
+      for (let i = 1; i <= 50; i++) {
+        let found = false;
+        for (const path of [`lessons/lesson${i}.json`, `lessons/lesson-${i}.json`]) {
           try {
             const res = await fetch(path, { cache: "no-store" });
             if (res.ok) {
               const data = await res.json();
-              loaded.push(normalizeLessonData(data, i));
-              foundThisIndex = true;
+              loadedPdfLessons.push(normalizeLessonData(data, i));
+              found = true;
               break;
             }
-          } catch (err) {}
+          } catch (e) {}
         }
-
-        if (foundThisIndex) {
-          consecutiveMisses = 0;
-        } else {
-          consecutiveMisses++;
-          // Stop scanning if 3 consecutive lesson numbers are missing (e.g., after lesson 3, checks 4, 5, 6 and stops)
-          if (consecutiveMisses >= 3) break;
+        if (found) misses = 0;
+        else {
+          misses++;
+          if (misses >= 3) break;
         }
       }
 
-      if (loaded.length === 0) {
-        LESSONS_DATA = [DEFAULT_LESSON_1];
-        document.getElementById("loadingStatusText").innerText =
-          "Showing built-in Lesson 1. Add lessons/lesson1.json, lesson2.json to auto-expand!";
-      } else {
-        LESSONS_DATA = loaded;
-        document.getElementById("loadingStatusText").innerText =
-          `Auto-loaded ${loaded.length} lesson(s) from /lessons/ folder.`;
-      }
+      PDF_275_LESSONS = loadedPdfLessons;
 
-      currentLesson = LESSONS_DATA[0];
+      ALL_PACKS = [
+        {
+          id: "pack-pdf",
+          title: "Top 275 SSC Synonyms PDF",
+          badge: "Eduquity Favourite",
+          desc: "Rojgar With Ankit Digital Notes (Lesson-wise 25 Words + Mock)",
+          icon: "fa-file-pdf",
+          gradient: "from-indigo-600 to-violet-700",
+          lessons: PDF_275_LESSONS.length > 0 ? PDF_275_LESSONS : [CORE_VOCAB_LESSONS[0]]
+        },
+        {
+          id: "pack-core",
+          title: "Core High-Frequency Vocab",
+          badge: "Foundation Pack",
+          desc: "Pahle wale Core Exam Words, Editorial & Personality Sets",
+          icon: "fa-layer-group",
+          gradient: "from-emerald-600 to-teal-700",
+          lessons: CORE_VOCAB_LESSONS
+        }
+      ];
+
       updateGlobalStats();
-      renderDashboard();
+      renderMainPackBoxes();
     }
 
     function loadProgress() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) learnedWords = new Set(JSON.parse(raw));
-      } catch (e) {
-        learnedWords = new Set();
-      }
+      } catch (e) { learnedWords = new Set(); }
     }
 
     function saveProgress() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify([...learnedWords]));
-      } catch (e) {}
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...learnedWords])); } catch (e) {}
       updateGlobalStats();
     }
 
     function updateGlobalStats() {
-      const totalWords = LESSONS_DATA.reduce((acc, l) => acc + l.words.length, 0);
-      document.getElementById("globalTotalCount").innerText = totalWords;
+      let total = 0;
+      ALL_PACKS.forEach(p => p.lessons.forEach(l => total += l.words.length));
+      document.getElementById("globalTotalCount").innerText = total;
       document.getElementById("globalLearnedCount").innerText = learnedWords.size;
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById("toastBox");
-      document.getElementById("toastMessage").innerText = msg;
-      toast.classList.remove("hidden");
-      clearTimeout(window.toastTimer);
-      window.toastTimer = setTimeout(() => toast.classList.add("hidden"), 2200);
     }
 
     function resetAllProgress() {
       learnedWords.clear();
       saveProgress();
-      renderDashboard();
-      if (!document.getElementById("lessonView").classList.contains("hidden")) {
-        updateLessonHeaderProgress();
-        renderFlashcard();
-        renderWordList();
-      }
-      showToast("Progress reset!");
+      renderMainPackBoxes();
+      if (activePack) renderCompactLessonGrid(activePack);
     }
 
-    function renderDashboard() {
-      const grid = document.getElementById("lessonsGrid");
+    // ================= RENDER STEP 1: MAIN PACK BOXES =================
+    function renderMainPackBoxes() {
+      const grid = document.getElementById("mainPacksGrid");
       grid.innerHTML = "";
 
-      LESSONS_DATA.forEach((lesson, idx) => {
+      ALL_PACKS.forEach(pack => {
+        const totalLessons = pack.lessons.length;
+        const totalWords = pack.lessons.reduce((sum, l) => sum + l.words.length, 0);
+        const doneWords = pack.lessons.reduce((sum, l) => sum + l.words.filter(w => learnedWords.has(w.id)).length, 0);
+        const pct = totalWords > 0 ? Math.round((doneWords / totalWords) * 100) : 0;
+
+        const box = document.createElement("div");
+        box.className = "bg-white rounded-3xl border-2 border-slate-200 hover:border-indigo-500 p-5 shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col justify-between group";
+        box.onclick = () => openPackBox(pack.id);
+
+        box.innerHTML = `
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${pack.gradient} text-white flex items-center justify-center text-xl shadow-md">
+                <i class="fa-solid ${pack.icon}"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-slate-100 text-slate-700">
+                ${totalLessons} Lessons • ${totalWords} Words
+              </span>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-600">${pack.badge}</span>
+              <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 group-hover:text-indigo-600 transition">${pack.title}</h3>
+              <p class="text-xs text-slate-500 mt-1">${pack.desc}</p>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-slate-100 space-y-2">
+            <div class="flex justify-between text-xs font-bold">
+              <span class="text-slate-600">Mastered: ${doneWords}/${totalWords}</span>
+              <span class="text-indigo-600">${pct}%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-indigo-600" style="width:${pct}%"></div>
+            </div>
+            <div class="pt-1 flex items-center justify-between text-xs font-extrabold text-indigo-600">
+              <span>Open Lesson Boxes</span>
+              <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </div>
+        `;
+        grid.appendChild(box);
+      });
+    }
+
+    function showMainPackBoxes() {
+      document.getElementById("lessonView").classList.add("hidden");
+      document.getElementById("lessonGridView").classList.add("hidden");
+      document.getElementById("packSelectionView").classList.remove("hidden");
+      renderMainPackBoxes();
+    }
+
+    // ================= RENDER STEP 2: COMPACT LESSON TILES (NO LONG SCROLL) =================
+    function openPackBox(packId) {
+      activePack = ALL_PACKS.find(p => p.id === packId);
+      if (!activePack) return;
+
+      document.getElementById("packSelectionView").classList.add("hidden");
+      document.getElementById("lessonView").classList.add("hidden");
+      document.getElementById("lessonGridView").classList.remove("hidden");
+
+      document.getElementById("selectedPackTitle").innerText = activePack.title;
+      document.getElementById("selectedPackSubtitle").innerText = `${activePack.lessons.length} Compact Boxes — Click Flashcards or Mock directly`;
+
+      renderCompactLessonGrid(activePack);
+    }
+
+    function renderCompactLessonGrid(pack) {
+      const container = document.getElementById("compactLessonsContainer");
+      container.innerHTML = "";
+
+      pack.lessons.forEach((lesson) => {
         const total = lesson.words.length;
         const done = lesson.words.filter(w => learnedWords.has(w.id)).length;
         const pct = total > 0 ? Math.round((done / total) * 100) : 0;
 
-        const card = document.createElement("div");
-        card.className = "bg-white rounded-3xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:border-indigo-300 transition flex flex-col justify-between group cursor-pointer";
-        card.onclick = () => openLesson(lesson.id);
+        const tile = document.createElement("div");
+        tile.className = "bg-white rounded-2xl border-2 border-slate-200 hover:border-indigo-400 p-3.5 shadow-sm flex flex-col justify-between transition";
 
-        card.innerHTML = `
-          <div class="space-y-4">
+        tile.innerHTML = `
+          <div onclick="openLesson('${lesson.id}', 'flashcard')" class="cursor-pointer space-y-1.5">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${idx === 0 ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-100 text-slate-700'}">
-                ${lesson.number} • ${total} Words
-              </span>
-              <span class="text-xs font-semibold text-slate-400">${lesson.level}</span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-indigo-50 text-indigo-700">${lesson.number}</span>
+              <span class="text-[11px] font-bold text-slate-400">${done}/${total}</span>
             </div>
-            <div>
-              <h4 class="text-xl font-extrabold text-slate-900 group-hover:text-indigo-600 transition">${lesson.title}</h4>
-              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">${lesson.subtitle}</p>
-            </div>
-            <div class="pt-1">
-              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Preview Words:</p>
-              <div class="flex flex-wrap gap-1.5">
-                ${lesson.words.slice(0, 5).map(w => `<span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium">${w.word}</span>`).join("")}
-                ${total > 5 ? `<span class="text-xs px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-600 font-semibold">+${total - 5} more</span>` : ''}
-              </div>
+            <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 line-clamp-1">${lesson.title.replace('Top 275 PDF: ', '')}</h4>
+            <p class="text-[11px] text-slate-500 line-clamp-1">${lesson.words[0]?.word || ''} ... ${lesson.words[lesson.words.length - 1]?.word || ''}</p>
+            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden mt-1">
+              <div class="h-full bg-emerald-500" style="width:${pct}%"></div>
             </div>
           </div>
-          <div class="mt-6 pt-4 border-t border-slate-100 space-y-3">
-            <div class="flex items-center justify-between text-xs font-semibold">
-              <span class="text-slate-600">Progress: ${done}/${total} learned</span>
-              <span class="text-indigo-600">${pct}%</span>
-            </div>
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-indigo-600 transition-all duration-300" style="width: ${pct}%"></div>
-            </div>
-            <div class="pt-2 flex items-center justify-between text-sm font-bold text-indigo-600">
-              <span>Start Learning</span>
-              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
-            </div>
+
+          <div class="grid grid-cols-2 gap-1.5 mt-3 pt-2 border-t border-slate-100">
+            <button onclick="openLesson('${lesson.id}', 'flashcard')" class="py-1.5 px-2 rounded-lg bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white font-bold text-[11px] flex items-center justify-center gap-1 transition">
+              <i class="fa-solid fa-clone"></i> Cards
+            </button>
+            <button onclick="openLesson('${lesson.id}', 'quiz')" class="py-1.5 px-2 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white font-bold text-[11px] flex items-center justify-center gap-1 transition">
+              <i class="fa-solid fa-bolt"></i> Mock
+            </button>
           </div>
         `;
-        grid.appendChild(card);
+        container.appendChild(tile);
       });
     }
 
-    function showDashboard() {
-      document.getElementById("lessonView").classList.add("hidden");
-      document.getElementById("dashboardView").classList.remove("hidden");
-      renderDashboard();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    function backToLessonGrid() {
+      if (activePack) {
+        openPackBox(activePack.id);
+      } else {
+        showMainPackBoxes();
+      }
     }
 
-    function openLesson(lessonId) {
-      const found = LESSONS_DATA.find(l => l.id === lessonId);
-      if (!found || found.words.length === 0) return;
+    // ================= STEP 3: OPEN FLASHCARDS OR MOCK DIRECTLY =================
+    function openLesson(lessonId, startMode = "flashcard") {
+      if (!activePack) return;
+      const found = activePack.lessons.find(l => l.id === lessonId);
+      if (!found) return;
+
       currentLesson = found;
       currentCardIndex = 0;
       isCardFlipped = false;
 
-      document.getElementById("dashboardView").classList.add("hidden");
+      document.getElementById("lessonGridView").classList.add("hidden");
       document.getElementById("lessonView").classList.remove("hidden");
+
       document.getElementById("activeLessonBadge").innerText = currentLesson.number;
       document.getElementById("activeLessonTitle").innerText = currentLesson.title;
       updateLessonHeaderProgress();
-      switchMode("flashcard");
+      switchMode(startMode);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function updateLessonHeaderProgress() {
       const total = currentLesson.words.length;
       const done = currentLesson.words.filter(w => learnedWords.has(w.id)).length;
-      document.getElementById("activeLessonProgressText").innerText = `${done}/${total} Learned`;
+      document.getElementById("activeLessonProgressText").innerText = `${done}/${total}`;
     }
 
     function switchMode(mode) {
@@ -617,10 +648,10 @@
         const tabEl = document.getElementById("tab" + m.charAt(0).toUpperCase() + m.slice(1));
         if (m === mode) {
           viewEl.classList.remove("hidden");
-          tabEl.className = "px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm";
+          tabEl.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 bg-white text-indigo-600 shadow-sm";
         } else {
           viewEl.classList.add("hidden");
-          tabEl.className = "px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900";
+          tabEl.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 text-slate-600";
         }
       });
       if (mode === "flashcard") renderFlashcard();
@@ -648,25 +679,25 @@
       document.getElementById("fcExample").innerText = `"${item.example}"`;
 
       document.getElementById("fcSynonyms").innerHTML = item.synonyms
-        .map(s => `<span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 text-xs font-semibold">${s}</span>`).join("");
+        .map(s => `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 text-xs font-semibold">${s}</span>`).join("");
 
       document.getElementById("fcAntonyms").innerHTML = item.antonyms
-        .map(a => `<span class="px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-200 border border-rose-400/30 text-xs font-semibold">${a}</span>`).join("");
+        .map(a => `<span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-200 border border-rose-400/30 text-xs font-semibold">${a}</span>`).join("");
 
       const isLearned = learnedWords.has(item.id);
       const badgeFront = document.getElementById("fcLearnedBadgeFront");
       const toggleBtn = document.getElementById("toggleLearnedBtn");
 
       if (isLearned) {
-        badgeFront.className = "inline-flex items-center gap-1.5 text-emerald-600 font-semibold";
+        badgeFront.className = "text-emerald-600 font-bold";
         badgeFront.innerHTML = `<i class="fa-solid fa-circle-check"></i> Learned`;
-        toggleBtn.className = "px-5 py-2.5 rounded-xl bg-emerald-100 text-emerald-800 font-semibold text-sm flex items-center gap-2 transition";
-        toggleBtn.innerHTML = `<i class="fa-solid fa-check-double"></i> <span>Learned ✓</span>`;
+        toggleBtn.className = "px-4 py-2 rounded-xl bg-emerald-100 text-emerald-800 font-bold text-xs sm:text-sm";
+        toggleBtn.innerHTML = `✓ Learned`;
       } else {
-        badgeFront.className = "inline-flex items-center gap-1.5 text-slate-400";
-        badgeFront.innerHTML = `<i class="fa-regular fa-circle"></i> Not Marked Learned`;
-        toggleBtn.className = "px-5 py-2.5 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 font-semibold text-sm flex items-center gap-2 transition";
-        toggleBtn.innerHTML = `<i class="fa-solid fa-check"></i> <span>Mark as Learned</span>`;
+        badgeFront.className = "text-slate-400";
+        badgeFront.innerHTML = `<i class="fa-regular fa-circle"></i> Pending`;
+        toggleBtn.className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs sm:text-sm";
+        toggleBtn.innerHTML = `Mark Learned`;
       }
 
       document.getElementById("prevCardBtn").disabled = currentCardIndex === 0;
@@ -726,47 +757,23 @@
       filtered.forEach((item) => {
         const isLearned = learnedWords.has(item.id);
         const card = document.createElement("div");
-        card.className = "bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between space-y-4";
+        card.className = "bg-white rounded-2xl border border-slate-200 p-4 shadow-sm space-y-2";
         card.innerHTML = `
-          <div class="space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold text-slate-400">#${currentLesson.words.indexOf(item) + 1}</span>
-                  <h4 class="text-xl font-extrabold text-slate-900">${item.word}</h4>
-                  <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700">${item.pos}</span>
-                </div>
-                <p class="text-sm font-bold text-indigo-600 mt-0.5">${item.hindi}</p>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <button onclick="speakWordText('${item.word}', event)" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-volume-high text-xs"></i></button>
-                <button onclick="toggleWordFromList('${item.id}')" class="px-2.5 py-1 rounded-lg text-xs font-semibold ${isLearned ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-600'}">${isLearned ? '✓ Learned' : 'Mark Learned'}</button>
-              </div>
+          <div class="flex items-start justify-between">
+            <div>
+              <h4 class="text-base font-extrabold text-slate-900">${item.word} <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700">${item.pos}</span></h4>
+              <p class="text-xs font-bold text-indigo-600">${item.hindi}</p>
             </div>
-            <p class="text-xs sm:text-sm text-slate-600">${item.meaning}</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-              <div class="bg-emerald-50/70 border border-emerald-200/70 rounded-xl p-2.5">
-                <span class="text-[10px] font-bold uppercase text-emerald-700 block mb-1">Synonyms</span>
-                <div class="flex flex-wrap gap-1">${item.synonyms.map(s => `<span class="text-xs px-2 py-0.5 rounded bg-white text-emerald-800 border border-emerald-200">${s}</span>`).join("")}</div>
-              </div>
-              <div class="bg-rose-50/70 border border-rose-200/70 rounded-xl p-2.5">
-                <span class="text-[10px] font-bold uppercase text-rose-700 block mb-1">Antonyms</span>
-                <div class="flex flex-wrap gap-1">${item.antonyms.map(a => `<span class="text-xs px-2 py-0.5 rounded bg-white text-rose-800 border border-rose-200">${a}</span>`).join("")}</div>
-              </div>
-            </div>
+            <button onclick="speakWordText('${item.word}', event)" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-volume-high text-xs"></i></button>
           </div>
-          <div class="pt-3 border-t border-slate-100 text-xs text-slate-500 italic"><strong>Example:</strong> "${item.example}"</div>
+          <p class="text-xs text-slate-600">${item.meaning}</p>
+          <div class="flex flex-wrap gap-1 pt-1">
+            ${item.synonyms.map(s => `<span class="text-[11px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold">S: ${s}</span>`).join("")}
+            ${item.antonyms.map(a => `<span class="text-[11px] px-2 py-0.5 rounded bg-rose-50 text-rose-700 font-semibold">A: ${a}</span>`).join("")}
+          </div>
         `;
         container.appendChild(card);
       });
-    }
-
-    function toggleWordFromList(wordId) {
-      if (learnedWords.has(wordId)) learnedWords.delete(wordId);
-      else learnedWords.add(wordId);
-      saveProgress();
-      updateLessonHeaderProgress();
-      renderWordList();
     }
 
     function shuffleArray(arr) {
@@ -783,10 +790,10 @@
       const selectedWords = shuffleArray(pool).slice(0, Math.min(10, pool.length));
       quizQuestions = selectedWords.map((item, idx) => {
         const qType = ["SYNONYM", "ANTONYM", "HINDI"][idx % 3];
-        let prompt = "Select the correct SYNONYM for:", badge = "Synonym Test", correctAnswer = item.synonyms[0] || item.hindi;
+        let prompt = "Select the correct SYNONYM for:", badge = "Synonym", correctAnswer = item.synonyms[0] || item.hindi;
         let distractors = shuffleArray(pool.filter(w => w.id !== item.id).map(w => (qType === "SYNONYM" ? w.synonyms[0] : qType === "ANTONYM" ? w.antonyms[0] : w.hindi))).slice(0, 3);
-        if (qType === "ANTONYM") { prompt = "Select the correct ANTONYM for:"; badge = "Antonym Test"; correctAnswer = item.antonyms[0] || item.hindi; }
-        if (qType === "HINDI") { prompt = "Select the correct HINDI MEANING for:"; badge = "Meaning Test"; correctAnswer = item.hindi; }
+        if (qType === "ANTONYM") { prompt = "Select the correct ANTONYM for:"; badge = "Antonym"; correctAnswer = item.antonyms[0] || item.hindi; }
+        if (qType === "HINDI") { prompt = "Select the correct HINDI MEANING for:"; badge = "Hindi Meaning"; correctAnswer = item.hindi; }
         return { wordObj: item, qType, prompt, badge, correctAnswer, options: shuffleArray([correctAnswer, ...distractors]) };
       });
       currentQuizIndex = 0; quizScore = 0;
@@ -799,28 +806,27 @@
       quizAnswered = false;
       const q = quizQuestions[currentQuizIndex];
       document.getElementById("quizScoreBadge").innerText = `${quizScore} / ${quizQuestions.length}`;
-      document.getElementById("quizQCounter").innerText = `Question ${currentQuizIndex + 1} of ${quizQuestions.length}`;
+      document.getElementById("quizQCounter").innerText = `Q ${currentQuizIndex + 1}/${quizQuestions.length}`;
       document.getElementById("quizQTypeBadge").innerText = q.badge;
       document.getElementById("quizPromptText").innerText = q.prompt;
       document.getElementById("quizTargetWord").innerText = q.wordObj.word;
-      document.getElementById("quizTargetHint").innerText = q.qType === "HINDI" ? `Part of Speech: ${q.wordObj.pos}` : `Hindi: ${q.wordObj.hindi}`;
-      document.getElementById("quizFeedbackBox").classList.add("hidden");
+      document.getElementById("quizTargetHint").innerText = q.qType === "HINDI" ? ` (${q.wordObj.pos})` : `Hindi: ${q.wordObj.hindi}`;
       document.getElementById("nextQuizBtn").classList.add("hidden");
 
       const grid = document.getElementById("quizOptionsGrid");
       grid.innerHTML = "";
       q.options.forEach(opt => {
         const btn = document.createElement("button");
-        btn.className = "p-4 rounded-xl border-2 border-slate-200 hover:border-indigo-500 text-left font-semibold text-slate-800 transition flex items-center justify-between";
-        btn.innerHTML = `<span>${opt}</span>`;
+        btn.className = "p-3.5 rounded-xl border-2 border-slate-200 hover:border-indigo-500 text-left font-bold text-xs sm:text-sm text-slate-800 transition";
+        btn.innerText = opt;
         btn.onclick = () => {
           if (quizAnswered) return;
           quizAnswered = true;
           if (opt === q.correctAnswer) {
             quizScore++;
-            btn.className = "p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-bold text-emerald-900";
+            btn.className = "p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-bold text-xs sm:text-sm text-emerald-900";
           } else {
-            btn.className = "p-4 rounded-xl border-2 border-rose-500 bg-rose-50 font-bold text-rose-900";
+            btn.className = "p-3.5 rounded-xl border-2 border-rose-500 bg-rose-50 font-bold text-xs sm:text-sm text-rose-900";
           }
           document.getElementById("quizScoreBadge").innerText = `${quizScore} / ${quizQuestions.length}`;
           document.getElementById("nextQuizBtn").classList.remove("hidden");
@@ -840,10 +846,7 @@
       }
     }
 
-    window.onload = function () {
-      loadProgress();
-      autoScanLessonsFolder();
-    };
+    window.onload = initApp;
   </script>
 </body>
 </html>
