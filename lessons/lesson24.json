@@ -1,0 +1,262 @@
+{
+  "id": "lesson-24",
+  "pack": "SSC MTS 2026 Idioms & Phrases",
+  "number": "Lesson 24",
+  "title": "MTS Idioms: Set 1 (Q1 to Q28)",
+  "subtitle": "Turn back the clock to Upset the apple cart",
+  "level": "SSC MTS Idioms",
+  "words": [
+    {
+      "word": "Turn back the clock",
+      "pos": "Idiom",
+      "hindi": "बीते समय में वापस जाकर गलतियों को सुधारना",
+      "meaning": "To desire to go back to a previous point in the past to change or undo events or actions that are now regretted.",
+      "synonyms": ["Revert to the past", "Undo the past"],
+      "antonyms": ["Look forward", "Move on"],
+      "example": "Каash hum apni purani galtiyon ko sudharne ke liye turn back the clock kar paate."
+    },
+    {
+      "word": "To even the score",
+      "pos": "Idiom",
+      "hindi": "حساب बराबर करना / बदला लेना या स्थिति बराबर करना",
+      "meaning": "To avenge a wrong or make an unfair situation more equal.",
+      "synonyms": ["Settle the score", "Get even"],
+      "antonyms": ["Forgive and forget"],
+      "example": "He wanted to win the next match to even the score with his rival."
+    },
+    {
+      "word": "What goes around comes around",
+      "pos": "Idiom",
+      "hindi": "जैसी करनी वैसी भरनी",
+      "meaning": "People's actions have consequences that will eventually return to them.",
+      "synonyms": ["As you sow, so shall you reap", "Karma"],
+      "antonyms": ["Unjust rewards"],
+      "example": "Never hurt anyone; remember, what goes around comes around."
+    },
+    {
+      "word": "Cast the first stone",
+      "pos": "Idiom",
+      "hindi": "सबसे पहले दोष निकालना या आलोचना करना",
+      "meaning": "To be the first to criticize someone or something.",
+      "synonyms": ["Make the first attack", "Criticize first"],
+      "antonyms": ["Defend", "Praise"],
+      "example": "Before judging others' mistakes, make sure you don't cast the first stone."
+    },
+    {
+      "word": "Under the wire",
+      "pos": "Idiom",
+      "hindi": "अंतिम समय सीमा (Deadline) पर ठीक समय से पहले",
+      "meaning": "Barely in time, at the last moment.",
+      "synonyms": ["At the eleventh hour", "Just in time"],
+      "antonyms": ["Too late", "Delayed"],
+      "example": "He submitted his online application form just under the wire."
+    },
+    {
+      "word": "A fate worse than death",
+      "pos": "Idiom",
+      "hindi": "बेहद भयानक और असहनीय स्थिति",
+      "meaning": "A situation or experience that is extremely unpleasant.",
+      "synonyms": ["Horrific ordeal", "Nightmare situation"],
+      "antonyms": ["Pleasant experience"],
+      "example": "Being stuck in a boring meeting all day feels like a fate worse than death."
+    },
+    {
+      "word": "Vote with one's feet",
+      "pos": "Idiom",
+      "hindi": "उपस्थित रहकर या छोड़कर अपना विरोध जताना",
+      "meaning": "Indicate an opinion by being present or absent (showing support or dissent by actions).",
+      "synonyms": ["Show dissent by leaving", "Protest by action"],
+      "antonyms": ["Silent approval"],
+      "example": "Unhappy customers voted with their feet and stopped buying the product."
+    },
+    {
+      "word": "Tout de suite",
+      "pos": "Idiom / Phrase",
+      "hindi": "तुरंत / बिना किसी देरी के",
+      "meaning": "Immediately; straight away.",
+      "synonyms": ["Immediately", "Instantly", "Promptly"],
+      "antonyms": ["Slowly", "Later"],
+      "example": "The manager asked him to complete the urgent file tout de suite."
+    },
+    {
+      "word": "Tide someone over",
+      "pos": "Idiom",
+      "hindi": "कठिन समय में किसी की आर्थिक मदद करके पार लगाना",
+      "meaning": "To help someone to work or operate normally through a difficult period, usually by lending money.",
+      "synonyms": ["Support temporarily", "Assist through hardship"],
+      "antonyms": ["Abandon", "Hinder"],
+      "example": "This small loan will tide me over until my salary is credited."
+    },
+    {
+      "word": "Have a whale of a time",
+      "pos": "Idiom",
+      "hindi": "खूब मज़ा करना / आनंद लेना",
+      "meaning": "Enjoy oneself very much.",
+      "synonyms": ["Have a great time", "Enjoy thoroughly", "Have a blast"],
+      "antonyms": ["Bored", "Miserable"],
+      "example": "We went to Goa last weekend and had a whale of a time."
+    },
+    {
+      "word": "Make one's toes curl",
+      "pos": "Idiom",
+      "hindi": "अत्यधिक शर्मिंदा या घृणित महसूस कराना",
+      "meaning": "To give one an acute feeling of disgust, shame, embarrassment, or anguish.",
+      "synonyms": ["Embarrass deeply", "Disgust"],
+      "antonyms": ["Delight", "Please"],
+      "example": "His cringey speech on stage made everyone's toes curl."
+    },
+    {
+      "word": "Turn the tide",
+      "pos": "Idiom",
+      "hindi": "परिस्थितियों को पूरी तरह पलट देना",
+      "meaning": "To change or reverse something dramatically.",
+      "synonyms": ["Reverse the trend", "Flip the situation"],
+      "antonyms": ["Maintain status quo"],
+      "example": "The captain's brilliant century helped India turn the tide of the match."
+    },
+    {
+      "word": "Tick all the boxes",
+      "pos": "Idiom",
+      "hindi": "सभी आवश्यक शर्तों या मानदंडों को पूरा करना",
+      "meaning": "To satisfy or fulfill everything that is necessary or desired.",
+      "synonyms": ["Meet all requirements", "Fulfill all criteria"],
+      "antonyms": ["Fail criteria", "Fall short"],
+      "example": "This laptop ticks all the boxes for performance, battery, and price."
+    },
+    {
+      "word": "Tough cookie",
+      "pos": "Idiom",
+      "hindi": "कठिन परिस्थिति में भी न हार मानने वाला मजबूत व्यक्ति",
+      "meaning": "A person who is strong, resilient, and not easily defeated or discouraged.",
+      "synonyms": ["Resilient person", "Survivor", "Strong-willed person"],
+      "antonyms": ["Weakling", "Fragile person"],
+      "example": "She is a tough cookie who bounced back quickly after the failure."
+    },
+    {
+      "word": "To have a finger in every pie",
+      "pos": "Idiom",
+      "hindi": "हर काम में दखल देना या शामिल होना",
+      "meaning": "To be involved in several different activities or enterprises at once, often in a meddlesome way.",
+      "synonyms": ["Meddle in everything", "Be involved everywhere"],
+      "antonyms": ["Detached", "Uninvolved"],
+      "example": "He likes to have a finger in every pie, managing both finance and marketing."
+    },
+    {
+      "word": "Wear out one's welcome",
+      "pos": "Idiom",
+      "hindi": "किसी के घर या मेहमाननवाज़ी में ज़रूरत से ज़्यादा रुककर अप्रिय होना",
+      "meaning": "To remain a guest in a place for too long, to the point where the host no longer wishes one to stay.",
+      "synonyms": ["Stay too long", "Overstay welcome"],
+      "antonyms": ["Leave timely"],
+      "example": "If you stay at your friend's house for a month, you will wear out your welcome."
+    },
+    {
+      "word": "Tied to her apron strings",
+      "pos": "Idiom",
+      "hindi": "हर फैसले के लिए माँ या पत्नी पर पूरी तरह निर्भर रहना (पल्लू से बँधा होना)",
+      "meaning": "Excessively dependent on one's mother or wife for guidance and decisions.",
+      "synonyms": ["Over-dependent", "Momma's boy"],
+      "antonyms": ["Independent", "Self-reliant"],
+      "example": "He cannot make a single career decision because he is still tied to his mother's apron strings."
+    },
+    {
+      "word": "Cross one's palm with silver",
+      "pos": "Idiom",
+      "hindi": "रिश्वत देना / पैसे देकर काम कराना",
+      "meaning": "To pay someone money, especially as a bribe.",
+      "synonyms": ["Bribe", "Grease someone's palm"],
+      "antonyms": ["Work honestly"],
+      "example": "The corrupt official expected people to cross his palm with silver to clear files."
+    },
+    {
+      "word": "No strings attached",
+      "pos": "Idiom",
+      "hindi": "बिना किसी शर्त या बंधन के",
+      "meaning": "An offer made without conditions or restrictions, requiring nothing in return.",
+      "synonyms": ["Unconditional", "Free of obligation"],
+      "antonyms": ["Conditional", "With strings attached"],
+      "example": "She offered him financial help with no strings attached."
+    },
+    {
+      "word": "The penny drops",
+      "pos": "Idiom",
+      "hindi": "देर से ही सही, पर बात समझ में आ जाना",
+      "meaning": "Said when someone suddenly comes to realize or understand something after a period of confusion.",
+      "synonyms": ["Dawn on someone", "Realize suddenly"],
+      "antonyms": ["Remain clueless"],
+      "example": "He looked confused at first, but then the penny dropped and he smiled."
+    },
+    {
+      "word": "A fly in the ointment",
+      "pos": "Idiom",
+      "hindi": "बने-बनाए काम में बाधा या नुक्स डालने वाली चीज़",
+      "meaning": "A detrimental circumstance or detail; a small drawback that spoils success.",
+      "synonyms": ["Spoilsport", "Drawback", "Nuisance"],
+      "antonyms": ["Boon", "Advantage"],
+      "example": "The trip was perfect, the only fly in the ointment was the bad weather."
+    },
+    {
+      "word": "Catch a weasel asleep",
+      "pos": "Idiom",
+      "hindi": "चैतन्य या सतर्क व्यक्ति को धोखे में रखना / चौंकानी देना",
+      "meaning": "To surprise someone who is normally alert, shrewd, or on guard.",
+      "synonyms": ["Catch off guard", "Outsmart a vigilant person"],
+      "antonyms": ["Catch a fool"],
+      "example": "It is very hard to catch a weasel asleep; he notices every small detail."
+    },
+    {
+      "word": "King's ransom",
+      "pos": "Idiom",
+      "hindi": "अत्यधिक भारी-भरकम धनराशि",
+      "meaning": "An exorbitant sum of money.",
+      "synonyms": ["A fortune", "A massive amount of money"],
+      "antonyms": ["A pittance", "Pennies"],
+      "example": "Buying that luxury sports car cost him a king's ransom."
+    },
+    {
+      "word": "A dog and pony show",
+      "pos": "Idiom",
+      "hindi": "दिखावटी और भड़कीला आयोजन जिसमें सार कम हो",
+      "meaning": "An overly elaborate presentation or event that lacks real substance.",
+      "synonyms": ["Flashy presentation", "Gimmick"],
+      "antonyms": ["Substantial work"],
+      "example": "The product launch was just a dog and pony show with no real upgrades."
+    },
+    {
+      "word": "Be waiting in the wings",
+      "pos": "Idiom",
+      "hindi": "मौका मिलते ही ज़िम्मेदारी संभालने के लिए तैयार रहना",
+      "meaning": "To be ready and available to help or replace someone when needed.",
+      "synonyms": ["Stand by", "Be ready in reserve"],
+      "antonyms": ["Unprepared", "Absent"],
+      "example": "The junior manager is waiting in the wings to take over the project."
+    },
+    {
+      "word": "Wolf in sheep's clothing",
+      "pos": "Idiom",
+      "hindi": "दिखने में सीधा-साधा पर अंदर से खतरनाक (धोखेबाज़)",
+      "meaning": "A dangerous person pretending to be harmless and friendly.",
+      "synonyms": ["Hypocrite", "Deceitful person"],
+      "antonyms": ["Open book", "Honest soul"],
+      "example": "Be careful of his sweet words; he is a wolf in sheep's clothing."
+    },
+    {
+      "word": "Be past the point of no return",
+      "pos": "Idiom",
+      "hindi": "ऐसी स्थिति जहाँ से पीछे लौटना असंभव हो",
+      "meaning": "To have passed the last opportunity to reverse one's actions or return to the starting position.",
+      "synonyms": ["Beyond recall", "Too late to turn back"],
+      "antonyms": ["Reversible"],
+      "example": "Once you launch the rocket, you are past the point of no return."
+    },
+    {
+      "word": "Upset the apple cart",
+      "pos": "Idiom",
+      "hindi": "बने-बनाए काम को बिगाड़ देना",
+      "meaning": "To do or say something to spoil a satisfactory plan or situation.",
+      "synonyms": ["Spoil a plan", "Ruin things", "Rock the boat"],
+      "antonyms": ["Maintain order", "Keep plan intact"],
+      "example": "Everything was going smoothly until he spoke up and upset the apple cart."
+    }
+  ]
+}
