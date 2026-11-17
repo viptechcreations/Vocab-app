@@ -104,7 +104,7 @@
       <div class="p-4 bg-slate-100 border-b border-slate-200 space-y-2">
         <label class="text-[11px] font-bold uppercase text-slate-600 block">Firebase Realtime Database URL (For Global Sync):</label>
         <div class="flex gap-2">
-          <input id="firebaseUrlInput" type="text" placeholder="https://vocab-master-a761f-default-rtdb.firebaseio.com" class="flex-1 px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono bg-white" />
+          <input id="firebaseUrlInput" type="text" placeholder="https://your-project-default-rtdb.firebaseio.com" class="flex-1 px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono bg-white" />
           <button onclick="saveFirebaseUrl()" class="px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold shrink-0">Save & Sync</button>
         </div>
         <p id="adminSyncStatus" class="text-[11px] text-slate-500">Tip: Firebase URL daalne par har phone/tab ke users yahan live dikhenge.</p>
@@ -246,7 +246,7 @@
 
               <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-xs font-medium text-slate-400">
                 <span id="fcLearnedBadgeFront"><i class="fa-regular fa-circle"></i> Pending</span>
-                <span class="text-indigo-600 font-semibold"><i class="fa-solid fa-rotate"></i> Flip for Syn/Ant</span>
+                <span class="text-indigo-600 font-semibold"><i class="fa-solid fa-rotate"></i> Flip for Details</span>
               </div>
             </div>
 
@@ -320,12 +320,19 @@
       <!-- SUBVIEW 3: MOCK QUIZ -->
       <div id="quizMode" class="hidden max-w-xl mx-auto">
         <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 space-y-5">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
             <div>
               <span class="text-[11px] font-bold uppercase text-indigo-600">Mock Test</span>
-              <h3 class="text-base sm:text-lg font-extrabold text-slate-900">Synonym, Antonym & Hindi Quiz</h3>
+              <h3 id="quizSectionTitle" class="text-base sm:text-lg font-extrabold text-slate-900">Synonym, Antonym & Hindi Quiz</h3>
             </div>
-            <span id="quizScoreBadge" class="text-base font-extrabold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">0 / 10</span>
+            <div class="flex items-center gap-2 self-end sm:self-auto">
+              <!-- Idioms / OWS Mode Toggle Button -->
+              <button id="idiomQuizModeBtn" onclick="toggleIdiomQuizMode()" class="hidden px-3 py-1.5 rounded-xl text-xs font-extrabold border-2 border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-sliders"></i>
+                <span id="idiomQuizModeText">Include Syn / Anto Mock</span>
+              </button>
+              <span id="quizScoreBadge" class="text-base font-extrabold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">0 / 10</span>
+            </div>
           </div>
 
           <div id="quizQuestionArea" class="space-y-4">
@@ -340,7 +347,7 @@
               <p id="quizTargetHint" class="text-xs text-indigo-600 font-semibold"></p>
             </div>
 
-            <div id="quizOptionsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+            <div id="quizOptionsGrid" class="grid grid-cols-1 gap-2.5"></div>
 
             <div class="flex justify-end pt-1">
               <button id="nextQuizBtn" onclick="nextQuizQuestion()" class="hidden w-full sm:w-auto px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs sm:text-sm">
@@ -372,7 +379,6 @@
 
   <script>
     // ================= VISITOR TRACKING & ADMIN CONFIG =================
-    // Aap chahein to apna Firebase Realtime DB URL yahan paste kar sakte hain ya Admin Panel me daal sakte hain:
     const DEFAULT_FIREBASE_DB_URL = ""; 
     const ADMIN_PIN = "2005";
 
@@ -429,14 +435,12 @@
         timestamp: Date.now()
       };
 
-      // Save locally as backup
       try {
         const localLogs = JSON.parse(localStorage.getItem(LOCAL_VISITS_KEY) || "[]");
         localLogs.unshift(entry);
         localStorage.setItem(LOCAL_VISITS_KEY, JSON.stringify(localLogs.slice(0, 100)));
       } catch (e) {}
 
-      // Push to Firebase Realtime Database if URL is configured
       const dbUrl = getFirebaseDbUrl();
       if (dbUrl) {
         try {
@@ -538,6 +542,7 @@
     let currentQuizIndex = 0;
     let quizScore = 0;
     let quizAnswered = false;
+    let idiomSynAntMode = false; // Default false = Idioms/OWS me sirf English Meaning poochhega
 
     const STORAGE_KEY = "vocabmaster_learned_words_v1";
     let learnedWords = new Set();
@@ -559,6 +564,9 @@
       const levelStr = (rawJson.level || "").toLowerCase();
       const fileClean = filename.replace(/\.json$/i, "");
 
+      if (titleStr.includes("idiom") || levelStr.includes("idiom")) {
+        return "SSC MTS 2026 Idioms & Phrases";
+      }
       if (titleStr.includes("mts") || levelStr.includes("mts") || fileClean.toLowerCase().startsWith("mts")) {
         return "SSC MTS 2026 Synonyms";
       }
@@ -862,6 +870,7 @@
       currentLesson = found;
       currentCardIndex = 0;
       isCardFlipped = false;
+      idiomSynAntMode = false; // Reset to English Meaning default whenever opening a lesson
 
       document.getElementById("lessonGridView").classList.add("hidden");
       document.getElementById("lessonView").classList.remove("hidden");
@@ -1003,7 +1012,7 @@
               <h4 class="text-base font-extrabold text-slate-900">${item.word} <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700">${item.pos}</span></h4>
               <p class="text-xs font-bold text-indigo-600">${item.hindi}</p>
             </div>
-            <button onclick="speakWordText('${item.word}', event)" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-volume-high text-xs"></i></button>
+            <button onclick="speakWordText('${item.word.replace(/'/g, "\\'")}', event)" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-volume-high text-xs"></i></button>
           </div>
           <p class="text-xs text-slate-600">${item.meaning}</p>
           <div class="flex flex-wrap gap-1 pt-1">
@@ -1024,18 +1033,112 @@
       return copy;
     }
 
+    function isIdiomOrOwsLesson(lesson) {
+      if (!lesson) return false;
+      const checkStr = `${lesson.packName || ""} ${lesson.title || ""} ${lesson.subtitle || ""}`.toLowerCase();
+      if (checkStr.includes("idiom") || checkStr.includes("phrase") || checkStr.includes("one word") || checkStr.includes("ows")) {
+        return true;
+      }
+      const firstPos = (lesson.words[0]?.pos || "").toLowerCase();
+      return firstPos.includes("idiom") || firstPos.includes("phrase") || firstPos.includes("ows");
+    }
+
+    function toggleIdiomQuizMode() {
+      idiomSynAntMode = !idiomSynAntMode;
+      startQuiz();
+    }
+
     function startQuiz() {
       const pool = currentLesson.words;
+      const isIdiom = isIdiomOrOwsLesson(currentLesson);
+      const modeBtn = document.getElementById("idiomQuizModeBtn");
+      const modeText = document.getElementById("idiomQuizModeText");
+      const quizTitle = document.getElementById("quizSectionTitle");
+
+      if (isIdiom) {
+        modeBtn.classList.remove("hidden");
+        if (idiomSynAntMode) {
+          modeText.innerText = "Switch to: Only Meaning";
+          modeBtn.className = "px-3 py-1.5 rounded-xl text-xs font-extrabold border-2 border-amber-300 bg-amber-50 text-amber-800 hover:bg-amber-100 transition flex items-center gap-1.5";
+          quizTitle.innerText = "Idioms: Syn/Ant & Meaning Mix";
+        } else {
+          modeText.innerText = "Include Syn / Anto Mock";
+          modeBtn.className = "px-3 py-1.5 rounded-xl text-xs font-extrabold border-2 border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition flex items-center gap-1.5";
+          quizTitle.innerText = "English Meaning Mock Test";
+        }
+      } else {
+        modeBtn.classList.add("hidden");
+        quizTitle.innerText = "Synonym, Antonym & Hindi Quiz";
+      }
+
       const selectedWords = shuffleArray(pool).slice(0, Math.min(10, pool.length));
+
       quizQuestions = selectedWords.map((item, idx) => {
-        const qType = ["SYNONYM", "ANTONYM", "HINDI"][idx % 3];
-        let prompt = "Select the correct SYNONYM for:", badge = "Synonym", correctAnswer = item.synonyms[0] || item.hindi;
-        let distractors = shuffleArray(pool.filter(w => w.id !== item.id).map(w => (qType === "SYNONYM" ? w.synonyms[0] : qType === "ANTONYM" ? w.antonyms[0] : w.hindi))).slice(0, 3);
-        if (qType === "ANTONYM") { prompt = "Select the correct ANTONYM for:"; badge = "Antonym"; correctAnswer = item.antonyms[0] || item.hindi; }
-        if (qType === "HINDI") { prompt = "Select the correct HINDI MEANING for:"; badge = "Hindi Meaning"; correctAnswer = item.hindi; }
-        return { wordObj: item, qType, prompt, badge, correctAnswer, options: shuffleArray([correctAnswer, ...distractors]) };
+        let qType = "MEANING";
+
+        if (isIdiom && !idiomSynAntMode) {
+          // Default Idiom/OWS Mode: Sirf English Meaning poochhega
+          qType = "MEANING";
+        } else {
+          let availableTypes = [];
+          if (isIdiom && item.meaning) availableTypes.push("MEANING");
+          if (item.synonyms && item.synonyms.length > 0) availableTypes.push("SYNONYM");
+          if (item.antonyms && item.antonyms.length > 0) availableTypes.push("ANTONYM");
+          if (item.hindi) availableTypes.push("HINDI");
+          qType = availableTypes[idx % availableTypes.length] || "MEANING";
+        }
+
+        let prompt = "Select the correct ENGLISH MEANING for:";
+        let badge = "English Meaning";
+        let correctAnswer = item.meaning || item.hindi;
+        let distractors = [];
+
+        if (qType === "MEANING") {
+          prompt = "Select the correct ENGLISH MEANING for:";
+          badge = "English Meaning";
+          correctAnswer = item.meaning || item.hindi;
+          distractors = shuffleArray(
+            pool.filter(w => w.id !== item.id && w.meaning).map(w => w.meaning)
+          ).slice(0, 3);
+        } else if (qType === "SYNONYM") {
+          prompt = "Select the correct SYNONYM for:";
+          badge = "Synonym";
+          correctAnswer = item.synonyms[0] || item.meaning;
+          distractors = shuffleArray(
+            pool.filter(w => w.id !== item.id && w.synonyms && w.synonyms.length > 0).map(w => w.synonyms[0])
+          ).slice(0, 3);
+        } else if (qType === "ANTONYM") {
+          prompt = "Select the correct ANTONYM for:";
+          badge = "Antonym";
+          correctAnswer = item.antonyms[0] || item.meaning;
+          distractors = shuffleArray(
+            pool.filter(w => w.id !== item.id && w.antonyms && w.antonyms.length > 0).map(w => w.antonyms[0])
+          ).slice(0, 3);
+        } else {
+          prompt = "Select the correct HINDI MEANING for:";
+          badge = "Hindi Meaning";
+          correctAnswer = item.hindi;
+          distractors = shuffleArray(
+            pool.filter(w => w.id !== item.id && w.hindi).map(w => w.hindi)
+          ).slice(0, 3);
+        }
+
+        while (distractors.length < 3) {
+          distractors.push("None of the above");
+        }
+
+        return {
+          wordObj: item,
+          qType,
+          prompt,
+          badge,
+          correctAnswer,
+          options: shuffleArray([correctAnswer, ...distractors])
+        };
       });
-      currentQuizIndex = 0; quizScore = 0;
+
+      currentQuizIndex = 0;
+      quizScore = 0;
       document.getElementById("quizQuestionArea").classList.remove("hidden");
       document.getElementById("quizResultArea").classList.add("hidden");
       renderQuizQuestion();
@@ -1049,7 +1152,8 @@
       document.getElementById("quizQTypeBadge").innerText = q.badge;
       document.getElementById("quizPromptText").innerText = q.prompt;
       document.getElementById("quizTargetWord").innerText = q.wordObj.word;
-      document.getElementById("quizTargetHint").innerText = q.qType === "HINDI" ? ` (${q.wordObj.pos})` : `Hindi: ${q.wordObj.hindi}`;
+      document.getElementById("quizTargetHint").innerText =
+        (q.qType === "HINDI" || q.qType === "MEANING") ? `(${q.wordObj.pos})` : `Hindi: ${q.wordObj.hindi}`;
       document.getElementById("nextQuizBtn").classList.add("hidden");
 
       const grid = document.getElementById("quizOptionsGrid");
