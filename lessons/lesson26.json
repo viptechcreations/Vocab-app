@@ -1,0 +1,235 @@
+{
+  "id": "lesson-26",
+  "pack": "Last 5 Year Top 50 One Word Substitutions",
+  "number": "Lesson 26",
+  "title": "Last 5 Year Top 50 OWS: Set 1 (Q1 to Q25)",
+  "subtitle": "Ichthyologist to Ablution",
+  "level": "One Word Substitution",
+  "words": [
+    {
+      "word": "Ichthyologist",
+      "pos": "Noun (OWS)",
+      "hindi": "मछलियों के बारे में वैज्ञानिक अध्ययन करने वाला व्यक्ति",
+      "meaning": "A person who studies fish scientifically.",
+      "synonyms": ["Fish specialist", "Marine biologist"],
+      "antonyms": ["Ornithologist", "Entomologist"],
+      "example": "The ichthyologist studied rare freshwater fish species in the aquarium."
+    },
+    {
+      "word": "Insomniac",
+      "pos": "Noun (OWS)",
+      "hindi": "अनिद्रा रोगी (जिसे नींद नहीं आती)",
+      "meaning": "A person who is unable to sleep properly.",
+      "synonyms": ["Sleepless person"],
+      "antonyms": ["Heavy sleeper"],
+      "example": "Being an insomniac, he often reads books late into the night."
+    },
+    {
+      "word": "Anthropologist",
+      "pos": "Noun (OWS)",
+      "hindi": "मानव विज्ञानी (इंसानों के रहन-सहन, रीति-रिवाज और समाज का अध्ययन करने वाला)",
+      "meaning": "A person who studies the customs, beliefs and social relationships of human societies.",
+      "synonyms": ["Social scientist", "Ethnologist"],
+      "antonyms": ["Layman"],
+      "example": "The anthropologist lived with tribal communities to document their traditions."
+    },
+    {
+      "word": "Numismatist",
+      "pos": "Noun (OWS)",
+      "hindi": "मुद्राशास्त्री (सिक्कों, मेडल और मुद्रा का संग्रह या अध्ययन करने वाला)",
+      "meaning": "A person who collects or studies coins, medals and currency.",
+      "synonyms": ["Coin collector"],
+      "antonyms": ["Philatelist"],
+      "example": "The numismatist examined ancient Mughal and Gupta period coins."
+    },
+    {
+      "word": "Misogamist",
+      "pos": "Noun (OWS)",
+      "hindi": "विवाह-द्वेषी (शादी की संस्था से नफ़रत या विरोध करने वाला व्यक्ति)",
+      "meaning": "A person who is opposed to the institution of marriage.",
+      "synonyms": ["Anti-marriage person"],
+      "antonyms": ["Polygamist", "Romantic"],
+      "example": "As a confirmed misogamist, he refused every marriage proposal."
+    },
+    {
+      "word": "Limerick",
+      "pos": "Noun (OWS)",
+      "hindi": "पाँच पंक्तियों की मज़ेदार कविता (AABBA तुकबंदी वाली)",
+      "meaning": "A humorous five-line poem generally following the rhyme scheme AABBA.",
+      "synonyms": ["Comic five-line verse"],
+      "antonyms": ["Elegy", "Hymn"],
+      "example": "The comedian recited a witty limerick that made the entire hall laugh."
+    },
+    {
+      "word": "Valediction",
+      "pos": "Noun (OWS)",
+      "hindi": "विदाई भाषण (किसी की विदाई के मौके पर दिया जाने वाला भाषण)",
+      "meaning": "A speech delivered on the occasion of someone's departure or farewell.",
+      "synonyms": ["Farewell address", "Leave-taking speech"],
+      "antonyms": ["Welcome speech", "Salutation"],
+      "example": "The retiring principal gave an emotional valediction at the farewell ceremony."
+    },
+    {
+      "word": "Sermon",
+      "pos": "Noun (OWS)",
+      "hindi": "धर्मोपदेश (धर्म और नैतिक बातें सिखाने के लिए दिया जाने वाला उपदेश)",
+      "meaning": "A religious discourse delivered by a priest or preacher to instruct people on moral and spiritual matters.",
+      "synonyms": ["Homily", "Preaching", "Religious discourse"],
+      "antonyms": ["Harangue", "Tirade"],
+      "example": "The saint delivered a peaceful sermon on kindness and truth."
+    },
+    {
+      "word": "Embalm",
+      "pos": "Verb (OWS)",
+      "hindi": "शव को सड़ने से बचाने के लिए विशेष रसायन (केमिकल) लगाना",
+      "meaning": "The process of preserving a dead body by treating it with special chemicals.",
+      "synonyms": ["Preserve", "Mummify"],
+      "antonyms": ["Decompose", "Decay"],
+      "example": "Doctors embalmed the body before transporting it abroad for burial."
+    },
+    {
+      "word": "Mariticide",
+      "pos": "Noun (OWS)",
+      "hindi": "पति की हत्या (अपनी पत्नी द्वारा पति की हत्या)",
+      "meaning": "The killing of one's own husband.",
+      "synonyms": ["Husband-murder"],
+      "antonyms": ["Uxoricide"],
+      "example": "The court sentenced the accused for the crime of mariticide."
+    },
+    {
+      "word": "Foeticide",
+      "pos": "Noun (OWS)",
+      "hindi": "भ्रूण हत्या (गर्भ में पल रहे अजन्मे बच्चे की हत्या)",
+      "meaning": "The act of causing the death of an unborn baby in the womb.",
+      "synonyms": ["Destruction of a foetus"],
+      "antonyms": ["Childbirth"],
+      "example": "Female foeticide is a punishable crime under Indian law."
+    },
+    {
+      "word": "Paediatrician",
+      "pos": "Noun (OWS)",
+      "hindi": "शिशु रोग विशेषज्ञ (बच्चों का इलाज करने वाला डॉक्टर)",
+      "meaning": "A doctor who treats children.",
+      "synonyms": ["Child specialist"],
+      "antonyms": ["Geriatrician"],
+      "example": "Parents should consult a qualified paediatrician for child healthcare."
+    },
+    {
+      "word": "Anecdote",
+      "pos": "Noun (OWS)",
+      "hindi": "किसी वास्तविक व्यक्ति या घटना से जुड़ा छोटा रोचक किस्सा",
+      "meaning": "A short interesting story about a real person or event.",
+      "synonyms": ["True short story", "Incident", "Tale"],
+      "antonyms": ["Fable", "Fiction"],
+      "example": "He entertained his friends with a funny anecdote from his school days."
+    },
+    {
+      "word": "Kakistocracy",
+      "pos": "Noun (OWS)",
+      "hindi": "सबसे अयोग्य या भ्रष्ट लोगों का शासन",
+      "meaning": "A form of government in which the least qualified or most unscrupulous people are in power.",
+      "synonyms": ["Rule by the worst"],
+      "antonyms": ["Meritocracy", "Aristocracy"],
+      "example": "When unqualified leaders take over, democracy turns into a kakistocracy."
+    },
+    {
+      "word": "Theocracy",
+      "pos": "Noun (OWS)",
+      "hindi": "धर्मतंत्र (ऐसी सरकार जिसमें धार्मिक नेता शासन करते हैं)",
+      "meaning": "A form of government in which religious leaders exercise political authority.",
+      "synonyms": ["Priestly rule"],
+      "antonyms": ["Secular state"],
+      "example": "In a theocracy, state laws are based directly on religious scriptures."
+    },
+    {
+      "word": "Abdication",
+      "pos": "Noun (OWS)",
+      "hindi": "राजगद्दी त्याग (राजा या रानी द्वारा स्वेच्छा से सिंहासन छोड़ना)",
+      "meaning": "The formal act of a king or queen voluntarily giving up the throne.",
+      "synonyms": ["Renunciation", "Relinquishment"],
+      "antonyms": ["Accession", "Usurpation"],
+      "example": "Chandragupta Maurya's abdication placed Bindusara on the throne."
+    },
+    {
+      "word": "Anthropomorphism",
+      "pos": "Noun (OWS)",
+      "hindi": "मानवीकरण (जानवरों, वस्तुओं या देवताओं को इंसानों जैसी भावनाएँ और गुण देना)",
+      "meaning": "The attribution of human emotions, characteristics or behaviour to animals, objects or supernatural beings.",
+      "synonyms": ["Personification", "Humanization"],
+      "antonyms": ["Zoomorphism"],
+      "example": "Cartoon movies use anthropomorphism by making animals talk and wear clothes."
+    },
+    {
+      "word": "Anemometer",
+      "pos": "Noun (OWS)",
+      "hindi": "पवनवेगमापी (हवा की रफ़्तार मापने वाला यंत्र)",
+      "meaning": "An instrument used by meteorologists to measure the speed of wind.",
+      "synonyms": ["Wind gauge"],
+      "antonyms": ["Barometer", "Hygrometer"],
+      "example": "The weather station uses an anemometer to track cyclone wind speeds."
+    },
+    {
+      "word": "Burrow",
+      "pos": "Noun (OWS)",
+      "hindi": "बिल (खरगोश या लोमड़ी द्वारा ज़मीन में खोदी गई सुरंग)",
+      "meaning": "A hole or tunnel dug in the ground by a small animal, such as a rabbit or fox, for shelter.",
+      "synonyms": ["Tunnel", "Warren", "Den"],
+      "antonyms": ["Nest"],
+      "example": "The frightened rabbit quickly ran back into its underground burrow."
+    },
+    {
+      "word": "Hamlet",
+      "pos": "Noun (OWS)",
+      "hindi": "छोटा गाँव या कुछ घरों की छोटी बस्ती",
+      "meaning": "A small settlement in the countryside, usually smaller than a village.",
+      "synonyms": ["Small village", "Settlement"],
+      "antonyms": ["Metropolis", "City"],
+      "example": "He grew up in a quiet Himalayan hamlet surrounded by pine trees."
+    },
+    {
+      "word": "Joey",
+      "pos": "Noun (OWS)",
+      "hindi": "कंगारू का बच्चा",
+      "meaning": "The young one of a kangaroo.",
+      "synonyms": ["Baby kangaroo"],
+      "antonyms": ["Adult kangaroo"],
+      "example": "The baby joey stayed safely inside its mother's pouch."
+    },
+    {
+      "word": "Agility",
+      "pos": "Noun (OWS)",
+      "hindi": "फुर्ती (तेज़ी से चलने और तुरंत दिशा बदलने की क्षमता)",
+      "meaning": "The ability to move quickly and easily while changing direction with speed and coordination.",
+      "synonyms": ["Nimbleness", "Quickness", "Swiftness"],
+      "antonyms": ["Clumsiness", "Sluggishness"],
+      "example": "Sprinters require both speed and agility on the athletic track."
+    },
+    {
+      "word": "Outdo",
+      "pos": "Verb (OWS)",
+      "hindi": "बेहतर प्रदर्शन करके किसी से आगे निकल जाना",
+      "meaning": "To be more successful or do better than someone.",
+      "synonyms": ["Surpass", "Excel", "Outshine"],
+      "antonyms": ["Trail", "Fall behind"],
+      "example": "She studied extra hours to outdo her previous mock test score."
+    },
+    {
+      "word": "Rung",
+      "pos": "Noun (OWS)",
+      "hindi": "सीढ़ी का डंडा या पायदान",
+      "meaning": "One of the horizontal bars or steps of a ladder.",
+      "synonyms": ["Ladder step", "Crossbar"],
+      "antonyms": ["Rail"],
+      "example": "Hold tightly while stepping onto the top rung of the ladder."
+    },
+    {
+      "word": "Ablution",
+      "pos": "Noun (OWS)",
+      "hindi": "धार्मिक शुद्धि स्नान / वुज़ू (पूजा से पहले खुद को पानी से साफ़ करना)",
+      "meaning": "The act of washing oneself, especially as part of a religious ritual.",
+      "synonyms": ["Ritual washing", "Cleansing", "Purification"],
+      "antonyms": ["Defilement", "Pollution"],
+      "example": "Devotees performed morning ablution before entering the temple."
+    }
+  ]
+}
