@@ -1,0 +1,235 @@
+{
+  "id": "lesson-27",
+  "pack": "Last 5 Year Top 50 One Word Substitutions",
+  "number": "Lesson 27",
+  "title": "Last 5 Year Top 50 OWS: Set 2 (Q26 to Q50)",
+  "subtitle": "Hangar to Biopsy",
+  "level": "One Word Substitution",
+  "words": [
+    {
+      "word": "Hangar",
+      "pos": "Noun (OWS)",
+      "hindi": "विमानशाला (हवाई जहाज़ों को रखने और मरम्मत करने की बड़ी इमारत)",
+      "meaning": "A large building where aircraft are kept, repaired, or maintained.",
+      "synonyms": ["Aircraft shed", "Airfield shelter"],
+      "antonyms": ["Harbour", "Dockyard"],
+      "example": "The Air Force fighter jets were parked inside the reinforced hangar."
+    },
+    {
+      "word": "Limivorous",
+      "pos": "Adjective (OWS)",
+      "hindi": "कीचड़ या उसमें मौजूद कार्बनिक पदार्थ खाने वाला जीव",
+      "meaning": "An organism that feeds on mud or the organic matter present in it.",
+      "synonyms": ["Mud-eating"],
+      "antonyms": ["Carnivorous", "Herbivorous"],
+      "example": "Earthworms and certain aquatic worms are limivorous creatures."
+    },
+    {
+      "word": "Impervious",
+      "pos": "Adjective (OWS)",
+      "hindi": "अप्रभावित (जिस पर आलोचना, दबाव या भावनाओं का कोई असर न हो)",
+      "meaning": "Not affected or influenced by something, especially criticism, pressure, or emotions.",
+      "synonyms": ["Unaffected", "Immune", "Resistant"],
+      "antonyms": ["Vulnerable", "Susceptible", "Sensitive"],
+      "example": "A focused officer remains impervious to baseless criticism."
+    },
+    {
+      "word": "Eavesdropper",
+      "pos": "Noun (OWS)",
+      "hindi": "छिपकर दूसरों की निजी बातें सुनने वाला व्यक्ति",
+      "meaning": "A person who secretly listens to the private conversations of others.",
+      "synonyms": ["Spy", "Listener", "Snooper"],
+      "antonyms": ["Confidant"],
+      "example": "Never discuss confidential matters near doors where an eavesdropper might stand."
+    },
+    {
+      "word": "Gregarious",
+      "pos": "Adjective (OWS)",
+      "hindi": "मिलनसार / झुंड या समूह में रहने वाला",
+      "meaning": "An animal that naturally lives in a herd or group rather than alone; sociable person.",
+      "synonyms": ["Sociable", "Convivial", "Affable"],
+      "antonyms": ["Solitary", "Reclusive", "Saturnine"],
+      "example": "Elephants and deer are naturally gregarious animals."
+    },
+    {
+      "word": "Namesake",
+      "pos": "Noun (OWS)",
+      "hindi": "हमनाम (किसी दूसरे व्यक्ति जैसा ही नाम रखने वाला)",
+      "meaning": "A person having the same name as another.",
+      "synonyms": ["Same-named person"],
+      "antonyms": ["Anonymous"],
+      "example": "He met his namesake during the first day of college orientation."
+    },
+    {
+      "word": "Sesquipedalian",
+      "pos": "Noun/Adjective",
+      "hindi": "बोलने या लिखने में लंबे और कठिन शब्दों का प्रयोग करने वाला व्यक्ति",
+      "meaning": "A person who is fond of using long, complicated words in speech or writing.",
+      "synonyms": ["Polysyllabic", "Grandiloquent"],
+      "antonyms": ["Succinct", "Laconic", "Concise"],
+      "example": "His sesquipedalian vocabulary made the simple essay hard to read."
+    },
+    {
+      "word": "Astronomy",
+      "pos": "Noun (OWS)",
+      "hindi": "खगोल विज्ञान (तारों, ग्रहों और अंतरिक्ष का वैज्ञानिक अध्ययन)",
+      "meaning": "The scientific study of stars, planets and space.",
+      "synonyms": ["Astrophysics", "Space science"],
+      "antonyms": ["Astrology"],
+      "example": "Ancient Indian scholars made great discoveries in mathematics and astronomy."
+    },
+    {
+      "word": "Genetics",
+      "pos": "Noun (OWS)",
+      "hindi": "आनुवंशिकी (माता-पिता से बच्चों में आने वाले गुणों और विविधता का अध्ययन)",
+      "meaning": "The study of the hereditary transmission and variation of inherited characteristics.",
+      "synonyms": ["Heredity science"],
+      "antonyms": ["Environment"],
+      "example": "Gregor Mendel is known as the father of modern genetics."
+    },
+    {
+      "word": "Sphygmomanometer",
+      "pos": "Noun (OWS)",
+      "hindi": "रक्तचापमापी (ब्लड प्रेशर मापने वाला यंत्र)",
+      "meaning": "An instrument used to measure blood pressure.",
+      "synonyms": ["Blood pressure monitor"],
+      "antonyms": ["Thermometer", "Barometer"],
+      "example": "The doctor wrapped the sphygmomanometer cuff around the patient's arm."
+    },
+    {
+      "word": "Apocalypse",
+      "pos": "Noun (OWS)",
+      "hindi": "प्रलय (पूरी दुनिया का अंतिम और पूर्ण विनाश)",
+      "meaning": "The complete final destruction of the world, as described in religious texts.",
+      "synonyms": ["Doomsday", "Armageddon", "Cataclysm"],
+      "antonyms": ["Renaissance", "Genesis", "Creation"],
+      "example": "The sci-fi movie depicts survival after a nuclear apocalypse."
+    },
+    {
+      "word": "Epic",
+      "pos": "Noun (OWS)",
+      "hindi": "महाकाव्य (वीरों के कारनामों और साहसिक घटनाओं पर लिखी लंबी कविता)",
+      "meaning": "A long narrative poem, typically detailing the heroic deeds and adventures of a legendary figure.",
+      "synonyms": ["Heroic poem", "Saga"],
+      "antonyms": ["Haiku", "Limerick", "Sonnet"],
+      "example": "The Ramayana and the Mahabharata are the two greatest epics of India."
+    },
+    {
+      "word": "Astronomer",
+      "pos": "Noun (OWS)",
+      "hindi": "खगोलशास्त्री (तारों, ग्रहों और अंतरिक्ष का अध्ययन करने वाला वैज्ञानिक)",
+      "meaning": "A person who studies the stars and planets.",
+      "synonyms": ["Astrophysicist", "Stargazer"],
+      "antonyms": ["Geologist"],
+      "example": "Aryabhata was a renowned ancient Indian mathematician and astronomer."
+    },
+    {
+      "word": "Toxicology",
+      "pos": "Noun (OWS)",
+      "hindi": "विष विज्ञान (ज़हर और उसके असर का वैज्ञानिक अध्ययन)",
+      "meaning": "The branch of science concerned with the nature, effects, and detection of poisons.",
+      "synonyms": ["Poison science"],
+      "antonyms": ["Pharmacology"],
+      "example": "Forensic experts rely on toxicology reports to detect poisoning."
+    },
+    {
+      "word": "Voluntary",
+      "pos": "Adjective (OWS)",
+      "hindi": "स्वैच्छिक (अपनी मर्ज़ी से बिना किसी दबाव या वेतन के किया गया कार्य)",
+      "meaning": "An action done by one's own free will, without being forced or paid.",
+      "synonyms": ["Optional", "Willing", "Unforced"],
+      "antonyms": ["Compulsory", "Obligatory", "Involuntary"],
+      "example": "Blood donation is a noble voluntary service to society."
+    },
+    {
+      "word": "Copyright",
+      "pos": "Noun (OWS)",
+      "hindi": "कॉपीराइट / स्वत्वाधिकार (किताब, संगीत या कलाकृति को छापने और बेचने का कानूनी अधिकार)",
+      "meaning": "The legal right to be the only one to reproduce, publish, and sell a book, musical recording, or artistic work.",
+      "synonyms": ["Exclusive publishing right"],
+      "antonyms": ["Public domain", "Piracy"],
+      "example": "The author holds the copyright to all chapters of this textbook."
+    },
+    {
+      "word": "Refugee",
+      "pos": "Noun (OWS)",
+      "hindi": "शरणार्थी (युद्ध या अत्याचार के कारण अपना देश छोड़ने वाला व्यक्ति)",
+      "meaning": "A person who is forced to leave their country because of war or persecution.",
+      "synonyms": ["Exile", "Displaced person", "Asylum seeker"],
+      "antonyms": ["Citizen", "Native"],
+      "example": "International agencies set up relief camps for war refugees."
+    },
+    {
+      "word": "Blizzard",
+      "pos": "Noun (OWS)",
+      "hindi": "बर्फीला तूफ़ान (तेज़ हवाओं और भारी बर्फबारी वाला तूफ़ान)",
+      "meaning": "A severe snowstorm with high winds and low visibility.",
+      "synonyms": ["Snowstorm", "Gale"],
+      "antonyms": ["Calm weather"],
+      "example": "Flights were cancelled due to a heavy blizzard in the mountains."
+    },
+    {
+      "word": "Equinox",
+      "pos": "Noun (OWS)",
+      "hindi": "विषुव (साल का वह समय जब दिन और रात बराबर होते हैं)",
+      "meaning": "The time of year when day and night are of equal length.",
+      "synonyms": ["Equal day and night"],
+      "antonyms": ["Solstice"],
+      "example": "The vernal equinox occurs around March 21 every year."
+    },
+    {
+      "word": "Epigraph",
+      "pos": "Noun (OWS)",
+      "hindi": "पुस्तक या अध्याय की शुरुआत में लिखा गया संक्षिप्त उद्धरण (Quotation)",
+      "meaning": "A short quotation at the beginning of a book or chapter to set the theme.",
+      "synonyms": ["Inscription", "Opening quote", "Motto"],
+      "antonyms": ["Epilogue", "Postscript"],
+      "example": "The author placed a famous Sanskrit shloka as the epigraph of her book."
+    },
+    {
+      "word": "Stevedore",
+      "pos": "Noun (OWS)",
+      "hindi": "बंदरगाह पर जहाज़ों से माल चढ़ाने और उतारने वाला मज़दूर",
+      "meaning": "A labourer involved in loading and unloading ships.",
+      "synonyms": ["Docker", "Longshoreman"],
+      "antonyms": ["Captain"],
+      "example": "Stevedores used heavy cranes to unload cargo containers at Mumbai port."
+    },
+    {
+      "word": "Altruism",
+      "pos": "Noun (OWS)",
+      "hindi": "परोपकारिता (निःस्वार्थ भाव से दूसरों की भलाई करना)",
+      "meaning": "Selfless concern for the well-being of others.",
+      "synonyms": ["Selflessness", "Philanthropy", "Benevolence"],
+      "antonyms": ["Selfishness", "Egoism"],
+      "example": "She donated her prize money to the orphanage out of pure altruism."
+    },
+    {
+      "word": "Granary",
+      "pos": "Noun (OWS)",
+      "hindi": "अन्नागार / अनाज रखने का गोदाम",
+      "meaning": "A place or storehouse where threshed grain is stored.",
+      "synonyms": ["Grain storehouse", "Silo", "Barn"],
+      "antonyms": ["Wasteland"],
+      "example": "After a good harvest, the village granary was full of wheat."
+    },
+    {
+      "word": "Repatriate",
+      "pos": "Verb (OWS)",
+      "hindi": "स्वदेश वापस भेजना (किसी व्यक्ति को उसके अपने देश वापस भेजना)",
+      "meaning": "To send someone back to his or her own country.",
+      "synonyms": ["Send home", "Return"],
+      "antonyms": ["Exile", "Banish"],
+      "example": "The embassy arranged special flights to repatriate stranded citizens."
+    },
+    {
+      "word": "Biopsy",
+      "pos": "Noun (OWS)",
+      "hindi": "जीवित शरीर से ऊतक (Tissue) का छोटा नमूना लेकर की जाने वाली मेडिकल जाँच",
+      "meaning": "A procedure where a piece of tissue or sample of cells from a living body is removed for medical examination.",
+      "synonyms": ["Tissue examination"],
+      "antonyms": ["Autopsy"],
+      "example": "The pathologist confirmed the diagnosis after examining the biopsy sample."
+    }
+  ]
+}
