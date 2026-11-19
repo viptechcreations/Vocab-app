@@ -1,0 +1,235 @@
+{
+  "id": "lesson-29",
+  "pack": "5 Days 5 Marathon One Word Substitution",
+  "number": "Lesson 29",
+  "title": "5 Days 5 Marathon OWS: Set 1 (Q1 to Q25)",
+  "subtitle": "Theocracy to Catastrophe",
+  "level": "One Word Substitution",
+  "words": [
+    {
+      "word": "Theocracy",
+      "pos": "Noun (OWS)",
+      "hindi": "धर्मगुरुओं का शासन",
+      "meaning": "A system of government where priests or religious leaders rule in the name of God.",
+      "synonyms": ["Priestly rule", "Religious government"],
+      "antonyms": ["Secular state", "Democracy"],
+      "example": "In a theocracy, religious leaders hold the highest political power."
+    },
+    {
+      "word": "Lepidopterist",
+      "pos": "Noun (OWS)",
+      "hindi": "तितलियों और पतंगों का अध्ययन करने वाला",
+      "meaning": "A person who collects or studies butterflies and moths.",
+      "synonyms": ["Butterfly specialist"],
+      "antonyms": ["Ornithologist", "Ichthyologist"],
+      "example": "The lepidopterist documented rare species of butterflies in the valley."
+    },
+    {
+      "word": "Pharmacy",
+      "pos": "Noun (OWS)",
+      "hindi": "दवाइयों की दुकान",
+      "meaning": "A shop or place where you can buy medicines.",
+      "synonyms": ["Chemist shop", "Drugstore"],
+      "antonyms": ["Hospital"],
+      "example": "He went to the nearby pharmacy to buy prescribed tablets."
+    },
+    {
+      "word": "Philatelist",
+      "pos": "Noun (OWS)",
+      "hindi": "डाक टिकटों का संग्रह करने वाला",
+      "meaning": "A person who loves and collects postage stamps.",
+      "synonyms": ["Stamp collector"],
+      "antonyms": ["Numismatist"],
+      "example": "As a passionate philatelist, he owns stamps from over fifty countries."
+    },
+    {
+      "word": "Limerick",
+      "pos": "Noun (OWS)",
+      "hindi": "पाँच पंक्तियों की मज़ेदार कविता",
+      "meaning": "A humorous poem of five lines.",
+      "synonyms": ["Comic verse"],
+      "antonyms": ["Elegy"],
+      "example": "The poet entertained the audience with a clever limerick."
+    },
+    {
+      "word": "Paediatrician",
+      "pos": "Noun (OWS)",
+      "hindi": "बच्चों का डॉक्टर",
+      "meaning": "A doctor who treats children.",
+      "synonyms": ["Child specialist"],
+      "antonyms": ["Cardiologist"],
+      "example": "The paediatrician checked the baby's fever and prescribed syrup."
+    },
+    {
+      "word": "Teetotaller",
+      "pos": "Noun (OWS)",
+      "hindi": "शराब बिल्कुल न पीने वाला",
+      "meaning": "A person who completely abstains from alcoholic drinks.",
+      "synonyms": ["Abstainer", "Non-drinker"],
+      "antonyms": ["Tippler", "Toper"],
+      "example": "He is a strict teetotaller and never touches alcohol even at parties."
+    },
+    {
+      "word": "Fastidious",
+      "pos": "Adjective (OWS)",
+      "hindi": "जिसे खुश करना कठिन हो और जो जल्दी कमी निकालता हो",
+      "meaning": "Quick to find fault, very attentive to detail, and hard to please.",
+      "synonyms": ["Fussy", "Meticulous", "Finicky"],
+      "antonyms": ["Easygoing", "Careless"],
+      "example": "The chairman is fastidious and inspects every small detail carefully."
+    },
+    {
+      "word": "Graphologist",
+      "pos": "Noun (OWS)",
+      "hindi": "लिखावट और उसके ढंग का अध्ययन करने वाला",
+      "meaning": "One who studies the physical characteristics and patterns of handwriting.",
+      "synonyms": ["Handwriting analyst"],
+      "antonyms": ["Calligrapher"],
+      "example": "The police hired a graphologist to examine the suspect's handwriting."
+    },
+    {
+      "word": "Aristocracy",
+      "pos": "Noun (OWS)",
+      "hindi": "कुलीन (उच्च) वर्ग का शासन",
+      "meaning": "A government ruled by nobility or the privileged upper class.",
+      "synonyms": ["Nobility rule", "Elite governance"],
+      "antonyms": ["Democracy"],
+      "example": "In medieval Europe, political power was largely controlled by the aristocracy."
+    },
+    {
+      "word": "Entomologist",
+      "pos": "Noun (OWS)",
+      "hindi": "कीड़ों का अध्ययन करने वाला वैज्ञानिक",
+      "meaning": "A person who studies insects scientifically.",
+      "synonyms": ["Insect specialist"],
+      "antonyms": ["Zoologist", "Herpetologist"],
+      "example": "The entomologist examined the beetles under a microscope."
+    },
+    {
+      "word": "Contentious",
+      "pos": "Adjective (OWS)",
+      "hindi": "बहस करने वाला / विवादप्रिय",
+      "meaning": "A person who likes to argue about anything; causing disagreement.",
+      "synonyms": ["Argumentative", "Quarrelsome", "Disputatious"],
+      "antonyms": ["Agreeable", "Peaceful"],
+      "example": "The contentious man argued with everyone during the meeting."
+    },
+    {
+      "word": "Anecdote",
+      "pos": "Noun (OWS)",
+      "hindi": "सच्ची और रोचक छोटी कहानी / किस्सा",
+      "meaning": "A short interesting story about a real person or event.",
+      "synonyms": ["True tale", "Short incident"],
+      "antonyms": ["Fable", "Allegory"],
+      "example": "He shared a funny anecdote from his college days with his friends."
+    },
+    {
+      "word": "Siesta",
+      "pos": "Noun (OWS)",
+      "hindi": "दोपहर के भोजन के बाद की छोटी नींद",
+      "meaning": "A short rest or sleep taken after lunch.",
+      "synonyms": ["Afternoon nap"],
+      "antonyms": ["Insomnia"],
+      "example": "He enjoyed a relaxing siesta after lunch on Sunday."
+    },
+    {
+      "word": "Abscond",
+      "pos": "Verb (OWS)",
+      "hindi": "चुपके से भाग जाना / फ़रार होना",
+      "meaning": "To go away suddenly and secretly in order to escape from somewhere.",
+      "synonyms": ["Flee", "Escape secretly", "Run away"],
+      "antonyms": ["Surrender", "Stay"],
+      "example": "The fraudster absconded and left the country before the arrest warrant arrived."
+    },
+    {
+      "word": "Edible",
+      "pos": "Adjective (OWS)",
+      "hindi": "खाने योग्य",
+      "meaning": "A thing fit and safe to be eaten.",
+      "synonyms": ["Eatable", "Consumable"],
+      "antonyms": ["Inedible", "Poisonous"],
+      "example": "These fresh forest fruits are completely edible."
+    },
+    {
+      "word": "Mint",
+      "pos": "Noun (OWS)",
+      "hindi": "टकसाल (सिक्के बनाने का स्थान)",
+      "meaning": "A place where coins, medals, or tokens are made.",
+      "synonyms": ["Coin factory"],
+      "antonyms": ["Granary"],
+      "example": "Indian coins are manufactured in the government mint."
+    },
+    {
+      "word": "Autopsy",
+      "pos": "Noun (OWS)",
+      "hindi": "मृत्यु का कारण जानने के लिए मानव शव की जाँच",
+      "meaning": "An examination of a dead human body to determine the cause of death.",
+      "synonyms": ["Post-mortem"],
+      "antonyms": ["Biopsy"],
+      "example": "The forensic doctor performed an autopsy to find the exact cause of death."
+    },
+    {
+      "word": "Suicide",
+      "pos": "Noun (OWS)",
+      "hindi": "आत्महत्या (स्वयं की जान लेना)",
+      "meaning": "The act of intentionally killing oneself.",
+      "synonyms": ["Self-destruction"],
+      "antonyms": ["Homicide"],
+      "example": "Mental health helplines work to prevent cases of suicide."
+    },
+    {
+      "word": "Nihilism",
+      "pos": "Noun (OWS)",
+      "hindi": "शून्यवाद (यह विश्वास कि कुछ भी वास्तव में मौजूद नहीं है)",
+      "meaning": "The belief that nothing really exists or that life has no intrinsic meaning.",
+      "synonyms": ["Skepticism", "Negation"],
+      "antonyms": ["Optimism", "Faith"],
+      "example": "After facing repeated failures, he temporarily embraced nihilism."
+    },
+    {
+      "word": "Emancipate",
+      "pos": "Verb (OWS)",
+      "hindi": "बंधन से मुक्त करना / आज़ाद करना",
+      "meaning": "To free from restraint, control, or legal/social restrictions.",
+      "synonyms": ["Liberate", "Set free", "Release"],
+      "antonyms": ["Subjugate", "Enslave"],
+      "example": "India was emancipated from British colonial rule in 1947."
+    },
+    {
+      "word": "Stratocracy",
+      "pos": "Noun (OWS)",
+      "hindi": "सेना द्वारा संचालित शासन-व्यवस्था",
+      "meaning": "A system of government ruled by the military.",
+      "synonyms": ["Military rule"],
+      "antonyms": ["Democracy", "Meritocracy"],
+      "example": "A stratocracy places supreme governing power in the hands of army chiefs."
+    },
+    {
+      "word": "Somniloquist",
+      "pos": "Noun (OWS)",
+      "hindi": "नींद में बोलने वाला व्यक्ति",
+      "meaning": "A person who talks while sleeping.",
+      "synonyms": ["Sleep-talker"],
+      "antonyms": ["Somnambulist"],
+      "example": "He is a somniloquist and often mutters full sentences at night."
+    },
+    {
+      "word": "Gerontology",
+      "pos": "Noun (OWS)",
+      "hindi": "बुढ़ापे और वृद्धावस्था की प्रक्रिया का अध्ययन",
+      "meaning": "The scientific study of old age and various aspects of aging.",
+      "synonyms": ["Study of aging"],
+      "antonyms": ["Paediatrics"],
+      "example": "Advances in gerontology have improved healthcare for senior citizens."
+    },
+    {
+      "word": "Catastrophe",
+      "pos": "Noun (OWS)",
+      "hindi": "बड़ी और अचानक आने वाली आपदा",
+      "meaning": "A sudden widespread disaster causing great damage or suffering.",
+      "synonyms": ["Calamity", "Disaster", "Tragedy"],
+      "antonyms": ["Blessing", "Miracle"],
+      "example": "The massive earthquake was a terrible catastrophe for the entire region."
+    }
+  ]
+}
