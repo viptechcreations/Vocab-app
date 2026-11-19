@@ -1,0 +1,235 @@
+{
+  "id": "lesson-30",
+  "pack": "5 Days 5 Marathon One Word Substitution",
+  "number": "Lesson 30",
+  "title": "5 Days 5 Marathon OWS: Set 2 (Q26 to Q50)",
+  "subtitle": "Avalanche to Album",
+  "level": "One Word Substitution",
+  "words": [
+    {
+      "word": "Avalanche",
+      "pos": "Noun (OWS)",
+      "hindi": "हिमस्खलन (पहाड़ से तेज़ी से गिरती बर्फ और चट्टानों का ढेर)",
+      "meaning": "A mass of snow, ice, and rocks falling rapidly down a mountainside.",
+      "synonyms": ["Snowslide", "Landslide"],
+      "antonyms": ["Drought"],
+      "example": "The sudden avalanche buried the mountain highway under thick snow."
+    },
+    {
+      "word": "Annotation",
+      "pos": "Noun (OWS)",
+      "hindi": "व्याख्या या स्पष्टता के लिए जोड़ी गई संक्षिप्त टिप्पणी",
+      "meaning": "A brief note or explanation added alongside a text to provide clarity or context.",
+      "synonyms": ["Marginal note", "Commentary", "Explanation"],
+      "antonyms": ["Omission"],
+      "example": "She added a helpful annotation next to the difficult paragraph."
+    },
+    {
+      "word": "Ingredient",
+      "pos": "Noun (OWS)",
+      "hindi": "मिश्रण या व्यंजन का एक भाग (अवयव)",
+      "meaning": "A part or element of a mixture or compound.",
+      "synonyms": ["Element", "Component", "Constituent"],
+      "antonyms": ["Whole"],
+      "example": "Flour, sugar, and eggs are the basic ingredients of a cake."
+    },
+    {
+      "word": "Retailers",
+      "pos": "Noun (OWS)",
+      "hindi": "खुदरा विक्रेता (जनता को सीधे सामान बेचने वाले)",
+      "meaning": "People or businesses who sell goods directly to the public.",
+      "synonyms": ["Shopkeepers", "Merchants"],
+      "antonyms": ["Wholesaler", "Consumers"],
+      "example": "Local retailers offered heavy discounts during the festive season."
+    },
+    {
+      "word": "Uxorious",
+      "pos": "Adjective (OWS)",
+      "hindi": "पत्नी से बहुत अधिक प्रेम करने वाला",
+      "meaning": "One who is excessively fond of or devoted to one's wife.",
+      "synonyms": ["Devoted husband"],
+      "antonyms": ["Philanderer", "Misogynist"],
+      "example": "He is an uxorious husband who always prioritizes his wife's happiness."
+    },
+    {
+      "word": "Maelstrom",
+      "pos": "Noun (OWS)",
+      "hindi": "बहुत अधिक अव्यवस्था, भ्रम या भँवर की स्थिति",
+      "meaning": "A situation of great confusion, turmoil, and disorder.",
+      "synonyms": ["Turmoil", "Chaos", "Whirlpool"],
+      "antonyms": ["Serenity", "Order", "Calm"],
+      "example": "The small fishing boat was caught in a dangerous maelstrom."
+    },
+    {
+      "word": "Helmsman",
+      "pos": "Noun (OWS)",
+      "hindi": "जहाज़ चलाने वाला (कर्णधार)",
+      "meaning": "A person who steers a ship or boat.",
+      "synonyms": ["Steersman", "Pilot"],
+      "antonyms": ["Passenger", "Stevedore"],
+      "example": "The skilled helmsman steered the ship safely through the storm."
+    },
+    {
+      "word": "Prologue",
+      "pos": "Noun (OWS)",
+      "hindi": "प्रस्तावना (उपन्यास या रचना का शुरुआती भाग)",
+      "meaning": "A piece of writing that introduces a novel, book, or play.",
+      "synonyms": ["Introduction", "Preface", "Foreword"],
+      "antonyms": ["Epilogue"],
+      "example": "The prologue gives essential background information before the story begins."
+    },
+    {
+      "word": "Pantheist",
+      "pos": "Noun (OWS)",
+      "hindi": "सर्वेश्वरवादी (ईश्वर और ब्रह्मांड को एक मानने वाला)",
+      "meaning": "A person who believes that God and the universe are the same.",
+      "synonyms": ["Nature worshipper"],
+      "antonyms": ["Atheist", "Agnostic"],
+      "example": "A pantheist sees the presence of God in every part of nature."
+    },
+    {
+      "word": "Trepidation",
+      "pos": "Noun (OWS)",
+      "hindi": "डर, घबराहट या आशंका",
+      "meaning": "A feeling of fear, anxiety, or apprehension in tense situations.",
+      "synonyms": ["Anxiety", "Apprehension", "Fear"],
+      "antonyms": ["Elation", "Serenity", "Calmness"],
+      "example": "She stepped into the dark room with a feeling of trepidation."
+    },
+    {
+      "word": "Ineffable",
+      "pos": "Adjective (OWS)",
+      "hindi": "अवर्णनीय (जिसे शब्दों में न बताया जा सके)",
+      "meaning": "Too great or extreme to be expressed or described in words.",
+      "synonyms": ["Indescribable", "Inexpressible"],
+      "antonyms": ["Expressible", "Definable"],
+      "example": "The beauty of the Himalayan sunrise was truly ineffable."
+    },
+    {
+      "word": "Bale",
+      "pos": "Noun (OWS)",
+      "hindi": "भंडारण या परिवहन के लिए बाँधा गया बड़ा गट्ठा",
+      "meaning": "A large bundle bound tightly for storage or transportation.",
+      "synonyms": ["Bundle", "Pack"],
+      "antonyms": ["Loose heap"],
+      "example": "The farmer carried a heavy bale of hay to the barn."
+    },
+    {
+      "word": "Introspect",
+      "pos": "Verb (OWS)",
+      "hindi": "आत्मनिरीक्षण करना (अपने विचारों और इरादों की जाँच करना)",
+      "meaning": "To examine one's own thoughts, feelings, and motives.",
+      "synonyms": ["Self-examine", "Contemplate"],
+      "antonyms": ["Ignore", "Overlook"],
+      "example": "He sat quietly in the evening to introspect on his exam preparation."
+    },
+    {
+      "word": "Bonsai",
+      "pos": "Noun (OWS)",
+      "hindi": "गमले में कलात्मक ढंग से उगाया गया बौना (छोटा) पेड़",
+      "meaning": "Dwarfed varieties of trees and shrubs grown artistically in pots.",
+      "synonyms": ["Dwarf potted tree"],
+      "antonyms": ["Giant tree"],
+      "example": "She kept a miniature banyan bonsai on her study desk."
+    },
+    {
+      "word": "Zoology",
+      "pos": "Noun (OWS)",
+      "hindi": "प्राणी विज्ञान (जानवरों का वैज्ञानिक अध्ययन)",
+      "meaning": "The scientific study of the behaviour, structure, physiology, classification, and distribution of animals.",
+      "synonyms": ["Animal biology"],
+      "antonyms": ["Botany"],
+      "example": "She is pursuing a bachelor's degree in zoology."
+    },
+    {
+      "word": "Incombustible",
+      "pos": "Adjective (OWS)",
+      "hindi": "अदाह्य (जो आग न पकड़ सके या जल न सके)",
+      "meaning": "Incapable of catching fire or burning.",
+      "synonyms": ["Fireproof", "Non-flammable"],
+      "antonyms": ["Flammable", "Combustible"],
+      "example": "Glass and asbestos are incombustible materials."
+    },
+    {
+      "word": "Narcissist",
+      "pos": "Noun (OWS)",
+      "hindi": "आत्ममुग्ध (खुद को अत्यधिक महत्व और प्रशंसा देने वाला)",
+      "meaning": "Someone who exhibits excessive self-importance and admiration for oneself.",
+      "synonyms": ["Egotist", "Self-admirer"],
+      "antonyms": ["Altruist", "Humble person"],
+      "example": "He is a narcissist who admires himself in the mirror all day."
+    },
+    {
+      "word": "Charlatan",
+      "pos": "Noun (OWS)",
+      "hindi": "ढोंगी / पाखंडी (ज्ञान या कौशल का झूठा दिखावा करने वाला)",
+      "meaning": "One who falsely pretends to have special knowledge or skills.",
+      "synonyms": ["Quack", "Fraud", "Impostor"],
+      "antonyms": ["Savant", "Virtuoso", "Expert"],
+      "example": "The fake healer turned out to be a charlatan fooling innocent people."
+    },
+    {
+      "word": "Agoraphobia",
+      "pos": "Noun (OWS)",
+      "hindi": "खुली या भीड़भाड़ वाली जगहों से डर",
+      "meaning": "Extreme or irrational fear of open or public spaces.",
+      "synonyms": ["Fear of open spaces"],
+      "antonyms": ["Claustrophobia"],
+      "example": "He suffers from agoraphobia and feels anxious in wide open grounds."
+    },
+    {
+      "word": "Deaf",
+      "pos": "Adjective (OWS)",
+      "hindi": "बहरा (सुनने में असमर्थ)",
+      "meaning": "One who cannot hear; lacking the power of hearing.",
+      "synonyms": ["Hearing-impaired"],
+      "antonyms": ["Hearing"],
+      "example": "The old man is deaf and uses a hearing aid."
+    },
+    {
+      "word": "Malevolent",
+      "pos": "Adjective (OWS)",
+      "hindi": "दुर्भावनापूर्ण (दूसरों को नुकसान या बुराई पहुँचाने की इच्छा रखने वाला)",
+      "meaning": "Having or showing a wish to do evil or cause harm to others.",
+      "synonyms": ["Malicious", "Spiteful", "Wicked"],
+      "antonyms": ["Benevolent", "Kind"],
+      "example": "Everyone stayed away from him because of his malevolent intentions."
+    },
+    {
+      "word": "Namesake",
+      "pos": "Noun (OWS)",
+      "hindi": "हमनाम (समान नाम वाला व्यक्ति)",
+      "meaning": "A person having the same name as another.",
+      "synonyms": ["Same-named person"],
+      "antonyms": ["Anonymous"],
+      "example": "The young boy is his grandfather's namesake."
+    },
+    {
+      "word": "Nyctophobia",
+      "pos": "Noun (OWS)",
+      "hindi": "अँधेरे से डर",
+      "meaning": "An extreme or irrational fear of darkness or the night.",
+      "synonyms": ["Fear of darkness", "Scotophobia"],
+      "antonyms": ["Fearlessness"],
+      "example": "Because of nyctophobia, she always sleeps with a night lamp on."
+    },
+    {
+      "word": "Bleat",
+      "pos": "Noun/Verb (OWS)",
+      "hindi": "भेड़ या बकरी की आवाज़ (मिमियाना)",
+      "meaning": "The weak, wavering cry or sound made by a sheep, goat, or calf.",
+      "synonyms": ["Cry of a sheep"],
+      "antonyms": ["Roar", "Neigh"],
+      "example": "The sheep bleats loudly in the green meadow."
+    },
+    {
+      "word": "Album",
+      "pos": "Noun (OWS)",
+      "hindi": "फ़ोटो, टिकट या चित्र रखने की पुस्तक",
+      "meaning": "A blank book for keeping a collection of photographs, stamps, or pictures.",
+      "synonyms": ["Scrapbook", "Photo book"],
+      "antonyms": ["Directory", "Catalogue"],
+      "example": "We looked through our old family photo album during the holidays."
+    }
+  ]
+}
