@@ -1,0 +1,235 @@
+{
+  "id": "lesson-28",
+  "pack": "Top Level New Pattern Synonyms",
+  "number": "Lesson 28",
+  "title": "New Pattern Synonyms: Set 1 (Q1 to Q25)",
+  "subtitle": "Excoriate to Brazen",
+  "level": "New Pattern Synonyms",
+  "words": [
+    {
+      "word": "Excoriate",
+      "pos": "Verb",
+      "hindi": "कड़ी आलोचना करना या फटकार लगाना",
+      "meaning": "To criticize or scold someone severely.",
+      "synonyms": ["Castigate", "Censure", "Lambast", "Condemn"],
+      "antonyms": ["Exonerate", "Praise", "Acclaim"],
+      "example": "Bal Gangadhar Tilak excoriated British rule for suppressing Indian freedom."
+    },
+    {
+      "word": "Excruciating",
+      "pos": "Adjective",
+      "hindi": "अत्यंत पीड़ादायक / असहनीय",
+      "meaning": "Extremely painful, torturous, or distressing.",
+      "synonyms": ["Agonising", "Torturous", "Harrowing", "Intolerable"],
+      "antonyms": ["Soothing", "Pleasant", "Comforting"],
+      "example": "The Jallianwala Bagh massacre brought excruciating grief to thousands of families."
+    },
+    {
+      "word": "Recreant",
+      "pos": "Adjective/Noun",
+      "hindi": "कायर / विश्वासघाती",
+      "meaning": "Cowardly; lacking courage or unfaithful to duty.",
+      "synonyms": ["Craven", "Pusillanimous", "Timorous", "Dastard"],
+      "antonyms": ["Valiant", "Courageous", "Doughty"],
+      "example": "Mir Jafar is often portrayed as a recreant commander in the Battle of Plassey."
+    },
+    {
+      "word": "Stymie",
+      "pos": "Verb",
+      "hindi": "बाधा डालना / प्रगति रोकना",
+      "meaning": "To obstruct, hinder, or prevent progress.",
+      "synonyms": ["Thwart", "Hinder", "Impede", "Hamper"],
+      "antonyms": ["Facilitate", "Ameliorate", "Assist"],
+      "example": "The British barricades could not stymie India's struggle for independence."
+    },
+    {
+      "word": "Refractory",
+      "pos": "Adjective",
+      "hindi": "अड़ियल / काबू में न आने वाला",
+      "meaning": "Stubborn, unmanageable, and difficult to control.",
+      "synonyms": ["Intractable", "Recalcitrant", "Obstinate", "Obdurate"],
+      "antonyms": ["Compliant", "Docile", "Amenable"],
+      "example": "Iran remained refractory to external demands during the nuclear talks."
+    },
+    {
+      "word": "Palliate",
+      "pos": "Verb",
+      "hindi": "दर्द या परेशानी कम करना / राहत देना",
+      "meaning": "To make pain, suffering, or a problem less severe without curing it.",
+      "synonyms": ["Alleviate", "Mitigate", "Assuage", "Soothe"],
+      "antonyms": ["Exacerbate", "Aggravate", "Intensify"],
+      "example": "The injection quickly palliated the patient's severe pain."
+    },
+    {
+      "word": "Jettison",
+      "pos": "Verb",
+      "hindi": "त्याग देना / छुटकारा पाना",
+      "meaning": "To throw away, abandon, or get rid of something unwanted.",
+      "synonyms": ["Discard", "Abandon", "Relinquish", "Renounce"],
+      "antonyms": ["Retain", "Keep", "Assimilate"],
+      "example": "The government jettisoned the controversial bill following public protests."
+    },
+    {
+      "word": "Galore",
+      "pos": "Adjective/Adverb",
+      "hindi": "प्रचुर मात्रा में / बहुतायत में",
+      "meaning": "Existing in large amounts or abundance.",
+      "synonyms": ["Plentiful", "Abundant", "Copious", "Profuse"],
+      "antonyms": ["Meagre", "Scarce", "Scanty"],
+      "example": "The Amazon rainforest has exotic wildlife galore."
+    },
+    {
+      "word": "Genial",
+      "pos": "Adjective",
+      "hindi": "मिलनसार / सौम्य / खुशमिजाज",
+      "meaning": "Friendly, pleasant, cheerful, and approachable.",
+      "synonyms": ["Affable", "Amiable", "Cordial", "Convivial"],
+      "antonyms": ["Belligerent", "Hostile", "Austere"],
+      "example": "His genial disposition helped him build friendly relations with everyone."
+    },
+    {
+      "word": "Confound",
+      "pos": "Verb",
+      "hindi": "भ्रमित करना / चकरा देना",
+      "meaning": "To confuse, puzzle, or perplex someone.",
+      "synonyms": ["Bewilder", "Perplex", "Baffle", "Mystify"],
+      "antonyms": ["Clarify", "Enlighten", "Substantiate"],
+      "example": "Shivaji's guerrilla warfare tactics confounded the enemy commanders."
+    },
+    {
+      "word": "Magnanimous",
+      "pos": "Adjective",
+      "hindi": "परोपकारी / बड़े दिल वाला / उदार",
+      "meaning": "Very generous, kind, and forgiving towards others.",
+      "synonyms": ["Benevolent", "Altruistic", "Munificent", "Philanthropic"],
+      "antonyms": ["Parsimonious", "Vindictive", "Selfish"],
+      "example": "Ratan Tata was a magnanimous leader who devoted wealth to social welfare."
+    },
+    {
+      "word": "Prodigious",
+      "pos": "Adjective",
+      "hindi": "अत्यंत विशाल / भव्य",
+      "meaning": "Enormously large or immense in size, extent, or degree.",
+      "synonyms": ["Gargantuan", "Colossal", "Mammoth", "Monumental"],
+      "antonyms": ["Diminutive", "Tiny", "Minuscule"],
+      "example": "The Statue of Unity is a prodigious monument standing 182 metres tall."
+    },
+    {
+      "word": "Arcane",
+      "pos": "Adjective",
+      "hindi": "गूढ़ / रहस्यमय (जिसे बहुत कम लोग समझ सकें)",
+      "meaning": "Understood by few; mysterious, secret, or abstruse.",
+      "synonyms": ["Recondite", "Esoteric", "Abstruse", "Cryptic"],
+      "antonyms": ["Obvious", "Clear", "Transparent"],
+      "example": "The physicist spent years studying arcane mathematical theories."
+    },
+    {
+      "word": "Forthright",
+      "pos": "Adjective",
+      "hindi": "बेबाक / स्पष्टवादी",
+      "meaning": "Direct, outspoken, and honest in expressing opinions.",
+      "synonyms": ["Unreserved", "Candid", "Frank", "Outspoken"],
+      "antonyms": ["Mendacious", "Evasive", "Circumspect"],
+      "example": "He speaks in a forthright manner even when the truth is unpleasant."
+    },
+    {
+      "word": "Equivocal",
+      "pos": "Adjective",
+      "hindi": "अस्पष्ट / द्विअर्थी / अनिर्णायक",
+      "meaning": "Open to more than one interpretation; deliberately avoiding a clear position.",
+      "synonyms": ["Noncommittal", "Ambiguous", "Evasive", "Vague"],
+      "antonyms": ["Incontrovertible", "Perspicuous", "Explicit"],
+      "example": "The minister gave an equivocal answer to the reporter's tough question."
+    },
+    {
+      "word": "Lugubrious",
+      "pos": "Adjective",
+      "hindi": "शोकपूर्ण / अत्यंत उदास",
+      "meaning": "Looking or sounding sad, dismal, and mournful.",
+      "synonyms": ["Doleful", "Melancholy", "Morose", "Despondent"],
+      "antonyms": ["Ebullient", "Sanguine", "Jovial"],
+      "example": "He had a lugubrious expression after losing the final match."
+    },
+    {
+      "word": "Painstaking",
+      "pos": "Adjective",
+      "hindi": "अत्यंत परिश्रमी / सावधानीपूर्वक किया गया",
+      "meaning": "Done with or employing great care, diligence, and thoroughness.",
+      "synonyms": ["Sedulous", "Meticulous", "Assiduous", "Diligent"],
+      "antonyms": ["Desultory", "Careless", "Perfunctory"],
+      "example": "India's independence reflects the painstaking efforts of countless revolutionaries."
+    },
+    {
+      "word": "Uncanny",
+      "pos": "Adjective",
+      "hindi": "अलौकिक / असामान्य / रहस्यमय",
+      "meaning": "Strange or mysterious, especially in an unsettling or supernatural way.",
+      "synonyms": ["Preternatural", "Eerie", "Supernatural", "Bizarre"],
+      "antonyms": ["Ordinary", "Natural", "Commonplace"],
+      "example": "It was uncanny how the ritual lamps stayed lit despite the heavy rain."
+    },
+    {
+      "word": "Fitful",
+      "pos": "Adjective",
+      "hindi": "रुक-रुक कर होने वाला / अनियमित",
+      "meaning": "Active or occurring spasmodically or intermittently; not regular or continuous.",
+      "synonyms": ["Intermittent", "Sporadic", "Erratic", "Spasmodic"],
+      "antonyms": ["Incessant", "Continuous", "Uninterrupted"],
+      "example": "Dehradun experienced fitful showers throughout the monsoon afternoon."
+    },
+    {
+      "word": "Improvident",
+      "pos": "Adjective",
+      "hindi": "फिजूलखर्च / बिना सोचे-समझे खर्च करने वाला",
+      "meaning": "Not having or showing foresight; spending money carelessly or wastefully.",
+      "synonyms": ["Spendthrift", "Prodigal", "Profligate", "Extravagant"],
+      "antonyms": ["Prudent", "Frugal", "Thrifty"],
+      "example": "The improvident youth wasted his entire inheritance within a year."
+    },
+    {
+      "word": "Skinflint",
+      "pos": "Noun",
+      "hindi": "कंजूस / मक्खीचूस",
+      "meaning": "A person who spends as little money as possible; a miser.",
+      "synonyms": ["Miser", "Parsimonious", "Niggard", "Tightwad"],
+      "antonyms": ["Philanthropist", "Spendthrift", "Generous"],
+      "example": "The old landlord is a skinflint who refuses to pay for basic repairs."
+    },
+    {
+      "word": "Consensus",
+      "pos": "Noun",
+      "hindi": "सर्वसम्मति / आम सहमति",
+      "meaning": "A general or complete agreement among a group of people.",
+      "synonyms": ["Unanimity", "Accord", "Concord", "Harmony"],
+      "antonyms": ["Dissension", "Discord", "Disagreement"],
+      "example": "A coalition government functions smoothly through consensus among allies."
+    },
+    {
+      "word": "Inimical",
+      "pos": "Adjective",
+      "hindi": "विरोधी / हानिकारक / शत्रुतापूर्ण",
+      "meaning": "Tending to obstruct or harm; unfriendly or hostile.",
+      "synonyms": ["Antagonistic", "Hostile", "Detrimental", "Pernicious"],
+      "antonyms": ["Propitious", "Benevolent", "Favorable"],
+      "example": "High unemployment is inimical to the economic progress of society."
+    },
+    {
+      "word": "Prosaic",
+      "pos": "Adjective",
+      "hindi": "नीरस / साधारण / उबाऊ",
+      "meaning": "Having or using the style or diction of prose as opposed to poetry; lacking imaginativeness; dull.",
+      "synonyms": ["Humdrum", "Mundane", "Monotonous", "Banal"],
+      "antonyms": ["Sublime", "Imaginative", "Extraordinary"],
+      "example": "She found her daily data entry job rather prosaic and repetitive."
+    },
+    {
+      "word": "Brazen",
+      "pos": "Adjective",
+      "hindi": "निर्लज्ज / ढीठ / बेशर्म",
+      "meaning": "Bold and without shame; impudent.",
+      "synonyms": ["Impudent", "Insolent", "Shameless", "Brash"],
+      "antonyms": ["Timorous", "Demure", "Reticent"],
+      "example": "The company's brazen exploitation of natural resources sparked protests."
+    }
+  ]
+}
