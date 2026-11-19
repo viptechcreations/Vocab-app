@@ -151,8 +151,15 @@
             <span id="globalLearnedCount">0</span>/<span id="globalTotalCount">0</span>
           </span>
         </div>
-        <button onclick="resetAllProgress()" title="Reset Progress" class="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg transition">
+
+        <button onclick="resetAllProgress()" title="Reset Progress" class="p-1.5 text-slate-400 hover:text-amber-600 rounded-lg transition">
           <i class="fa-solid fa-rotate-right text-sm"></i>
+        </button>
+
+        <!-- Logout Button -->
+        <button id="logoutBtn" onclick="logoutUser()" title="Logout / Switch Student" class="hidden px-2.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-600 text-rose-600 hover:text-white border border-rose-200 text-xs font-bold flex items-center gap-1 transition">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span class="hidden sm:inline">Logout</span>
         </button>
       </div>
     </div>
@@ -438,10 +445,14 @@
 
     function checkUserRegistration() {
       const existingName = localStorage.getItem(USER_NAME_KEY);
+      const logoutBtn = document.getElementById("logoutBtn");
       if (!existingName) {
         document.getElementById("userEntryModal").classList.remove("hidden");
+        document.getElementById("welcomeUserSubtitle").innerText = "Offline Ready Vocab App";
+        if (logoutBtn) logoutBtn.classList.add("hidden");
       } else {
         document.getElementById("welcomeUserSubtitle").innerText = `Hi, ${existingName} 👋`;
+        if (logoutBtn) logoutBtn.classList.remove("hidden");
         logUserActivity("Opened App");
       }
     }
@@ -456,7 +467,24 @@
       localStorage.setItem(USER_NAME_KEY, name);
       document.getElementById("userEntryModal").classList.add("hidden");
       document.getElementById("welcomeUserSubtitle").innerText = `Hi, ${name} 👋`;
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (logoutBtn) logoutBtn.classList.remove("hidden");
       logUserActivity("Registered & Opened App");
+    }
+
+    function logoutUser() {
+      const currentName = localStorage.getItem(USER_NAME_KEY) || "Student";
+      if (!confirm(`Kya aap "${currentName}" se Logout karna chahte hain?`)) {
+        return;
+      }
+      logUserActivity("Logged Out");
+      localStorage.removeItem(USER_NAME_KEY);
+      document.getElementById("studentNameInput").value = "";
+      document.getElementById("welcomeUserSubtitle").innerText = "Offline Ready Vocab App";
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (logoutBtn) logoutBtn.classList.add("hidden");
+      showMainPackBoxes();
+      document.getElementById("userEntryModal").classList.remove("hidden");
     }
 
     async function logUserActivity(actionText) {
@@ -475,7 +503,7 @@
         localStorage.setItem(LOCAL_VISITS_KEY, JSON.stringify(localLogs.slice(0, 100)));
       } catch (e) {}
 
-      if (!navigator.onLine) return; // Offline ho to Firebase call skip karein
+      if (!navigator.onLine) return;
 
       const dbUrl = getFirebaseDbUrl();
       if (dbUrl) {
@@ -723,7 +751,6 @@
         });
       }
 
-      // Double-Layer Offline Protection: Save/Load from localStorage backup if network fails
       if (loadedLessons.length > 0) {
         try {
           localStorage.setItem(OFFLINE_BACKUP_KEY, JSON.stringify(loadedLessons));
@@ -796,6 +823,7 @@
     }
 
     function resetAllProgress() {
+      if (!confirm("Kya aap saari padhi hui words ki progress reset karna chahte hain?")) return;
       learnedWords.clear();
       saveProgress();
       renderMainPackBoxes();
