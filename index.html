@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="VocabMaster" />
-  <title>VocabMaster - Auto Pack Vocabulary App</title>
+  <title>VocabMaster - Offline & Auto Pack Vocabulary App</title>
 
   <!-- App Icon & PWA Setup -->
   <script>
@@ -135,11 +135,16 @@
           <h1 class="text-base sm:text-lg font-extrabold tracking-tight bg-gradient-to-r from-indigo-700 to-violet-600 bg-clip-text text-transparent">
             VocabMaster
           </h1>
-          <p id="welcomeUserSubtitle" class="text-[10px] text-slate-500 font-medium -mt-1">Auto JSON Box System</p>
+          <p id="welcomeUserSubtitle" class="text-[10px] text-slate-500 font-medium -mt-1">Offline Ready Vocab App</p>
         </div>
       </div>
 
       <div class="flex items-center gap-2">
+        <!-- Offline Badge -->
+        <span id="offlineStatusPill" class="hidden px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">
+          <i class="fa-solid fa-plane-up mr-1"></i>Offline
+        </span>
+
         <div class="bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full flex items-center gap-1.5">
           <i class="fa-solid fa-circle-check text-indigo-600 text-xs"></i>
           <span class="text-xs font-bold text-indigo-950">
@@ -378,6 +383,34 @@
   </main>
 
   <script>
+    // ================= OFFLINE SERVICE WORKER REGISTRATION =================
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("./sw.js")
+          .then(() => console.log("VocabMaster Offline Cache Active!"))
+          .catch((err) => console.log("SW Registration failed:", err));
+      });
+    }
+
+    function updateOnlineStatus() {
+      const pill = document.getElementById("offlineStatusPill");
+      const statusEl = document.getElementById("scanStatusText");
+      if (!navigator.onLine) {
+        if (pill) pill.classList.remove("hidden");
+        if (statusEl && ALL_PACKS.length > 0) {
+          statusEl.innerText = `Offline Mode Active • ${ALL_PACKS.length} Pack(s) loaded from device memory.`;
+        }
+      } else {
+        if (pill) pill.classList.add("hidden");
+      }
+    }
+    window.addEventListener("offline", updateOnlineStatus);
+    window.addEventListener("online", () => {
+      updateOnlineStatus();
+      initApp();
+    });
+
     // ================= VISITOR TRACKING & ADMIN CONFIG =================
     const DEFAULT_FIREBASE_DB_URL = "https://vocab-master-a761f-default-rtdb.firebaseio.com"; 
     const ADMIN_PIN = "2005";
@@ -385,6 +418,7 @@
     const USER_NAME_KEY = "vocabmaster_student_name";
     const FIREBASE_URL_KEY = "vocabmaster_fb_db_url";
     const LOCAL_VISITS_KEY = "vocabmaster_local_visits";
+    const OFFLINE_BACKUP_KEY = "vocabmaster_offline_lessons_backup_v1";
 
     let logoTapCount = 0;
     let logoTapTimer = null;
@@ -441,6 +475,8 @@
         localStorage.setItem(LOCAL_VISITS_KEY, JSON.stringify(localLogs.slice(0, 100)));
       } catch (e) {}
 
+      if (!navigator.onLine) return; // Offline ho to Firebase call skip karein
+
       const dbUrl = getFirebaseDbUrl();
       if (dbUrl) {
         try {
@@ -494,7 +530,7 @@
       let logs = [];
       const dbUrl = getFirebaseDbUrl();
 
-      if (dbUrl) {
+      if (dbUrl && navigator.onLine) {
         try {
           const res = await fetch(`${dbUrl}/vocab_visitors.json`);
           if (res.ok) {
@@ -640,7 +676,7 @@
         let hit = false;
         for (const name of [`lesson${i}.json`, `lesson-${i}.json`]) {
           try {
-            const res = await fetch(`lessons/${name}`, { cache: "no-store" });
+            const res = await fetch(`lessons/${name}`);
             if (res.ok) {
               const data = await res.json();
               foundFiles.push({ name, data });
@@ -661,14 +697,15 @@
     async function initApp() {
       loadProgress();
       checkUserRegistration();
+      updateOnlineStatus();
 
-      const loadedLessons = [];
+      let loadedLessons = [];
       const githubFiles = await discoverJsonFilesViaGitHub();
 
       if (githubFiles && githubFiles.length > 0) {
         const promises = githubFiles.map(async (f, i) => {
           try {
-            const r = await fetch(f.path, { cache: "no-store" });
+            const r = await fetch(f.path);
             if (r.ok) {
               const data = await r.json();
               return normalizeLesson(data, f.name, i);
@@ -684,6 +721,20 @@
           const norm = normalizeLesson(f.data, f.name, i);
           if (norm.words.length > 0) loadedLessons.push(norm);
         });
+      }
+
+      // Double-Layer Offline Protection: Save/Load from localStorage backup if network fails
+      if (loadedLessons.length > 0) {
+        try {
+          localStorage.setItem(OFFLINE_BACKUP_KEY, JSON.stringify(loadedLessons));
+        } catch (e) {}
+      } else {
+        try {
+          const offlineSaved = localStorage.getItem(OFFLINE_BACKUP_KEY);
+          if (offlineSaved) {
+            loadedLessons = JSON.parse(offlineSaved);
+          }
+        } catch (e) {}
       }
 
       loadedLessons.sort((a, b) => a.sortOrder - b.sortOrder);
@@ -714,9 +765,11 @@
 
       const statusEl = document.getElementById("scanStatusText");
       if (ALL_PACKS.length === 0) {
-        statusEl.innerText = "No JSON files found in /lessons/ folder yet. Upload any .json file to /lessons/!";
+        statusEl.innerText = "No JSON files found yet. Connect to internet once to sync /lessons/!";
+      } else if (!navigator.onLine) {
+        statusEl.innerText = `Offline Mode Active • ${ALL_PACKS.length} Pack(s) & ${loadedLessons.length} Lessons ready!`;
       } else {
-        statusEl.innerText = `Auto-loaded ${ALL_PACKS.length} Vocabulary Box(es) & ${loadedLessons.length} Lessons.`;
+        statusEl.innerText = `Synced ${ALL_PACKS.length} Box(es) & ${loadedLessons.length} Lessons (Available Offline ✅)`;
       }
 
       updateGlobalStats();
