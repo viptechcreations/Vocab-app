@@ -9,10 +9,42 @@
   <meta name="apple-mobile-web-app-title" content="Vocab Master" />
   <title>Vocab Master - Offline & Auto Pack Vocabulary App</title>
 
-  <!-- Proper PWA Manifest & Icons -->
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="apple-touch-icon" href="./icon-512.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <!-- Single-File Built-in PWA Manifest & Icon (No extra files needed) -->
+  <script>
+    const appSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4f46e5"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs><rect width="512" height="512" rx="115" fill="url(#bg)"/><circle cx="256" cy="152" r="44" fill="#ffffff"/><path d="M242 232 C205 212 150 208 116 218 C108 220 104 227 104 236 L104 358 C104 368 112 374 122 372 C156 364 205 368 242 390 Z" fill="#ffffff"/><path d="M270 232 C307 212 362 208 396 218 C404 220 408 227 408 236 L408 358 C408 368 400 374 390 372 C356 364 307 368 270 390 Z" fill="#ffffff"/></svg>`;
+    const appIconUrl = "data:image/svg+xml;base64," + btoa(appSvg);
+
+    const dynamicManifest = {
+      name: "Vocab Master",
+      short_name: "Vocab Master",
+      description: "English-Hindi Vocabulary Flashcards & Mock Test App",
+      start_url: window.location.href,
+      display: "standalone",
+      background_color: "#ffffff",
+      theme_color: "#4f46e5",
+      orientation: "portrait",
+      icons: [
+        { src: appIconUrl, sizes: "192x192", type: "image/svg+xml", purpose: "any maskable" },
+        { src: appIconUrl, sizes: "512x512", type: "image/svg+xml", purpose: "any maskable" }
+      ]
+    };
+
+    const manifestBlob = new Blob([JSON.stringify(dynamicManifest)], { type: "application/json" });
+    const manifestLink = document.createElement("link");
+    manifestLink.rel = "manifest";
+    manifestLink.href = URL.createObjectURL(manifestBlob);
+    document.head.appendChild(manifestLink);
+
+    const favIcon = document.createElement("link");
+    favIcon.rel = "icon";
+    favIcon.href = appIconUrl;
+    document.head.appendChild(favIcon);
+
+    const appleIcon = document.createElement("link");
+    appleIcon.rel = "apple-touch-icon";
+    appleIcon.href = appIconUrl;
+    document.head.appendChild(appleIcon);
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
@@ -84,9 +116,7 @@
         <p id="adminSyncStatus" class="text-[11px] text-emerald-600 font-semibold">✅ Default Firebase Database URL permanently connected in code.</p>
       </div>
 
-      <div class="p-4 flex-1 overflow-y-auto space-y-2.5" id="visitorLogsContainer">
-        <!-- Logs populated here -->
-      </div>
+      <div class="p-4 flex-1 overflow-y-auto space-y-2.5" id="visitorLogsContainer"></div>
 
       <div class="p-3 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
         <span id="totalVisitorsBadge" class="text-xs font-bold text-slate-600">Total Visits: 0</span>
@@ -101,7 +131,6 @@
   <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
       <div class="flex items-center gap-2.5">
-        <!-- 5-Tap Secret Trigger on Logo -->
         <div onclick="handleLogoSecretTap()" class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-sm cursor-pointer select-none">
           <i class="fa-solid fa-book-open-reader text-base"></i>
         </div>
@@ -114,10 +143,10 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <!-- PWA Install App Button (Auto-hides when already installed) -->
+        <!-- Install App Button (Auto-hides when already installed) -->
         <button id="installAppBtn" onclick="installPWA()" class="hidden px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
           <i class="fa-solid fa-download"></i>
-          <span>Install App</span>
+          <span>Install</span>
         </button>
 
         <!-- Offline Badge -->
@@ -136,7 +165,6 @@
           <i class="fa-solid fa-rotate-right text-sm"></i>
         </button>
 
-        <!-- Logout Button -->
         <button id="logoutBtn" onclick="logoutUser()" title="Logout / Switch Student" class="hidden px-2.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-600 text-rose-600 hover:text-white border border-rose-200 text-xs font-bold flex items-center gap-1 transition">
           <i class="fa-solid fa-right-from-bracket"></i>
           <span class="hidden sm:inline">Logout</span>
@@ -318,7 +346,6 @@
               <h3 id="quizSectionTitle" class="text-base sm:text-lg font-extrabold text-slate-900">Synonym, Antonym & Hindi Quiz</h3>
             </div>
             <div class="flex items-center gap-2 self-end sm:self-auto">
-              <!-- Idioms / OWS Mode Toggle Button -->
               <button id="idiomQuizModeBtn" onclick="toggleIdiomQuizMode()" class="hidden px-3 py-1.5 rounded-xl text-xs font-extrabold border-2 border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition flex items-center gap-1.5">
                 <i class="fa-solid fa-sliders"></i>
                 <span id="idiomQuizModeText">Include Syn / Anto Mock</span>
@@ -373,8 +400,6 @@
     // ================= PWA INSTALL PROMPT LOGIC =================
     let deferredPrompt = null;
     const installAppBtn = document.getElementById("installAppBtn");
-
-    // Agar app pehle se standalone (installed) mode me chal raha hai to button hide rakho
     const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
 
     window.addEventListener("beforeinstallprompt", (e) => {
@@ -1274,11 +1299,11 @@
     window.onload = initApp;
   </script>
 
-  <!-- Service Worker Registration -->
+  <!-- Service Worker Registration (uses your existing sw.js in repo) -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js');
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
       });
     }
   </script>
